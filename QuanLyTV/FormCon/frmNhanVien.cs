@@ -16,5 +16,10 @@ namespace QuanLyTV.FormCon
         {
             InitializeComponent();
         }
+
+        private void rdbChucVu_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

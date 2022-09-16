@@ -18,3 +18,4 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.c
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCha.FormMain.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.ThongTinCaNhan.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmNhanVien.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmDocGia.resources

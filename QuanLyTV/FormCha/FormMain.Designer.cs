@@ -55,8 +55,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.paTieuDe = new System.Windows.Forms.Panel();
             this.paBody = new System.Windows.Forms.Panel();
+            this.paTieuDe = new System.Windows.Forms.Panel();
             this.lblTieude = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -341,15 +341,6 @@
             this.panel2.Size = new System.Drawing.Size(1004, 601);
             this.panel2.TabIndex = 2;
             // 
-            // paTieuDe
-            // 
-            this.paTieuDe.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.paTieuDe.Controls.Add(this.lblTieude);
-            this.paTieuDe.Location = new System.Drawing.Point(3, 3);
-            this.paTieuDe.Name = "paTieuDe";
-            this.paTieuDe.Size = new System.Drawing.Size(1001, 80);
-            this.paTieuDe.TabIndex = 0;
-            // 
             // paBody
             // 
             this.paBody.BackColor = System.Drawing.Color.White;
@@ -359,6 +350,15 @@
             this.paBody.Name = "paBody";
             this.paBody.Size = new System.Drawing.Size(998, 506);
             this.paBody.TabIndex = 1;
+            // 
+            // paTieuDe
+            // 
+            this.paTieuDe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.paTieuDe.Controls.Add(this.lblTieude);
+            this.paTieuDe.Location = new System.Drawing.Point(3, 3);
+            this.paTieuDe.Name = "paTieuDe";
+            this.paTieuDe.Size = new System.Drawing.Size(1001, 80);
+            this.paTieuDe.TabIndex = 0;
             // 
             // lblTieude
             // 
