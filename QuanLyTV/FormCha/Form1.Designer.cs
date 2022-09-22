@@ -40,6 +40,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.CBSHowPass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -71,6 +73,7 @@
             // 
             this.panel2.AutoSize = true;
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.CBSHowPass);
             this.panel2.Controls.Add(this.btnDangKi);
             this.panel2.Controls.Add(this.btnDangNhap);
             this.panel2.Controls.Add(this.txtPass);
@@ -87,7 +90,7 @@
             // btnDangKi
             // 
             this.btnDangKi.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangKi.Location = new System.Drawing.Point(101, 459);
+            this.btnDangKi.Location = new System.Drawing.Point(101, 474);
             this.btnDangKi.Name = "btnDangKi";
             this.btnDangKi.Size = new System.Drawing.Size(140, 55);
             this.btnDangKi.TabIndex = 8;
@@ -98,7 +101,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Location = new System.Drawing.Point(101, 370);
+            this.btnDangNhap.Location = new System.Drawing.Point(101, 398);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(140, 55);
             this.btnDangNhap.TabIndex = 7;
@@ -114,6 +117,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(217, 33);
             this.txtPass.TabIndex = 6;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // pictureBox4
             // 
@@ -164,6 +168,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Log In";
             // 
+            // CBSHowPass
+            // 
+            this.CBSHowPass.AutoSize = true;
+            this.CBSHowPass.Location = new System.Drawing.Point(66, 359);
+            this.CBSHowPass.Name = "CBSHowPass";
+            this.CBSHowPass.Size = new System.Drawing.Size(148, 24);
+            this.CBSHowPass.TabIndex = 9;
+            this.CBSHowPass.Text = "Show Password";
+            this.CBSHowPass.UseVisualStyleBackColor = true;
+            this.CBSHowPass.CheckedChanged += new System.EventHandler(this.CBSHowPass_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -199,6 +214,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox CBSHowPass;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 

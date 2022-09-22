@@ -39,6 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnDK = new System.Windows.Forms.Button();
             this.btnQuayLai = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -131,9 +132,9 @@
             // btnDK
             // 
             this.btnDK.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDK.Location = new System.Drawing.Point(71, 344);
+            this.btnDK.Location = new System.Drawing.Point(12, 344);
             this.btnDK.Name = "btnDK";
-            this.btnDK.Size = new System.Drawing.Size(159, 57);
+            this.btnDK.Size = new System.Drawing.Size(143, 57);
             this.btnDK.TabIndex = 3;
             this.btnDK.Text = "Đăng Kí";
             this.btnDK.UseVisualStyleBackColor = true;
@@ -142,13 +143,23 @@
             // btnQuayLai
             // 
             this.btnQuayLai.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuayLai.Location = new System.Drawing.Point(276, 344);
+            this.btnQuayLai.Location = new System.Drawing.Point(179, 344);
             this.btnQuayLai.Name = "btnQuayLai";
-            this.btnQuayLai.Size = new System.Drawing.Size(175, 57);
+            this.btnQuayLai.Size = new System.Drawing.Size(156, 57);
             this.btnQuayLai.TabIndex = 4;
             this.btnQuayLai.Text = "Quay Lại";
             this.btnQuayLai.UseVisualStyleBackColor = true;
             this.btnQuayLai.Click += new System.EventHandler(this.btnQuayLai_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Location = new System.Drawing.Point(355, 344);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(156, 57);
+            this.btnHuy.TabIndex = 5;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
             // 
             // frmDangKy
             // 
@@ -156,6 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(523, 450);
+            this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnQuayLai);
             this.Controls.Add(this.btnDK);
             this.Controls.Add(this.panel3);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnDK;
         private System.Windows.Forms.Button btnQuayLai;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

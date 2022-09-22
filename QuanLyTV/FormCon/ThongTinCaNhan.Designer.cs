@@ -46,6 +46,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtma = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnHuy = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -110,7 +111,7 @@
             // 
             // btncapnhat
             // 
-            this.btncapnhat.Location = new System.Drawing.Point(495, 183);
+            this.btncapnhat.Location = new System.Drawing.Point(476, 182);
             this.btncapnhat.Name = "btncapnhat";
             this.btncapnhat.Size = new System.Drawing.Size(134, 49);
             this.btncapnhat.TabIndex = 6;
@@ -174,7 +175,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(671, 183);
+            this.btnThoat.Location = new System.Drawing.Point(619, 182);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(134, 49);
             this.btnThoat.TabIndex = 7;
@@ -209,12 +210,22 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Mã Độc Giả";
             // 
+            // btnHuy
+            // 
+            this.btnHuy.Location = new System.Drawing.Point(759, 182);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(94, 49);
+            this.btnHuy.TabIndex = 9;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            // 
             // ThongTinCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkTurquoise;
             this.ClientSize = new System.Drawing.Size(865, 240);
+            this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.panel5);
@@ -258,5 +269,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtma;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

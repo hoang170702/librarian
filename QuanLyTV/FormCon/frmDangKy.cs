@@ -16,6 +16,7 @@ namespace QuanLyTV.FormCon
         public frmDangKy()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btnDK_Click(object sender, EventArgs e)

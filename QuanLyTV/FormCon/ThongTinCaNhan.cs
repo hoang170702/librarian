@@ -23,6 +23,7 @@ namespace QuanLyTV.FormCon
             InitializeComponent();
             this.tenDN = tenDN;
             this.MK = MK;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btncapnhat_Click(object sender, EventArgs e)

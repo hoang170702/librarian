@@ -31,34 +31,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDocGia));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.btnTim = new System.Windows.Forms.Button();
-            this.rdbMa = new System.Windows.Forms.RadioButton();
             this.rdbTen = new System.Windows.Forms.RadioButton();
+            this.rdbMa = new System.Windows.Forms.RadioButton();
+            this.btnTim = new System.Windows.Forms.Button();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureDG = new System.Windows.Forms.PictureBox();
-            this.txtten = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtma = new System.Windows.Forms.TextBox();
-            this.txtGioiTinh = new System.Windows.Forms.TextBox();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.txtGioiTinh = new System.Windows.Forms.TextBox();
+            this.txtma = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtten = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureDG = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDG)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,33 +86,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm";
             // 
-            // label1
+            // rdbTen
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(598, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nhập Thông Tin Cần Tìm ";
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimKiem.Location = new System.Drawing.Point(581, 66);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(337, 35);
-            this.txtTimKiem.TabIndex = 1;
-            // 
-            // btnTim
-            // 
-            this.btnTim.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTim.BackgroundImage")));
-            this.btnTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTim.Location = new System.Drawing.Point(924, 66);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(72, 36);
-            this.btnTim.TabIndex = 2;
-            this.btnTim.UseVisualStyleBackColor = true;
+            this.rdbTen.AutoSize = true;
+            this.rdbTen.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbTen.Location = new System.Drawing.Point(57, 46);
+            this.rdbTen.Name = "rdbTen";
+            this.rdbTen.Size = new System.Drawing.Size(157, 29);
+            this.rdbTen.TabIndex = 6;
+            this.rdbTen.TabStop = true;
+            this.rdbTen.Text = "Tên Độc Giả";
+            this.rdbTen.UseVisualStyleBackColor = true;
             // 
             // rdbMa
             // 
@@ -126,17 +110,33 @@
             this.rdbMa.Text = "Mã Độc Giả";
             this.rdbMa.UseVisualStyleBackColor = true;
             // 
-            // rdbTen
+            // btnTim
             // 
-            this.rdbTen.AutoSize = true;
-            this.rdbTen.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbTen.Location = new System.Drawing.Point(57, 46);
-            this.rdbTen.Name = "rdbTen";
-            this.rdbTen.Size = new System.Drawing.Size(157, 29);
-            this.rdbTen.TabIndex = 6;
-            this.rdbTen.TabStop = true;
-            this.rdbTen.Text = "Tên Độc Giả";
-            this.rdbTen.UseVisualStyleBackColor = true;
+            this.btnTim.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTim.BackgroundImage")));
+            this.btnTim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTim.Location = new System.Drawing.Point(924, 66);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(72, 36);
+            this.btnTim.TabIndex = 2;
+            this.btnTim.UseVisualStyleBackColor = true;
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(581, 66);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(337, 35);
+            this.txtTimKiem.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(598, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(320, 32);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nhập Thông Tin Cần Tìm ";
             // 
             // panel2
             // 
@@ -167,107 +167,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông Tin Độc Giả";
             // 
-            // panel3
+            // btnHuy
             // 
-            this.panel3.Controls.Add(this.pictureDG);
-            this.panel3.Location = new System.Drawing.Point(807, 120);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 210);
-            this.panel3.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.dgv);
-            this.panel4.Location = new System.Drawing.Point(6, 120);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(795, 210);
-            this.panel4.TabIndex = 3;
-            // 
-            // pictureDG
-            // 
-            this.pictureDG.InitialImage = null;
-            this.pictureDG.Location = new System.Drawing.Point(3, 3);
-            this.pictureDG.Name = "pictureDG";
-            this.pictureDG.Size = new System.Drawing.Size(191, 204);
-            this.pictureDG.TabIndex = 0;
-            this.pictureDG.TabStop = false;
-            // 
-            // txtten
-            // 
-            this.txtten.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtten.Location = new System.Drawing.Point(461, 72);
-            this.txtten.Name = "txtten";
-            this.txtten.Size = new System.Drawing.Size(171, 30);
-            this.txtten.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(295, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 26);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tên Độc Giả";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(295, 121);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 26);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Giới Tính";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(295, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 26);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Mã Độc Giả";
-            // 
-            // txtma
-            // 
-            this.txtma.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtma.Location = new System.Drawing.Point(461, 28);
-            this.txtma.Name = "txtma";
-            this.txtma.Size = new System.Drawing.Size(171, 30);
-            this.txtma.TabIndex = 6;
-            // 
-            // txtGioiTinh
-            // 
-            this.txtGioiTinh.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGioiTinh.Location = new System.Drawing.Point(461, 121);
-            this.txtGioiTinh.Name = "txtGioiTinh";
-            this.txtGioiTinh.Size = new System.Drawing.Size(171, 30);
-            this.txtGioiTinh.TabIndex = 7;
-            // 
-            // btnThem
-            // 
-            this.btnThem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(709, 28);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(107, 47);
-            this.btnThem.TabIndex = 9;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(709, 100);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(107, 47);
-            this.btnSua.TabIndex = 10;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Location = new System.Drawing.Point(866, 100);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(107, 47);
+            this.btnHuy.TabIndex = 12;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
             // 
             // btnXoa
             // 
@@ -280,16 +189,108 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             // 
-            // btnHuy
+            // btnSua
             // 
-            this.btnHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(866, 100);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(107, 47);
-            this.btnHuy.TabIndex = 12;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnSua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Location = new System.Drawing.Point(709, 100);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(107, 47);
+            this.btnSua.TabIndex = 10;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            // 
+            // btnThem
+            // 
+            this.btnThem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Location = new System.Drawing.Point(709, 28);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(107, 47);
+            this.btnThem.TabIndex = 9;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            // 
+            // txtGioiTinh
+            // 
+            this.txtGioiTinh.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGioiTinh.Location = new System.Drawing.Point(461, 121);
+            this.txtGioiTinh.Name = "txtGioiTinh";
+            this.txtGioiTinh.Size = new System.Drawing.Size(171, 30);
+            this.txtGioiTinh.TabIndex = 7;
+            // 
+            // txtma
+            // 
+            this.txtma.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtma.Location = new System.Drawing.Point(461, 28);
+            this.txtma.Name = "txtma";
+            this.txtma.Size = new System.Drawing.Size(171, 30);
+            this.txtma.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(295, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(136, 26);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Mã Độc Giả";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(295, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 26);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Giới Tính";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(295, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 26);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Tên Độc Giả";
+            // 
+            // txtten
+            // 
+            this.txtten.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtten.Location = new System.Drawing.Point(461, 72);
+            this.txtten.Name = "txtten";
+            this.txtten.Size = new System.Drawing.Size(171, 30);
+            this.txtten.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.pictureDG);
+            this.panel3.Location = new System.Drawing.Point(807, 120);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(194, 210);
+            this.panel3.TabIndex = 2;
+            // 
+            // pictureDG
+            // 
+            this.pictureDG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureDG.InitialImage = null;
+            this.pictureDG.Location = new System.Drawing.Point(3, 3);
+            this.pictureDG.Name = "pictureDG";
+            this.pictureDG.Size = new System.Drawing.Size(188, 204);
+            this.pictureDG.TabIndex = 0;
+            this.pictureDG.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.dgv);
+            this.panel4.Location = new System.Drawing.Point(6, 120);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(795, 210);
+            this.panel4.TabIndex = 3;
             // 
             // dgv
             // 
@@ -320,8 +321,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureDG)).EndInit();
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 

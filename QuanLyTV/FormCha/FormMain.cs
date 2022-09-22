@@ -25,6 +25,7 @@ namespace QuanLyTV.FormCha
             InitializeComponent();
             this.TenDN = TenDN;
             MK = mK;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -88,7 +89,7 @@ namespace QuanLyTV.FormCha
             try
             {
                 lblTieude.Text = "Phiếu Mượn";
-                childForm(new frmPhieuMuon());
+                childForm(new frmPhieuMuon(TenDN));
             }
             catch (Exception ex)
             {
@@ -101,7 +102,7 @@ namespace QuanLyTV.FormCha
             try
             {
                 lblTieude.Text = "Phiếu Trả";
-                childForm(new frmPhieuTra());
+                childForm(new frmPhieuTra(TenDN));
             }
             catch (Exception ex)
             {

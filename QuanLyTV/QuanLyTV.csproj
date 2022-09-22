@@ -171,6 +171,12 @@
     <EmbeddedResource Include="FormCon\frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormCon\frmPhieuMuon.resx">
+      <DependentUpon>frmPhieuMuon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCon\frmPhieuTra.resx">
+      <DependentUpon>frmPhieuTra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCon\frmSach.resx">
       <DependentUpon>frmSach.cs</DependentUpon>
     </EmbeddedResource>

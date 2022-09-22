@@ -36,7 +36,7 @@ namespace QuanLyTV
                 MK = txtPass.Text;
                 var check = QLTV.Account.SingleOrDefault(p => p.TenTK == txtUser.Text && p.MatKhau == txtPass.Text);
 
-                if (check != null || txtUser.Text == "admin")
+                if (check != null || (txtUser.Text == "admin" && txtPass.Text == "123"))
                 {
                     MessageBox.Show("Đăng Nhập Thành Công");
                     this.Hide();
@@ -51,6 +51,18 @@ namespace QuanLyTV
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CBSHowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CBSHowPass.Checked == true)
+            {
+                txtPass.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPass.UseSystemPasswordChar = true;
             }
         }
     }

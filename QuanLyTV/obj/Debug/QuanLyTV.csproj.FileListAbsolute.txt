@@ -20,3 +20,5 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.F
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmNhanVien.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmDocGia.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmSach.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmPhieuMuon.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmPhieuTra.resources
