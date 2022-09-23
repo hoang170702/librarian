@@ -64,5 +64,12 @@ namespace QuanLyTV.FormCon
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            txtma.Text = "";
+            txtMK.Text = "";
+            txtTen.Text = "";
+        }
     }
 }

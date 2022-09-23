@@ -55,6 +55,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
+            this.rdbMaDG = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grbTimPhieu.SuspendLayout();
@@ -79,6 +80,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Aqua;
+            this.groupBox1.Controls.Add(this.rdbMaDG);
             this.groupBox1.Controls.Add(this.rdbNgayTra);
             this.groupBox1.Controls.Add(this.rdbMaSach);
             this.groupBox1.Controls.Add(this.rdbMaPhieu);
@@ -93,7 +95,7 @@
             // rdbNgayTra
             // 
             this.rdbNgayTra.AutoSize = true;
-            this.rdbNgayTra.Location = new System.Drawing.Point(9, 190);
+            this.rdbNgayTra.Location = new System.Drawing.Point(15, 151);
             this.rdbNgayTra.Name = "rdbNgayTra";
             this.rdbNgayTra.Size = new System.Drawing.Size(114, 27);
             this.rdbNgayTra.TabIndex = 2;
@@ -104,7 +106,7 @@
             // rdbMaSach
             // 
             this.rdbMaSach.AutoSize = true;
-            this.rdbMaSach.Location = new System.Drawing.Point(9, 133);
+            this.rdbMaSach.Location = new System.Drawing.Point(15, 106);
             this.rdbMaSach.Name = "rdbMaSach";
             this.rdbMaSach.Size = new System.Drawing.Size(108, 27);
             this.rdbMaSach.TabIndex = 1;
@@ -115,7 +117,7 @@
             // rdbMaPhieu
             // 
             this.rdbMaPhieu.AutoSize = true;
-            this.rdbMaPhieu.Location = new System.Drawing.Point(9, 77);
+            this.rdbMaPhieu.Location = new System.Drawing.Point(15, 62);
             this.rdbMaPhieu.Name = "rdbMaPhieu";
             this.rdbMaPhieu.Size = new System.Drawing.Size(171, 27);
             this.rdbMaPhieu.TabIndex = 0;
@@ -145,6 +147,7 @@
             this.btnTim.Size = new System.Drawing.Size(72, 36);
             this.btnTim.TabIndex = 4;
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // txtTimKiem
             // 
@@ -337,6 +340,17 @@
             this.entityCommand1.EnablePlanCaching = true;
             this.entityCommand1.Transaction = null;
             // 
+            // rdbMaDG
+            // 
+            this.rdbMaDG.AutoSize = true;
+            this.rdbMaDG.Location = new System.Drawing.Point(15, 199);
+            this.rdbMaDG.Name = "rdbMaDG";
+            this.rdbMaDG.Size = new System.Drawing.Size(137, 27);
+            this.rdbMaDG.TabIndex = 3;
+            this.rdbMaDG.TabStop = true;
+            this.rdbMaDG.Text = "Mã Độc Giả";
+            this.rdbMaDG.UseVisualStyleBackColor = true;
+            // 
             // frmPhieuTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -393,5 +407,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXuatPhieu;
         private System.Windows.Forms.Panel paChucNangAdmin;
+        private System.Windows.Forms.RadioButton rdbMaDG;
     }
 }

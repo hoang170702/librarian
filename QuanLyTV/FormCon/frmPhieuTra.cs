@@ -85,6 +85,7 @@ namespace QuanLyTV.FormCon
                     loadUser();
                     getsizeColumns();
                     paChucNangAdmin.Visible = false;
+                    rdbMaDG.Visible = false;
                 }
                 else
                 {
@@ -200,6 +201,7 @@ namespace QuanLyTV.FormCon
             rdbMaPhieu.Checked = false;
             rdbMaSach.Checked = false;
             rdbNgayTra.Checked = false;
+            rdbMaDG.Checked = false;
 
         }
         private void btnHuy_Click(object sender, EventArgs e)
@@ -213,6 +215,146 @@ namespace QuanLyTV.FormCon
             {
                 Huy();
                 loadAdmin();
+            }
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtTimKiem.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập thông tin muốn tìm kiếm!!!");
+                }
+                else if (rdbMaPhieu.Checked == false && rdbMaSach.Checked == false && rdbNgayTra.Checked == false && rdbMaDG.Checked == false)
+                {
+                    MessageBox.Show("Vui lòng chọn trường muốn tìm kiếm!!!");
+                }
+                else
+                {
+                    //tim Ma Phieu
+                    if (rdbMaPhieu.Checked == true)
+                    {
+                        var parseMaPhieu = long.Parse(txtTimKiem.Text);
+                        var findMaPhieuAdmin = from fAdmin in QLTV.ChiTietPhieuMuon
+                                               where fAdmin.MaPhieuMuon == parseMaPhieu
+                                               select new
+                                               {
+                                                   MaPhieu = fAdmin.MaPhieuMuon,
+                                                   MaSach = fAdmin.Masach,
+                                                   MaDocGia = fAdmin.PhieuMuon.MaDG,
+                                                   NgayTra = fAdmin.NgayTra,
+                                               };
+                        var findMaPhieuUser = from fUser in QLTV.ChiTietPhieuMuon
+                                              from acc in QLTV.Account
+                                              where acc.MaDG == fUser.PhieuMuon.MaDG && acc.TenTK == tenDN && fUser.MaPhieuMuon == parseMaPhieu
+                                              select new
+                                              {
+                                                  MaPhieu = fUser.MaPhieuMuon,
+                                                  MaSach = fUser.Masach,
+                                                  MaDocGia = fUser.PhieuMuon.MaDG,
+                                                  NgayTra = fUser.NgayTra,
+                                              };
+                        if (tenDN != "admin")
+                        {
+                            dgv.DataSource = findMaPhieuUser.ToList();
+                            clearBinding();
+                        }
+                        else
+                        {
+                            dgv.DataSource = findMaPhieuAdmin.ToList();
+                            clearBinding();
+                        }
+                    }
+                    // Tim Ma Doc Gia
+                    else if (rdbMaDG.Checked == true)
+                    {
+                        var parseMaDG = long.Parse(txtTimKiem.Text);
+                        var findDGAdmin = from AdminDG in QLTV.ChiTietPhieuMuon
+                                          where AdminDG.PhieuMuon.MaDG == parseMaDG
+                                          select new
+                                          {
+                                              MaPhieu = AdminDG.MaPhieuMuon,
+                                              MaSach = AdminDG.Masach,
+                                              MaDocGia = AdminDG.PhieuMuon.MaDG,
+                                              NgayTra = AdminDG.NgayTra,
+                                          };
+                        dgv.DataSource = findDGAdmin.ToList();
+                        clearBinding();
+                    }
+                    // Tim Ma Sach 
+                    else if (rdbMaSach.Checked == true)
+                    {
+                        var parseMaSach = long.Parse(txtTimKiem.Text);
+                        var findMaSachAdmin = from AdminSach in QLTV.ChiTietPhieuMuon
+                                              where AdminSach.Masach == parseMaSach
+                                              select new
+                                              {
+                                                  MaPhieu = AdminSach.MaPhieuMuon,
+                                                  MaSach = AdminSach.Masach,
+                                                  MaDocGia = AdminSach.PhieuMuon.MaDG,
+                                                  NgayTra = AdminSach.NgayTra,
+                                              };
+                        var findMaSachUser = from UserSach in QLTV.ChiTietPhieuMuon
+                                             from acc in QLTV.Account
+                                             where acc.MaDG == UserSach.PhieuMuon.MaDG && acc.TenTK == tenDN && UserSach.Masach == parseMaSach
+                                             select new
+                                             {
+                                                 MaPhieu = UserSach.MaPhieuMuon,
+                                                 MaSach = UserSach.Masach,
+                                                 MaDocGia = UserSach.PhieuMuon.MaDG,
+                                                 NgayTra = UserSach.NgayTra,
+                                             };
+                        if (tenDN != "admin")
+                        {
+                            dgv.DataSource = findMaSachUser.ToList();
+                            clearBinding();
+                        }
+                        else
+                        {
+                            dgv.DataSource = findMaSachAdmin.ToList();
+                            clearBinding();
+                        }
+                    }
+                    // tim ngay tra
+                    else if (rdbNgayTra.Checked == true)
+                    {
+                        var parseNgayTra = DateTime.Parse(txtTimKiem.Text);
+                        var findNgayTraAdmin = from adminNgayTra in QLTV.ChiTietPhieuMuon
+                                               where adminNgayTra.NgayTra == parseNgayTra
+                                               select new
+                                               {
+                                                   MaPhieu = adminNgayTra.MaPhieuMuon,
+                                                   MaSach = adminNgayTra.Masach,
+                                                   MaDocGia = adminNgayTra.PhieuMuon.MaDG,
+                                                   NgayTra = adminNgayTra.NgayTra,
+                                               };
+                        var findNgayTraUser = from userNgayTra in QLTV.ChiTietPhieuMuon
+                                              from acc in QLTV.Account
+                                              where acc.MaDG == userNgayTra.PhieuMuon.MaDG && acc.TenTK == tenDN && userNgayTra.NgayTra == parseNgayTra
+                                              select new
+                                              {
+                                                  MaPhieu = userNgayTra.MaPhieuMuon,
+                                                  MaSach = userNgayTra.Masach,
+                                                  MaDocGia = userNgayTra.PhieuMuon.MaDG,
+                                                  NgayTra = userNgayTra.NgayTra,
+                                              };
+                        if (tenDN != "admin")
+                        {
+                            dgv.DataSource = findNgayTraUser.ToList();
+                            clearBinding();
+                        }
+                        else
+                        {
+                            dgv.DataSource = findNgayTraAdmin.ToList();
+                            clearBinding();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
