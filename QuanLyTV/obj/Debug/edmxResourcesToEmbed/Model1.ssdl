@@ -62,6 +62,7 @@
     <Property Name="Tensach" Type="nvarchar" MaxLength="100" />
     <Property Name="Gia" Type="float" />
     <Property Name="Soluong" Type="int" />
+    <Property Name="HinhAnhSach" Type="image" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -99,30 +100,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Account__MaDG__571DF1D5">
-    <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
-    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="DocGia">
-        <PropertyRef Name="MaDG" />
-      </Principal>
-      <Dependent Role="Account">
-        <PropertyRef Name="MaDG" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ChiTietPh__MaPhi__48CFD27E">
-    <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
-    <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PhieuMuon">
-        <PropertyRef Name="MaPhieuMuon" />
-      </Principal>
-      <Dependent Role="ChiTietPhieuMuon">
-        <PropertyRef Name="MaPhieuMuon" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__ChiTietPh__MaPhi__59FA5E80">
     <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
     <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
@@ -148,18 +125,6 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__PhieuMuon__MaDG__46E78A0C">
-    <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
-    <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DocGia">
-        <PropertyRef Name="MaDG" />
-      </Principal>
-      <Dependent Role="PhieuMuon">
-        <PropertyRef Name="MaDG" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PhieuMuon__MaDG__5812160E">
     <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
     <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
     <ReferentialConstraint>
@@ -246,14 +211,6 @@
       <End Role="DocGia" EntitySet="DocGia" />
       <End Role="Account" EntitySet="Account" />
     </AssociationSet>
-    <AssociationSet Name="FK__Account__MaDG__571DF1D5" Association="Self.FK__Account__MaDG__571DF1D5">
-      <End Role="DocGia" EntitySet="DocGia" />
-      <End Role="Account" EntitySet="Account" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ChiTietPh__MaPhi__48CFD27E" Association="Self.FK__ChiTietPh__MaPhi__48CFD27E">
-      <End Role="PhieuMuon" EntitySet="PhieuMuon" />
-      <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
-    </AssociationSet>
     <AssociationSet Name="FK__ChiTietPh__MaPhi__59FA5E80" Association="Self.FK__ChiTietPh__MaPhi__59FA5E80">
       <End Role="PhieuMuon" EntitySet="PhieuMuon" />
       <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
@@ -263,10 +220,6 @@
       <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
     </AssociationSet>
     <AssociationSet Name="FK__PhieuMuon__MaDG__46E78A0C" Association="Self.FK__PhieuMuon__MaDG__46E78A0C">
-      <End Role="DocGia" EntitySet="DocGia" />
-      <End Role="PhieuMuon" EntitySet="PhieuMuon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PhieuMuon__MaDG__5812160E" Association="Self.FK__PhieuMuon__MaDG__5812160E">
       <End Role="DocGia" EntitySet="DocGia" />
       <End Role="PhieuMuon" EntitySet="PhieuMuon" />
     </AssociationSet>

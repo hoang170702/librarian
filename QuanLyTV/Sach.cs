@@ -27,6 +27,7 @@ namespace QuanLyTV
         public string Tensach { get; set; }
         public Nullable<double> Gia { get; set; }
         public Nullable<int> Soluong { get; set; }
+        public byte[] HinhAnhSach { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuon { get; set; }

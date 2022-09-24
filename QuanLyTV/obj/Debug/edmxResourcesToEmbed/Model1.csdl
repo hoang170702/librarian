@@ -76,6 +76,7 @@
     <NavigationProperty Name="NXB" Relationship="Self.FK__Sach__MaNXB__5441852A" FromRole="Sach" ToRole="NXB" />
     <NavigationProperty Name="TacGia" Relationship="Self.FK__Sach__MaTG__5535A963" FromRole="Sach" ToRole="TacGia" />
     <NavigationProperty Name="TheLoai" Relationship="Self.FK__Sach__MaTL__5629CD9C" FromRole="Sach" ToRole="TheLoai" />
+    <Property Name="HinhAnhSach" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="MaDG" />
@@ -67,6 +67,7 @@
           <Property Name="Tensach" Type="nvarchar" MaxLength="100" />
           <Property Name="Gia" Type="float" />
           <Property Name="Soluong" Type="int" />
+          <Property Name="HinhAnhSach" Type="image" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -104,30 +105,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Account__MaDG__571DF1D5">
-          <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="DocGia">
-              <PropertyRef Name="MaDG" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="MaDG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietPh__MaPhi__48CFD27E">
-          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
-          <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PhieuMuon">
-              <PropertyRef Name="MaPhieuMuon" />
-            </Principal>
-            <Dependent Role="ChiTietPhieuMuon">
-              <PropertyRef Name="MaPhieuMuon" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ChiTietPh__MaPhi__59FA5E80">
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
@@ -153,18 +130,6 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__PhieuMuon__MaDG__46E78A0C">
-          <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
-          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DocGia">
-              <PropertyRef Name="MaDG" />
-            </Principal>
-            <Dependent Role="PhieuMuon">
-              <PropertyRef Name="MaDG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PhieuMuon__MaDG__5812160E">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -251,14 +216,6 @@
             <End Role="DocGia" EntitySet="DocGia" />
             <End Role="Account" EntitySet="Account" />
           </AssociationSet>
-          <AssociationSet Name="FK__Account__MaDG__571DF1D5" Association="Self.FK__Account__MaDG__571DF1D5">
-            <End Role="DocGia" EntitySet="DocGia" />
-            <End Role="Account" EntitySet="Account" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__MaPhi__48CFD27E" Association="Self.FK__ChiTietPh__MaPhi__48CFD27E">
-            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
-            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
-          </AssociationSet>
           <AssociationSet Name="FK__ChiTietPh__MaPhi__59FA5E80" Association="Self.FK__ChiTietPh__MaPhi__59FA5E80">
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
@@ -268,10 +225,6 @@
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
           </AssociationSet>
           <AssociationSet Name="FK__PhieuMuon__MaDG__46E78A0C" Association="Self.FK__PhieuMuon__MaDG__46E78A0C">
-            <End Role="DocGia" EntitySet="DocGia" />
-            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaDG__5812160E" Association="Self.FK__PhieuMuon__MaDG__5812160E">
             <End Role="DocGia" EntitySet="DocGia" />
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
           </AssociationSet>
@@ -296,8 +249,7 @@
             <End Role="Sach" EntitySet="Sach" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLTVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -377,6 +329,7 @@
           <NavigationProperty Name="NXB" Relationship="Self.FK__Sach__MaNXB__5441852A" FromRole="Sach" ToRole="NXB" />
           <NavigationProperty Name="TacGia" Relationship="Self.FK__Sach__MaTG__5535A963" FromRole="Sach" ToRole="TacGia" />
           <NavigationProperty Name="TheLoai" Relationship="Self.FK__Sach__MaTL__5629CD9C" FromRole="Sach" ToRole="TheLoai" />
+          <Property Name="HinhAnhSach" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -609,6 +562,7 @@
           <EntitySetMapping Name="Sach">
             <EntityTypeMapping TypeName="QLTVModel.Sach">
               <MappingFragment StoreEntitySet="Sach">
+                <ScalarProperty Name="HinhAnhSach" ColumnName="HinhAnhSach" />
                 <ScalarProperty Name="Masach" ColumnName="Masach" />
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
                 <ScalarProperty Name="MaTL" ColumnName="MaTL" />

@@ -60,6 +60,7 @@
     <EntitySetMapping Name="Sach">
       <EntityTypeMapping TypeName="QLTVModel.Sach">
         <MappingFragment StoreEntitySet="Sach">
+          <ScalarProperty Name="HinhAnhSach" ColumnName="HinhAnhSach" />
           <ScalarProperty Name="Masach" ColumnName="Masach" />
           <ScalarProperty Name="MaTG" ColumnName="MaTG" />
           <ScalarProperty Name="MaTL" ColumnName="MaTL" />
