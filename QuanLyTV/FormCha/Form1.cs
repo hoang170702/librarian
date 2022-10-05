@@ -18,6 +18,7 @@ namespace QuanLyTV
         public Form1()
         {
             InitializeComponent();
+            this.AcceptButton = btnDangNhap;
         }
 
         private void btnDangKi_Click(object sender, EventArgs e)

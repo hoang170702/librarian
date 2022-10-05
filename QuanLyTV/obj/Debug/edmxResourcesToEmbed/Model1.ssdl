@@ -24,6 +24,7 @@
     <Property Name="MaDG" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenDG" Type="nvarchar" MaxLength="100" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+    <Property Name="HinhDG" Type="image" />
   </EntityType>
   <EntityType Name="NhanVien">
     <Key>

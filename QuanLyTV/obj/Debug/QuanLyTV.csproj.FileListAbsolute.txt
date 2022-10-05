@@ -22,3 +22,9 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.F
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmSach.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmPhieuMuon.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmPhieuTra.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.dll
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.xml
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

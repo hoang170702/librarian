@@ -25,21 +25,25 @@ namespace QuanLyTV.FormCon
             {
                 int ma = int.Parse(txtma.Text);
                 var checkMaDG = QLTV.DocGia.SingleOrDefault(p => p.MaDG == ma);
-                var Account = new Account()
-                {
-                    TenTK = txtTen.Text,
-                    MatKhau = txtMK.Text,
-                    MaDG = ma,
-                };
                 var checkTK = QLTV.Account.SingleOrDefault(p => p.TenTK == txtTen.Text);
                 if (checkTK == null)
                 {
                     if (checkMaDG != null)
                     {
+                        var Account = new Account()
+                        {
+                            TenTK = txtTen.Text,
+                            MatKhau = txtMK.Text,
+                            MaDG = ma,
+                        };
                         QLTV.Account.Add(Account);
                         QLTV.SaveChanges();
                         MessageBox.Show("Đăng Ký Thành Công!!!");
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không có mã độc giả này!!!");
                     }
                 }
                 else

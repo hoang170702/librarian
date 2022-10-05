@@ -17,6 +17,7 @@ namespace QuanLyTV.FormCon
         {
             InitializeComponent();
             txtma.ReadOnly = true;
+            this.dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
 
@@ -102,15 +103,6 @@ namespace QuanLyTV.FormCon
             try
             {
                 var checkSDT = QLTV.NhanVien.SingleOrDefault(p => p.SDTNV == txtsdt.Text);
-
-                var checkName = from name in QLTV.NhanVien
-                                where name.SDTNV == txtsdt.Text
-                                select new
-                                {
-                                    name.MaNV
-                                };
-                var MaNV = checkName.ToArray();
-
                 var AddNV = new NhanVien()
                 {
                     TenNV = txtten.Text,
@@ -127,7 +119,7 @@ namespace QuanLyTV.FormCon
                 }
                 else if (checkSDT != null)
                 {
-                    throw new Exception("Số điện thoại này đã đươc nhân viên " + MaNV[0] + " đăng kí");
+                    throw new Exception("Số điện thoại này đã đươc nhân viên " + checkSDT.MaNV + " đăng kí");
                 }
                 else
                 {
@@ -162,7 +154,7 @@ namespace QuanLyTV.FormCon
                         {
                             QLTV.NhanVien.Remove(findID);
                             QLTV.SaveChanges();
-                            MessageBox.Show("Xóa thành công!!!");
+                            MessageBox.Show("Xóa thành công nhân viên [" + findID.MaNV + "] !!!");
                             load();
                         }
                         else
@@ -200,7 +192,7 @@ namespace QuanLyTV.FormCon
                             findID.SDTNV = txtsdt.Text;
                             findID.ChucVu = txtChucVu.Text;
                             QLTV.SaveChanges();
-                            MessageBox.Show("Cập nhật thông tin nhân viên thành công");
+                            MessageBox.Show("Cập nhật thông tin nhân viên [" + findID.MaNV + "] thành công");
                             load();
                         }
                         else

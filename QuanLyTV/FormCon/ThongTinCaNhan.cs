@@ -26,13 +26,27 @@ namespace QuanLyTV.FormCon
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            txtma.Text = "";
+            txtten.Text = "";
+            txtMatKhau.Text = "";
+            txtMKMoi.Text = "";
+            txtNhapLai.Text = "";
+        }
+
         private void btncapnhat_Click(object sender, EventArgs e)
         {
             try
             {
-                var tkmk = QLTV.Account.Where(p => p.TenTK == txtten.Text && p.MatKhau == txtMatKhau.Text);
-                var ma = tkmk.Select(p => p.MaDG).ToArray();
-                if (tenDN == txtten.Text && MK == txtMatKhau.Text && txtma.Text == ma[0].ToString())
+                var tkmk = QLTV.Account.SingleOrDefault(p => p.TenTK == txtten.Text && p.MatKhau == txtMatKhau.Text);
+                var parseMA = long.Parse(txtma.Text);
+                if (tenDN == txtten.Text && MK == txtMatKhau.Text && tkmk.MaDG == parseMA)
                 {
                     long findID = long.Parse(txtma.Text);
                     var CapNhat = QLTV.Account.Find(findID);

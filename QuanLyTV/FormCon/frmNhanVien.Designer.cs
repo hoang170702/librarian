@@ -91,14 +91,16 @@
             // dgv
             // 
             this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
             this.dgv.BackgroundColor = System.Drawing.Color.Teal;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Location = new System.Drawing.Point(0, 158);
             this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
             this.dgv.RowHeadersWidth = 62;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.Size = new System.Drawing.Size(636, 281);
-            this.dgv.TabIndex = 0;
+            this.dgv.TabIndex = 15;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // panel4
@@ -121,7 +123,7 @@
             this.panel8.Location = new System.Drawing.Point(324, 78);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(292, 56);
-            this.panel8.TabIndex = 6;
+            this.panel8.TabIndex = 3;
             // 
             // txtChucVu
             // 
@@ -148,7 +150,7 @@
             this.panel9.Location = new System.Drawing.Point(324, 9);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(292, 56);
-            this.panel9.TabIndex = 6;
+            this.panel9.TabIndex = 2;
             // 
             // txtsdt
             // 
@@ -175,7 +177,7 @@
             this.panel7.Location = new System.Drawing.Point(49, 78);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(247, 56);
-            this.panel7.TabIndex = 2;
+            this.panel7.TabIndex = 1;
             // 
             // txtten
             // 
@@ -202,7 +204,7 @@
             this.panel6.Location = new System.Drawing.Point(49, 9);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(247, 56);
-            this.panel6.TabIndex = 1;
+            this.panel6.TabIndex = 0;
             // 
             // txtma
             // 
@@ -248,7 +250,7 @@
             this.btnHuy.Location = new System.Drawing.Point(228, 195);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(102, 59);
-            this.btnHuy.TabIndex = 13;
+            this.btnHuy.TabIndex = 7;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -259,7 +261,7 @@
             this.btnSua.Location = new System.Drawing.Point(150, 133);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(102, 59);
-            this.btnSua.TabIndex = 12;
+            this.btnSua.TabIndex = 6;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -270,7 +272,7 @@
             this.btnXoa.Location = new System.Drawing.Point(79, 68);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(102, 59);
-            this.btnXoa.TabIndex = 11;
+            this.btnXoa.TabIndex = 5;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -281,7 +283,7 @@
             this.btnThem.Location = new System.Drawing.Point(4, 3);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(102, 59);
-            this.btnThem.TabIndex = 10;
+            this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -308,7 +310,7 @@
             this.btnTim.Location = new System.Drawing.Point(239, 23);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(75, 38);
-            this.btnTim.TabIndex = 5;
+            this.btnTim.TabIndex = 13;
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
@@ -318,7 +320,7 @@
             this.txtTimKiem.Location = new System.Drawing.Point(38, 29);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(189, 30);
-            this.txtTimKiem.TabIndex = 4;
+            this.txtTimKiem.TabIndex = 8;
             // 
             // rdbSDT
             // 
@@ -326,7 +328,7 @@
             this.rdbSDT.Location = new System.Drawing.Point(43, 125);
             this.rdbSDT.Name = "rdbSDT";
             this.rdbSDT.Size = new System.Drawing.Size(73, 27);
-            this.rdbSDT.TabIndex = 3;
+            this.rdbSDT.TabIndex = 11;
             this.rdbSDT.TabStop = true;
             this.rdbSDT.Text = "SDT";
             this.rdbSDT.UseVisualStyleBackColor = true;
@@ -337,7 +339,7 @@
             this.rdbChucVu.Location = new System.Drawing.Point(195, 125);
             this.rdbChucVu.Name = "rdbChucVu";
             this.rdbChucVu.Size = new System.Drawing.Size(109, 27);
-            this.rdbChucVu.TabIndex = 2;
+            this.rdbChucVu.TabIndex = 12;
             this.rdbChucVu.TabStop = true;
             this.rdbChucVu.Text = "Chức Vụ";
             this.rdbChucVu.UseVisualStyleBackColor = true;
@@ -348,7 +350,7 @@
             this.rdbTen.Location = new System.Drawing.Point(195, 75);
             this.rdbTen.Name = "rdbTen";
             this.rdbTen.Size = new System.Drawing.Size(67, 27);
-            this.rdbTen.TabIndex = 1;
+            this.rdbTen.TabIndex = 10;
             this.rdbTen.TabStop = true;
             this.rdbTen.Text = "Tên";
             this.rdbTen.UseVisualStyleBackColor = true;
@@ -359,7 +361,7 @@
             this.rdbMa.Location = new System.Drawing.Point(43, 75);
             this.rdbMa.Name = "rdbMa";
             this.rdbMa.Size = new System.Drawing.Size(63, 27);
-            this.rdbMa.TabIndex = 0;
+            this.rdbMa.TabIndex = 9;
             this.rdbMa.TabStop = true;
             this.rdbMa.Text = "Mã";
             this.rdbMa.UseVisualStyleBackColor = true;

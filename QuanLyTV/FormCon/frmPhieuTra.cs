@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using OfficeOpenXml;
+using excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyTV.FormCon
 {
@@ -349,6 +351,53 @@ namespace QuanLyTV.FormCon
                             dgv.DataSource = findNgayTraAdmin.ToList();
                             clearBinding();
                         }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void xuat(string str)
+        {
+            excel.Application application = new excel.Application();
+            application.Application.Workbooks.Add(Type.Missing);
+            for (int i = 0; i < dgv.Columns.Count; i++)
+            {
+                application.Cells[1, i + 1] = dgv.Columns[i].HeaderText;
+            }
+
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgv.Columns.Count; j++)
+                {
+                    application.Cells[i + 2, j + 1] = dgv.Rows[i].Cells[j].Value;
+                }
+            }
+            application.Columns.AutoFit();
+            application.ActiveWorkbook.SaveCopyAs(str);
+            application.ActiveWorkbook.Saved = true;
+
+        }
+        private void btnXuatPhieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Title = "Phiếu Trả";
+                saveFileDialog.Filter = "Excel (*xlsx)|*.xlsx";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        xuat(saveFileDialog.FileName);
+                        MessageBox.Show("Xuất phiếu trả thành công");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }

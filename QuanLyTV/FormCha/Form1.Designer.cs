@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.CBSHowPass = new System.Windows.Forms.CheckBox();
             this.btnDangKi = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.txtPass = new System.Windows.Forms.TextBox();
@@ -41,7 +42,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.CBSHowPass = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -87,13 +87,24 @@
             this.panel2.Size = new System.Drawing.Size(321, 541);
             this.panel2.TabIndex = 1;
             // 
+            // CBSHowPass
+            // 
+            this.CBSHowPass.AutoSize = true;
+            this.CBSHowPass.Location = new System.Drawing.Point(66, 359);
+            this.CBSHowPass.Name = "CBSHowPass";
+            this.CBSHowPass.Size = new System.Drawing.Size(148, 24);
+            this.CBSHowPass.TabIndex = 2;
+            this.CBSHowPass.Text = "Show Password";
+            this.CBSHowPass.UseVisualStyleBackColor = true;
+            this.CBSHowPass.CheckedChanged += new System.EventHandler(this.CBSHowPass_CheckedChanged);
+            // 
             // btnDangKi
             // 
             this.btnDangKi.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangKi.Location = new System.Drawing.Point(101, 474);
             this.btnDangKi.Name = "btnDangKi";
             this.btnDangKi.Size = new System.Drawing.Size(140, 55);
-            this.btnDangKi.TabIndex = 8;
+            this.btnDangKi.TabIndex = 4;
             this.btnDangKi.Text = "Đăng Kí";
             this.btnDangKi.UseVisualStyleBackColor = true;
             this.btnDangKi.Click += new System.EventHandler(this.btnDangKi_Click);
@@ -104,7 +115,7 @@
             this.btnDangNhap.Location = new System.Drawing.Point(101, 398);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(140, 55);
-            this.btnDangNhap.TabIndex = 7;
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -116,7 +127,7 @@
             this.txtPass.Location = new System.Drawing.Point(79, 306);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(217, 33);
-            this.txtPass.TabIndex = 6;
+            this.txtPass.TabIndex = 1;
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // pictureBox4
@@ -136,7 +147,7 @@
             this.txtUser.Location = new System.Drawing.Point(79, 244);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(217, 33);
-            this.txtUser.TabIndex = 4;
+            this.txtUser.TabIndex = 0;
             // 
             // pictureBox2
             // 
@@ -167,17 +178,6 @@
             this.label1.Size = new System.Drawing.Size(119, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "Log In";
-            // 
-            // CBSHowPass
-            // 
-            this.CBSHowPass.AutoSize = true;
-            this.CBSHowPass.Location = new System.Drawing.Point(66, 359);
-            this.CBSHowPass.Name = "CBSHowPass";
-            this.CBSHowPass.Size = new System.Drawing.Size(148, 24);
-            this.CBSHowPass.TabIndex = 9;
-            this.CBSHowPass.Text = "Show Password";
-            this.CBSHowPass.UseVisualStyleBackColor = true;
-            this.CBSHowPass.CheckedChanged += new System.EventHandler(this.CBSHowPass_CheckedChanged);
             // 
             // Form1
             // 

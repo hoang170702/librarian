@@ -22,6 +22,7 @@
     <EntitySetMapping Name="DocGia">
       <EntityTypeMapping TypeName="QLTVModel.DocGia">
         <MappingFragment StoreEntitySet="DocGia">
+          <ScalarProperty Name="HinhDG" ColumnName="HinhDG" />
           <ScalarProperty Name="MaDG" ColumnName="MaDG" />
           <ScalarProperty Name="TenDG" ColumnName="TenDG" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />

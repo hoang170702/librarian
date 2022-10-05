@@ -154,7 +154,12 @@ namespace QuanLyTV.FormCha
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            this.Close();
+            var notification = MessageBox.Show("Bạn có chắc muốn đăng xuất", "Thông Báo", MessageBoxButtons.YesNo);
+            if (notification == DialogResult.Yes)
+            {
+                this.Close();
+            }
+
         }
     }
 }

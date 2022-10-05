@@ -113,6 +113,7 @@
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
             this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(392, 38);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng Xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // panel1
             // 
@@ -166,7 +167,7 @@
             this.btnDangXuat.Location = new System.Drawing.Point(93, 3);
             this.btnDangXuat.Name = "btnDangXuat";
             this.btnDangXuat.Size = new System.Drawing.Size(116, 73);
-            this.btnDangXuat.TabIndex = 2;
+            this.btnDangXuat.TabIndex = 5;
             this.btnDangXuat.Text = "Đăng Xuất";
             this.btnDangXuat.UseVisualStyleBackColor = true;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
@@ -196,7 +197,7 @@
             this.btnDocGia.Location = new System.Drawing.Point(93, 3);
             this.btnDocGia.Name = "btnDocGia";
             this.btnDocGia.Size = new System.Drawing.Size(116, 73);
-            this.btnDocGia.TabIndex = 2;
+            this.btnDocGia.TabIndex = 4;
             this.btnDocGia.Text = "Độc Giả";
             this.btnDocGia.UseVisualStyleBackColor = true;
             this.btnDocGia.Click += new System.EventHandler(this.btnDocGia_Click);
@@ -226,7 +227,7 @@
             this.btnNhanVien.Location = new System.Drawing.Point(90, 3);
             this.btnNhanVien.Name = "btnNhanVien";
             this.btnNhanVien.Size = new System.Drawing.Size(119, 73);
-            this.btnNhanVien.TabIndex = 2;
+            this.btnNhanVien.TabIndex = 3;
             this.btnNhanVien.Text = "Nhân Viên";
             this.btnNhanVien.UseVisualStyleBackColor = true;
             this.btnNhanVien.Click += new System.EventHandler(this.btnNhanVien_Click);
@@ -286,7 +287,7 @@
             this.btnPhieuMuon.Location = new System.Drawing.Point(96, 3);
             this.btnPhieuMuon.Name = "btnPhieuMuon";
             this.btnPhieuMuon.Size = new System.Drawing.Size(113, 73);
-            this.btnPhieuMuon.TabIndex = 2;
+            this.btnPhieuMuon.TabIndex = 1;
             this.btnPhieuMuon.Text = "Phiếu mượn";
             this.btnPhieuMuon.UseVisualStyleBackColor = true;
             this.btnPhieuMuon.Click += new System.EventHandler(this.btnPhieuMuon_Click);
@@ -316,7 +317,7 @@
             this.button1.Location = new System.Drawing.Point(93, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 79);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 0;
             this.button1.Text = "Sách";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

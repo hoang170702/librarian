@@ -61,7 +61,7 @@
             this.txtTen.Location = new System.Drawing.Point(200, 18);
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(222, 30);
-            this.txtTen.TabIndex = 1;
+            this.txtTen.TabIndex = 0;
             // 
             // label1
             // 
@@ -117,7 +117,7 @@
             this.txtma.Location = new System.Drawing.Point(200, 18);
             this.txtma.Name = "txtma";
             this.txtma.Size = new System.Drawing.Size(222, 30);
-            this.txtma.TabIndex = 1;
+            this.txtma.TabIndex = 2;
             // 
             // label3
             // 
@@ -131,7 +131,7 @@
             // 
             // btnDK
             // 
-            this.btnDK.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDK.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDK.Location = new System.Drawing.Point(12, 344);
             this.btnDK.Name = "btnDK";
             this.btnDK.Size = new System.Drawing.Size(143, 57);
@@ -142,7 +142,7 @@
             // 
             // btnQuayLai
             // 
-            this.btnQuayLai.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuayLai.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuayLai.Location = new System.Drawing.Point(179, 344);
             this.btnQuayLai.Name = "btnQuayLai";
             this.btnQuayLai.Size = new System.Drawing.Size(156, 57);
@@ -153,7 +153,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.Location = new System.Drawing.Point(355, 344);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(156, 57);

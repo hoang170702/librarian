@@ -61,7 +61,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 66);
+            this.panel1.Size = new System.Drawing.Size(377, 66);
             this.panel1.TabIndex = 0;
             // 
             // txtten
@@ -69,7 +69,7 @@
             this.txtten.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtten.Location = new System.Drawing.Point(180, 24);
             this.txtten.Name = "txtten";
-            this.txtten.Size = new System.Drawing.Size(237, 30);
+            this.txtten.Size = new System.Drawing.Size(167, 30);
             this.txtten.TabIndex = 0;
             // 
             // label1
@@ -86,18 +86,18 @@
             // 
             this.panel2.Controls.Add(this.txtMatKhau);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(12, 89);
+            this.panel2.Location = new System.Drawing.Point(12, 201);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(432, 66);
-            this.panel2.TabIndex = 1;
+            this.panel2.Size = new System.Drawing.Size(377, 66);
+            this.panel2.TabIndex = 2;
             // 
             // txtMatKhau
             // 
             this.txtMatKhau.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatKhau.Location = new System.Drawing.Point(180, 24);
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(237, 30);
-            this.txtMatKhau.TabIndex = 3;
+            this.txtMatKhau.Size = new System.Drawing.Size(167, 30);
+            this.txtMatKhau.TabIndex = 2;
             // 
             // label2
             // 
@@ -111,10 +111,10 @@
             // 
             // btncapnhat
             // 
-            this.btncapnhat.Location = new System.Drawing.Point(476, 182);
+            this.btncapnhat.Location = new System.Drawing.Point(417, 236);
             this.btncapnhat.Name = "btncapnhat";
             this.btncapnhat.Size = new System.Drawing.Size(134, 49);
-            this.btncapnhat.TabIndex = 6;
+            this.btncapnhat.TabIndex = 5;
             this.btncapnhat.Text = "Cập Nhật";
             this.btncapnhat.UseVisualStyleBackColor = true;
             this.btncapnhat.Click += new System.EventHandler(this.btncapnhat_Click);
@@ -123,18 +123,18 @@
             // 
             this.panel4.Controls.Add(this.txtMKMoi);
             this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(12, 162);
+            this.panel4.Location = new System.Drawing.Point(461, 39);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(432, 66);
-            this.panel4.TabIndex = 4;
+            this.panel4.Size = new System.Drawing.Size(362, 66);
+            this.panel4.TabIndex = 3;
             // 
             // txtMKMoi
             // 
             this.txtMKMoi.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMKMoi.Location = new System.Drawing.Point(177, 20);
+            this.txtMKMoi.Location = new System.Drawing.Point(153, 20);
             this.txtMKMoi.Name = "txtMKMoi";
-            this.txtMKMoi.Size = new System.Drawing.Size(240, 30);
-            this.txtMKMoi.TabIndex = 4;
+            this.txtMKMoi.Size = new System.Drawing.Size(194, 30);
+            this.txtMKMoi.TabIndex = 3;
             // 
             // label4
             // 
@@ -150,10 +150,10 @@
             // 
             this.panel5.Controls.Add(this.txtNhapLai);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(476, 89);
+            this.panel5.Location = new System.Drawing.Point(461, 136);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(361, 66);
-            this.panel5.TabIndex = 5;
+            this.panel5.TabIndex = 4;
             // 
             // txtNhapLai
             // 
@@ -161,7 +161,7 @@
             this.txtNhapLai.Location = new System.Drawing.Point(153, 20);
             this.txtNhapLai.Name = "txtNhapLai";
             this.txtNhapLai.Size = new System.Drawing.Size(195, 30);
-            this.txtNhapLai.TabIndex = 5;
+            this.txtNhapLai.TabIndex = 4;
             // 
             // label5
             // 
@@ -175,30 +175,31 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(619, 182);
+            this.btnThoat.Location = new System.Drawing.Point(580, 236);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(134, 49);
-            this.btnThoat.TabIndex = 7;
+            this.btnThoat.TabIndex = 6;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DarkTurquoise;
             this.panel3.Controls.Add(this.txtma);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(476, 17);
+            this.panel3.Location = new System.Drawing.Point(12, 109);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(361, 66);
-            this.panel3.TabIndex = 8;
+            this.panel3.Size = new System.Drawing.Size(377, 66);
+            this.panel3.TabIndex = 1;
             // 
             // txtma
             // 
             this.txtma.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtma.Location = new System.Drawing.Point(153, 24);
+            this.txtma.Location = new System.Drawing.Point(180, 24);
             this.txtma.Name = "txtma";
-            this.txtma.Size = new System.Drawing.Size(195, 30);
-            this.txtma.TabIndex = 0;
+            this.txtma.Size = new System.Drawing.Size(167, 30);
+            this.txtma.TabIndex = 1;
             // 
             // label3
             // 
@@ -212,19 +213,20 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(759, 182);
+            this.btnHuy.Location = new System.Drawing.Point(745, 236);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(94, 49);
-            this.btnHuy.TabIndex = 9;
+            this.btnHuy.TabIndex = 7;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // ThongTinCaNhan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.ClientSize = new System.Drawing.Size(865, 240);
+            this.ClientSize = new System.Drawing.Size(865, 297);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnThoat);

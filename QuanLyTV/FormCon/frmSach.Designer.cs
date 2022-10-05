@@ -106,6 +106,7 @@
             this.btnTim.Size = new System.Drawing.Size(72, 36);
             this.btnTim.TabIndex = 3;
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // txtTimKiem
             // 

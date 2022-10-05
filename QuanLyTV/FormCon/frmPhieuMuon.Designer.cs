@@ -100,7 +100,7 @@
             this.rdbNgayMuon.Location = new System.Drawing.Point(37, 126);
             this.rdbNgayMuon.Name = "rdbNgayMuon";
             this.rdbNgayMuon.Size = new System.Drawing.Size(134, 27);
-            this.rdbNgayMuon.TabIndex = 3;
+            this.rdbNgayMuon.TabIndex = 10;
             this.rdbNgayMuon.TabStop = true;
             this.rdbNgayMuon.Text = "Ngày Mượn";
             this.rdbNgayMuon.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             this.rdbMaNhanVien.Location = new System.Drawing.Point(37, 270);
             this.rdbMaNhanVien.Name = "rdbMaNhanVien";
             this.rdbMaNhanVien.Size = new System.Drawing.Size(157, 27);
-            this.rdbMaNhanVien.TabIndex = 2;
+            this.rdbMaNhanVien.TabIndex = 12;
             this.rdbMaNhanVien.TabStop = true;
             this.rdbMaNhanVien.Text = "Mã Nhân Viên";
             this.rdbMaNhanVien.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             this.rdbMaDocGia.Location = new System.Drawing.Point(37, 198);
             this.rdbMaDocGia.Name = "rdbMaDocGia";
             this.rdbMaDocGia.Size = new System.Drawing.Size(136, 27);
-            this.rdbMaDocGia.TabIndex = 1;
+            this.rdbMaDocGia.TabIndex = 11;
             this.rdbMaDocGia.TabStop = true;
             this.rdbMaDocGia.Text = "Mã Độc Giả";
             this.rdbMaDocGia.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             this.rdbMaPhieu.Location = new System.Drawing.Point(37, 63);
             this.rdbMaPhieu.Name = "rdbMaPhieu";
             this.rdbMaPhieu.Size = new System.Drawing.Size(174, 27);
-            this.rdbMaPhieu.TabIndex = 0;
+            this.rdbMaPhieu.TabIndex = 9;
             this.rdbMaPhieu.TabStop = true;
             this.rdbMaPhieu.Text = "Mã Phiếu Mượn";
             this.rdbMaPhieu.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             this.btnTim.Location = new System.Drawing.Point(67, 122);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(72, 36);
-            this.btnTim.TabIndex = 3;
+            this.btnTim.TabIndex = 13;
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
@@ -171,7 +171,7 @@
             this.txtTimKiem.Location = new System.Drawing.Point(11, 60);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(201, 33);
-            this.txtTimKiem.TabIndex = 0;
+            this.txtTimKiem.TabIndex = 8;
             // 
             // panel2
             // 
@@ -189,7 +189,7 @@
             this.btnHuy.Location = new System.Drawing.Point(55, 375);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(112, 43);
-            this.btnHuy.TabIndex = 2;
+            this.btnHuy.TabIndex = 7;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -214,7 +214,7 @@
             this.btnXoa.Location = new System.Drawing.Point(52, 216);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(112, 43);
-            this.btnXoa.TabIndex = 2;
+            this.btnXoa.TabIndex = 6;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -225,7 +225,7 @@
             this.btnSua.Location = new System.Drawing.Point(52, 132);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(112, 43);
-            this.btnSua.TabIndex = 1;
+            this.btnSua.TabIndex = 5;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -236,7 +236,7 @@
             this.btnThem.Location = new System.Drawing.Point(52, 51);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(112, 43);
-            this.btnThem.TabIndex = 0;
+            this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -258,7 +258,7 @@
             this.dgv.RowHeadersWidth = 62;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.Size = new System.Drawing.Size(543, 351);
-            this.dgv.TabIndex = 0;
+            this.dgv.TabIndex = 14;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // panel4
@@ -290,11 +290,12 @@
             // 
             // date
             // 
+            this.date.Checked = false;
             this.date.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date.Location = new System.Drawing.Point(361, 128);
             this.date.Name = "date";
             this.date.Size = new System.Drawing.Size(114, 26);
-            this.date.TabIndex = 7;
+            this.date.TabIndex = 3;
             // 
             // txtMaNhanVien
             // 
@@ -302,7 +303,7 @@
             this.txtMaNhanVien.Location = new System.Drawing.Point(361, 46);
             this.txtMaNhanVien.Name = "txtMaNhanVien";
             this.txtMaNhanVien.Size = new System.Drawing.Size(145, 28);
-            this.txtMaNhanVien.TabIndex = 6;
+            this.txtMaNhanVien.TabIndex = 1;
             // 
             // txtMaDocGia
             // 
@@ -310,7 +311,7 @@
             this.txtMaDocGia.Location = new System.Drawing.Point(104, 123);
             this.txtMaDocGia.Name = "txtMaDocGia";
             this.txtMaDocGia.Size = new System.Drawing.Size(145, 28);
-            this.txtMaDocGia.TabIndex = 5;
+            this.txtMaDocGia.TabIndex = 2;
             // 
             // label4
             // 
@@ -354,7 +355,7 @@
             this.txtMaPhieu.Location = new System.Drawing.Point(104, 49);
             this.txtMaPhieu.Name = "txtMaPhieu";
             this.txtMaPhieu.Size = new System.Drawing.Size(145, 28);
-            this.txtMaPhieu.TabIndex = 1;
+            this.txtMaPhieu.TabIndex = 0;
             // 
             // label1
             // 

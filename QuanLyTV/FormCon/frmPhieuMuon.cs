@@ -196,7 +196,7 @@ namespace QuanLyTV.FormCon
             {
                 if (txtMaPhieu.Text == "")
                 {
-                    throw new Exception("Không có mã phiếu này!!!");
+                    throw new Exception("Vui lòng Click vào phiếu mượn muốn sửa");
                 }
                 else
                 {
@@ -235,7 +235,7 @@ namespace QuanLyTV.FormCon
             {
                 if (txtMaPhieu.Text == "")
                 {
-                    throw new Exception("Không có phiếu mượn này");
+                    throw new Exception("Vui lòng Click vào phiếu mượn muốn xóa");
                 }
                 else
                 {

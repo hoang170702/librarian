@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPhieuTra));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdbMaDG = new System.Windows.Forms.RadioButton();
             this.rdbNgayTra = new System.Windows.Forms.RadioButton();
             this.rdbMaSach = new System.Windows.Forms.RadioButton();
             this.rdbMaPhieu = new System.Windows.Forms.RadioButton();
@@ -55,7 +56,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
-            this.rdbMaDG = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grbTimPhieu.SuspendLayout();
@@ -88,9 +88,20 @@
             this.groupBox1.Location = new System.Drawing.Point(0, 255);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(197, 276);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bộ Lọc Tìm Kiếm";
+            // 
+            // rdbMaDG
+            // 
+            this.rdbMaDG.AutoSize = true;
+            this.rdbMaDG.Location = new System.Drawing.Point(15, 199);
+            this.rdbMaDG.Name = "rdbMaDG";
+            this.rdbMaDG.Size = new System.Drawing.Size(137, 27);
+            this.rdbMaDG.TabIndex = 11;
+            this.rdbMaDG.TabStop = true;
+            this.rdbMaDG.Text = "Mã Độc Giả";
+            this.rdbMaDG.UseVisualStyleBackColor = true;
             // 
             // rdbNgayTra
             // 
@@ -98,7 +109,7 @@
             this.rdbNgayTra.Location = new System.Drawing.Point(15, 151);
             this.rdbNgayTra.Name = "rdbNgayTra";
             this.rdbNgayTra.Size = new System.Drawing.Size(114, 27);
-            this.rdbNgayTra.TabIndex = 2;
+            this.rdbNgayTra.TabIndex = 10;
             this.rdbNgayTra.TabStop = true;
             this.rdbNgayTra.Text = "Ngày Trả";
             this.rdbNgayTra.UseVisualStyleBackColor = true;
@@ -109,7 +120,7 @@
             this.rdbMaSach.Location = new System.Drawing.Point(15, 106);
             this.rdbMaSach.Name = "rdbMaSach";
             this.rdbMaSach.Size = new System.Drawing.Size(108, 27);
-            this.rdbMaSach.TabIndex = 1;
+            this.rdbMaSach.TabIndex = 9;
             this.rdbMaSach.TabStop = true;
             this.rdbMaSach.Text = "Mã Sách";
             this.rdbMaSach.UseVisualStyleBackColor = true;
@@ -120,7 +131,7 @@
             this.rdbMaPhieu.Location = new System.Drawing.Point(15, 62);
             this.rdbMaPhieu.Name = "rdbMaPhieu";
             this.rdbMaPhieu.Size = new System.Drawing.Size(171, 27);
-            this.rdbMaPhieu.TabIndex = 0;
+            this.rdbMaPhieu.TabIndex = 8;
             this.rdbMaPhieu.TabStop = true;
             this.rdbMaPhieu.Text = "Mã Phiếu Mượn";
             this.rdbMaPhieu.UseVisualStyleBackColor = true;
@@ -134,7 +145,7 @@
             this.grbTimPhieu.Location = new System.Drawing.Point(0, 3);
             this.grbTimPhieu.Name = "grbTimPhieu";
             this.grbTimPhieu.Size = new System.Drawing.Size(197, 246);
-            this.grbTimPhieu.TabIndex = 0;
+            this.grbTimPhieu.TabIndex = 3;
             this.grbTimPhieu.TabStop = false;
             this.grbTimPhieu.Text = "Tìm Phiếu Trả";
             // 
@@ -145,7 +156,7 @@
             this.btnTim.Location = new System.Drawing.Point(60, 137);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(72, 36);
-            this.btnTim.TabIndex = 4;
+            this.btnTim.TabIndex = 12;
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
@@ -154,7 +165,7 @@
             this.txtTimKiem.Location = new System.Drawing.Point(22, 76);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(148, 30);
-            this.txtTimKiem.TabIndex = 0;
+            this.txtTimKiem.TabIndex = 7;
             // 
             // panel2
             // 
@@ -175,7 +186,7 @@
             this.paChucNangAdmin.Location = new System.Drawing.Point(26, 106);
             this.paChucNangAdmin.Name = "paChucNangAdmin";
             this.paChucNangAdmin.Size = new System.Drawing.Size(200, 253);
-            this.paChucNangAdmin.TabIndex = 1;
+            this.paChucNangAdmin.TabIndex = 2;
             // 
             // btnThem
             // 
@@ -183,7 +194,7 @@
             this.btnThem.Location = new System.Drawing.Point(59, 3);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(89, 41);
-            this.btnThem.TabIndex = 7;
+            this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -194,7 +205,7 @@
             this.btnXoa.Location = new System.Drawing.Point(59, 90);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(89, 41);
-            this.btnXoa.TabIndex = 6;
+            this.btnXoa.TabIndex = 4;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -205,7 +216,7 @@
             this.btnSua.Location = new System.Drawing.Point(59, 176);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(89, 41);
-            this.btnSua.TabIndex = 9;
+            this.btnSua.TabIndex = 5;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -216,9 +227,10 @@
             this.btnXuatPhieu.Location = new System.Drawing.Point(16, 31);
             this.btnXuatPhieu.Name = "btnXuatPhieu";
             this.btnXuatPhieu.Size = new System.Drawing.Size(224, 41);
-            this.btnXuatPhieu.TabIndex = 10;
+            this.btnXuatPhieu.TabIndex = 14;
             this.btnXuatPhieu.Text = "Xuất Phiếu Trả";
             this.btnXuatPhieu.UseVisualStyleBackColor = true;
+            this.btnXuatPhieu.Click += new System.EventHandler(this.btnXuatPhieu_Click);
             // 
             // btnHuy
             // 
@@ -226,7 +238,7 @@
             this.btnHuy.Location = new System.Drawing.Point(79, 431);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(89, 41);
-            this.btnHuy.TabIndex = 8;
+            this.btnHuy.TabIndex = 6;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -329,7 +341,7 @@
             this.dgv.RowHeadersWidth = 62;
             this.dgv.RowTemplate.Height = 28;
             this.dgv.Size = new System.Drawing.Size(529, 302);
-            this.dgv.TabIndex = 0;
+            this.dgv.TabIndex = 13;
             this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // entityCommand1
@@ -339,17 +351,6 @@
             this.entityCommand1.Connection = null;
             this.entityCommand1.EnablePlanCaching = true;
             this.entityCommand1.Transaction = null;
-            // 
-            // rdbMaDG
-            // 
-            this.rdbMaDG.AutoSize = true;
-            this.rdbMaDG.Location = new System.Drawing.Point(15, 199);
-            this.rdbMaDG.Name = "rdbMaDG";
-            this.rdbMaDG.Size = new System.Drawing.Size(137, 27);
-            this.rdbMaDG.TabIndex = 3;
-            this.rdbMaDG.TabStop = true;
-            this.rdbMaDG.Text = "Mã Độc Giả";
-            this.rdbMaDG.UseVisualStyleBackColor = true;
             // 
             // frmPhieuTra
             // 

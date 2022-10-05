@@ -29,6 +29,7 @@
           <Property Name="MaDG" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDG" Type="nvarchar" MaxLength="100" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="HinhDG" Type="image" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -282,6 +283,7 @@
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Account" Relationship="Self.FK__Account__MaDG__45F365D3" FromRole="DocGia" ToRole="Account" />
           <NavigationProperty Name="PhieuMuon" Relationship="Self.FK__PhieuMuon__MaDG__46E78A0C" FromRole="DocGia" ToRole="PhieuMuon" />
+          <Property Name="HinhDG" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -524,6 +526,7 @@
           <EntitySetMapping Name="DocGia">
             <EntityTypeMapping TypeName="QLTVModel.DocGia">
               <MappingFragment StoreEntitySet="DocGia">
+                <ScalarProperty Name="HinhDG" ColumnName="HinhDG" />
                 <ScalarProperty Name="MaDG" ColumnName="MaDG" />
                 <ScalarProperty Name="TenDG" ColumnName="TenDG" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
@@ -614,7 +617,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
