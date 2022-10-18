@@ -17,6 +17,8 @@ namespace QuanLyTV
         public long MaPhieuMuon { get; set; }
         public long Masach { get; set; }
         public Nullable<System.DateTime> NgayTra { get; set; }
+        public Nullable<System.DateTime> NgayMuon { get; set; }
+        public string TrangThai { get; set; }
     
         public virtual PhieuMuon PhieuMuon { get; set; }
         public virtual Sach Sach { get; set; }

@@ -17,13 +17,13 @@ namespace QuanLyTV
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TacGia()
         {
-            this.Sach = new HashSet<Sach>();
+            this.Saches = new HashSet<Sach>();
         }
     
         public long MaTG { get; set; }
         public string TenTG { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sach> Sach { get; set; }
+        public virtual ICollection<Sach> Saches { get; set; }
     }
 }

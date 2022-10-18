@@ -13,10 +13,10 @@ namespace QuanLyTV
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QLTVEntities : DbContext
+    public partial class QuanLyThuVienEntities : DbContext
     {
-        public QLTVEntities()
-            : base("name=QLTVEntities")
+        public QuanLyThuVienEntities()
+            : base("name=QuanLyThuVienEntities")
         {
         }
     
@@ -25,15 +25,15 @@ namespace QuanLyTV
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Account> Account { get; set; }
-        public virtual DbSet<ChiTietPhieuMuon> ChiTietPhieuMuon { get; set; }
-        public virtual DbSet<DocGia> DocGia { get; set; }
-        public virtual DbSet<NhanVien> NhanVien { get; set; }
-        public virtual DbSet<NXB> NXB { get; set; }
-        public virtual DbSet<PhieuMuon> PhieuMuon { get; set; }
-        public virtual DbSet<Sach> Sach { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<TacGia> TacGia { get; set; }
-        public virtual DbSet<TheLoai> TheLoai { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
+        public virtual DbSet<DocGia> DocGias { get; set; }
+        public virtual DbSet<NhanVien> NhanViens { get; set; }
+        public virtual DbSet<NXB> NXBs { get; set; }
+        public virtual DbSet<PhieuMuon> PhieuMuons { get; set; }
+        public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TacGia> TacGias { get; set; }
+        public virtual DbSet<TheLoai> TheLoais { get; set; }
     }
 }

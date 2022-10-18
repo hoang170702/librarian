@@ -17,16 +17,15 @@ namespace QuanLyTV
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PhieuMuon()
         {
-            this.ChiTietPhieuMuon = new HashSet<ChiTietPhieuMuon>();
+            this.ChiTietPhieuMuons = new HashSet<ChiTietPhieuMuon>();
         }
     
         public long MaPhieuMuon { get; set; }
         public Nullable<long> MaDG { get; set; }
         public Nullable<long> MaNV { get; set; }
-        public Nullable<System.DateTime> NgayMuon { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuon { get; set; }
+        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
         public virtual DocGia DocGia { get; set; }
         public virtual NhanVien NhanVien { get; set; }
     }

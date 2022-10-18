@@ -14,7 +14,8 @@ namespace QuanLyTV
 {
     public partial class Form1 : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         public Form1()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace QuanLyTV
             {
                 TenDN = txtUser.Text;
                 MK = txtPass.Text;
-                var check = QLTV.Account.SingleOrDefault(p => p.TenTK == txtUser.Text && p.MatKhau == txtPass.Text);
+                var check = QLTV.Accounts.SingleOrDefault(p => p.TenTK == txtUser.Text && p.MatKhau == txtPass.Text);
 
                 if (check != null || (txtUser.Text == "admin" && txtPass.Text == "123"))
                 {
@@ -66,5 +67,6 @@ namespace QuanLyTV
                 txtPass.UseSystemPasswordChar = true;
             }
         }
+
     }
 }

@@ -28,3 +28,4 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.Sys
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.xml
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmChiTietPhieuMuon.resources

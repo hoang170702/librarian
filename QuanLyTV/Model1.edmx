@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QuanLyThuVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="MaDG" />
@@ -21,6 +21,8 @@
           <Property Name="MaPhieuMuon" Type="bigint" Nullable="false" />
           <Property Name="Masach" Type="bigint" Nullable="false" />
           <Property Name="NgayTra" Type="smalldatetime" />
+          <Property Name="NgayMuon" Type="smalldatetime" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DocGia">
           <Key>
@@ -55,7 +57,6 @@
           <Property Name="MaPhieuMuon" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaDG" Type="bigint" />
           <Property Name="MaNV" Type="bigint" />
-          <Property Name="NgayMuon" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -94,7 +95,7 @@
           <Property Name="MaTL" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenTL" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK__Account__MaDG__45F365D3">
+        <Association Name="FK__Account__MaDG__4CA06362">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -106,7 +107,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPh__MaPhi__59FA5E80">
+        <Association Name="FK__ChiTietPh__MaPhi__6754599E">
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +119,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPh__Masac__534D60F1">
+        <Association Name="FK__ChiTietPh__Masac__68487DD7">
           <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +131,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaDG__46E78A0C">
+        <Association Name="FK__PhieuMuon__MaDG__4D94879B">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,7 +143,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaNV__47DBAE45">
+        <Association Name="FK__PhieuMuon__MaNV__4F7CD00D">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -154,19 +155,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaNV__59063A47">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
-          <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNV" />
-            </Principal>
-            <Dependent Role="PhieuMuon">
-              <PropertyRef Name="MaNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Sach__MaNXB__5441852A">
+        <Association Name="FK__Sach__MaNXB__49C3F6B7">
           <End Role="NXB" Type="Self.NXB" Multiplicity="0..1" />
           <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
           <ReferentialConstraint>
@@ -178,7 +167,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sach__MaTG__5535A963">
+        <Association Name="FK__Sach__MaTG__4AB81AF0">
           <End Role="TacGia" Type="Self.TacGia" Multiplicity="0..1" />
           <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +179,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sach__MaTL__5629CD9C">
+        <Association Name="FK__Sach__MaTL__4BAC3F29">
           <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
           <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLTVModelStoreContainer">
+        <EntityContainer Name="QuanLyThuVienModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietPhieuMuon" EntityType="Self.ChiTietPhieuMuon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocGia" EntityType="Self.DocGia" Schema="dbo" store:Type="Tables" />
@@ -213,39 +202,35 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TacGia" EntityType="Self.TacGia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Account__MaDG__45F365D3" Association="Self.FK__Account__MaDG__45F365D3">
+          <AssociationSet Name="FK__Account__MaDG__4CA06362" Association="Self.FK__Account__MaDG__4CA06362">
             <End Role="DocGia" EntitySet="DocGia" />
             <End Role="Account" EntitySet="Account" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__MaPhi__59FA5E80" Association="Self.FK__ChiTietPh__MaPhi__59FA5E80">
+          <AssociationSet Name="FK__ChiTietPh__MaPhi__6754599E" Association="Self.FK__ChiTietPh__MaPhi__6754599E">
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__Masac__534D60F1" Association="Self.FK__ChiTietPh__Masac__534D60F1">
+          <AssociationSet Name="FK__ChiTietPh__Masac__68487DD7" Association="Self.FK__ChiTietPh__Masac__68487DD7">
             <End Role="Sach" EntitySet="Sach" />
             <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaDG__46E78A0C" Association="Self.FK__PhieuMuon__MaDG__46E78A0C">
+          <AssociationSet Name="FK__PhieuMuon__MaDG__4D94879B" Association="Self.FK__PhieuMuon__MaDG__4D94879B">
             <End Role="DocGia" EntitySet="DocGia" />
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaNV__47DBAE45" Association="Self.FK__PhieuMuon__MaNV__47DBAE45">
+          <AssociationSet Name="FK__PhieuMuon__MaNV__4F7CD00D" Association="Self.FK__PhieuMuon__MaNV__4F7CD00D">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="PhieuMuon" EntitySet="PhieuMuon" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaNV__59063A47" Association="Self.FK__PhieuMuon__MaNV__59063A47">
-            <End Role="NhanVien" EntitySet="NhanVien" />
-            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Sach__MaNXB__5441852A" Association="Self.FK__Sach__MaNXB__5441852A">
+          <AssociationSet Name="FK__Sach__MaNXB__49C3F6B7" Association="Self.FK__Sach__MaNXB__49C3F6B7">
             <End Role="NXB" EntitySet="NXB" />
             <End Role="Sach" EntitySet="Sach" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sach__MaTG__5535A963" Association="Self.FK__Sach__MaTG__5535A963">
+          <AssociationSet Name="FK__Sach__MaTG__4AB81AF0" Association="Self.FK__Sach__MaTG__4AB81AF0">
             <End Role="TacGia" EntitySet="TacGia" />
             <End Role="Sach" EntitySet="Sach" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sach__MaTL__5629CD9C" Association="Self.FK__Sach__MaTL__5629CD9C">
+          <AssociationSet Name="FK__Sach__MaTL__4BAC3F29" Association="Self.FK__Sach__MaTL__4BAC3F29">
             <End Role="TheLoai" EntitySet="TheLoai" />
             <End Role="Sach" EntitySet="Sach" />
           </AssociationSet>
@@ -253,7 +238,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QLTVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QuanLyThuVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="MaDG" />
@@ -261,7 +246,7 @@
           <Property Name="TenTK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="MaDG" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="DocGia" Relationship="Self.FK__Account__MaDG__45F365D3" FromRole="Account" ToRole="DocGia" />
+          <NavigationProperty Name="DocGia" Relationship="Self.FK__Account__MaDG__4CA06362" FromRole="Account" ToRole="DocGia" />
         </EntityType>
         <EntityType Name="ChiTietPhieuMuon">
           <Key>
@@ -271,8 +256,10 @@
           <Property Name="MaPhieuMuon" Type="Int64" Nullable="false" />
           <Property Name="Masach" Type="Int64" Nullable="false" />
           <Property Name="NgayTra" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PhieuMuon" Relationship="Self.FK__ChiTietPh__MaPhi__48CFD27E" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
-          <NavigationProperty Name="Sach" Relationship="Self.FK__ChiTietPh__Masac__534D60F1" FromRole="ChiTietPhieuMuon" ToRole="Sach" />
+          <Property Name="NgayMuon" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PhieuMuon" Relationship="Self.FK__ChiTietPh__MaPhi__5070F446" FromRole="ChiTietPhieuMuon" ToRole="PhieuMuon" />
+          <NavigationProperty Name="Sach" Relationship="Self.FK__ChiTietPh__Masac__48CFD27E" FromRole="ChiTietPhieuMuon" ToRole="Sach" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DocGia">
           <Key>
@@ -281,9 +268,9 @@
           <Property Name="MaDG" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenDG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Account" Relationship="Self.FK__Account__MaDG__45F365D3" FromRole="DocGia" ToRole="Account" />
-          <NavigationProperty Name="PhieuMuon" Relationship="Self.FK__PhieuMuon__MaDG__46E78A0C" FromRole="DocGia" ToRole="PhieuMuon" />
           <Property Name="HinhDG" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK__Account__MaDG__4CA06362" FromRole="DocGia" ToRole="Account" />
+          <NavigationProperty Name="PhieuMuons" Relationship="Self.FK__PhieuMuon__MaDG__4D94879B" FromRole="DocGia" ToRole="PhieuMuon" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -293,7 +280,7 @@
           <Property Name="TenNV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SDTNV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="ChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PhieuMuon" Relationship="Self.FK__PhieuMuon__MaNV__47DBAE45" FromRole="NhanVien" ToRole="PhieuMuon" />
+          <NavigationProperty Name="PhieuMuons" Relationship="Self.FK__PhieuMuon__MaNV__4F7CD00D" FromRole="NhanVien" ToRole="PhieuMuon" />
         </EntityType>
         <EntityType Name="NXB">
           <Key>
@@ -302,7 +289,7 @@
           <Property Name="MaNXB" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenNXB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Sach" Relationship="Self.FK__Sach__MaNXB__5441852A" FromRole="NXB" ToRole="Sach" />
+          <NavigationProperty Name="Saches" Relationship="Self.FK__Sach__MaNXB__49C3F6B7" FromRole="NXB" ToRole="Sach" />
         </EntityType>
         <EntityType Name="PhieuMuon">
           <Key>
@@ -311,10 +298,9 @@
           <Property Name="MaPhieuMuon" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaDG" Type="Int64" />
           <Property Name="MaNV" Type="Int64" />
-          <Property Name="NgayMuon" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ChiTietPhieuMuon" Relationship="Self.FK__ChiTietPh__MaPhi__48CFD27E" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
-          <NavigationProperty Name="DocGia" Relationship="Self.FK__PhieuMuon__MaDG__46E78A0C" FromRole="PhieuMuon" ToRole="DocGia" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuMuon__MaNV__47DBAE45" FromRole="PhieuMuon" ToRole="NhanVien" />
+          <NavigationProperty Name="ChiTietPhieuMuons" Relationship="Self.FK__ChiTietPh__MaPhi__5070F446" FromRole="PhieuMuon" ToRole="ChiTietPhieuMuon" />
+          <NavigationProperty Name="DocGia" Relationship="Self.FK__PhieuMuon__MaDG__4D94879B" FromRole="PhieuMuon" ToRole="DocGia" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuMuon__MaNV__4F7CD00D" FromRole="PhieuMuon" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="Sach">
           <Key>
@@ -327,13 +313,13 @@
           <Property Name="Tensach" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Gia" Type="Double" />
           <Property Name="Soluong" Type="Int32" />
-          <NavigationProperty Name="ChiTietPhieuMuon" Relationship="Self.FK__ChiTietPh__Masac__534D60F1" FromRole="Sach" ToRole="ChiTietPhieuMuon" />
-          <NavigationProperty Name="NXB" Relationship="Self.FK__Sach__MaNXB__5441852A" FromRole="Sach" ToRole="NXB" />
-          <NavigationProperty Name="TacGia" Relationship="Self.FK__Sach__MaTG__5535A963" FromRole="Sach" ToRole="TacGia" />
-          <NavigationProperty Name="TheLoai" Relationship="Self.FK__Sach__MaTL__5629CD9C" FromRole="Sach" ToRole="TheLoai" />
           <Property Name="HinhAnhSach" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="ChiTietPhieuMuons" Relationship="Self.FK__ChiTietPh__Masac__48CFD27E" FromRole="Sach" ToRole="ChiTietPhieuMuon" />
+          <NavigationProperty Name="NXB" Relationship="Self.FK__Sach__MaNXB__49C3F6B7" FromRole="Sach" ToRole="NXB" />
+          <NavigationProperty Name="TacGia" Relationship="Self.FK__Sach__MaTG__4AB81AF0" FromRole="Sach" ToRole="TacGia" />
+          <NavigationProperty Name="TheLoai" Relationship="Self.FK__Sach__MaTL__4BAC3F29" FromRole="Sach" ToRole="TheLoai" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
@@ -349,7 +335,7 @@
           </Key>
           <Property Name="MaTG" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenTG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Sach" Relationship="Self.FK__Sach__MaTG__5535A963" FromRole="TacGia" ToRole="Sach" />
+          <NavigationProperty Name="Saches" Relationship="Self.FK__Sach__MaTG__4AB81AF0" FromRole="TacGia" ToRole="Sach" />
         </EntityType>
         <EntityType Name="TheLoai">
           <Key>
@@ -357,9 +343,9 @@
           </Key>
           <Property Name="MaTL" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenTL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Sach" Relationship="Self.FK__Sach__MaTL__5629CD9C" FromRole="TheLoai" ToRole="Sach" />
+          <NavigationProperty Name="Saches" Relationship="Self.FK__Sach__MaTL__4BAC3F29" FromRole="TheLoai" ToRole="Sach" />
         </EntityType>
-        <Association Name="FK__Account__MaDG__45F365D3">
+        <Association Name="FK__Account__MaDG__4CA06362">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="1" />
           <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -371,7 +357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPh__MaPhi__48CFD27E">
+        <Association Name="FK__ChiTietPh__MaPhi__5070F446">
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -383,7 +369,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ChiTietPh__Masac__534D60F1">
+        <Association Name="FK__ChiTietPh__Masac__48CFD27E">
           <End Role="Sach" Type="Self.Sach" Multiplicity="1" />
           <End Role="ChiTietPhieuMuon" Type="Self.ChiTietPhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -395,7 +381,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaDG__46E78A0C">
+        <Association Name="FK__PhieuMuon__MaDG__4D94879B">
           <End Role="DocGia" Type="Self.DocGia" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -407,7 +393,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PhieuMuon__MaNV__47DBAE45">
+        <Association Name="FK__PhieuMuon__MaNV__4F7CD00D">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="PhieuMuon" Type="Self.PhieuMuon" Multiplicity="*" />
           <ReferentialConstraint>
@@ -419,7 +405,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sach__MaNXB__5441852A">
+        <Association Name="FK__Sach__MaNXB__49C3F6B7">
           <End Role="NXB" Type="Self.NXB" Multiplicity="0..1" />
           <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
           <ReferentialConstraint>
@@ -431,7 +417,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sach__MaTG__5535A963">
+        <Association Name="FK__Sach__MaTG__4AB81AF0">
           <End Role="TacGia" Type="Self.TacGia" Multiplicity="0..1" />
           <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
           <ReferentialConstraint>
@@ -443,7 +429,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Sach__MaTL__5629CD9C">
+        <Association Name="FK__Sach__MaTL__4BAC3F29">
           <End Role="TheLoai" Type="Self.TheLoai" Multiplicity="0..1" />
           <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
           <ReferentialConstraint>
@@ -455,48 +441,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLTVEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Account" EntityType="Self.Account" />
-          <EntitySet Name="ChiTietPhieuMuon" EntityType="Self.ChiTietPhieuMuon" />
-          <EntitySet Name="DocGia" EntityType="Self.DocGia" />
-          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" />
-          <EntitySet Name="NXB" EntityType="Self.NXB" />
-          <EntitySet Name="PhieuMuon" EntityType="Self.PhieuMuon" />
-          <EntitySet Name="Sach" EntityType="Self.Sach" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TacGia" EntityType="Self.TacGia" />
-          <EntitySet Name="TheLoai" EntityType="Self.TheLoai" />
-          <AssociationSet Name="FK__Account__MaDG__45F365D3" Association="Self.FK__Account__MaDG__45F365D3">
-            <End Role="DocGia" EntitySet="DocGia" />
-            <End Role="Account" EntitySet="Account" />
+        <EntityContainer Name="QuanLyThuVienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="ChiTietPhieuMuons" EntityType="Self.ChiTietPhieuMuon" />
+          <EntitySet Name="DocGias" EntityType="Self.DocGia" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="NXBs" EntityType="Self.NXB" />
+          <EntitySet Name="PhieuMuons" EntityType="Self.PhieuMuon" />
+          <EntitySet Name="Saches" EntityType="Self.Sach" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TacGias" EntityType="Self.TacGia" />
+          <EntitySet Name="TheLoais" EntityType="Self.TheLoai" />
+          <AssociationSet Name="FK__Account__MaDG__4CA06362" Association="Self.FK__Account__MaDG__4CA06362">
+            <End Role="DocGia" EntitySet="DocGias" />
+            <End Role="Account" EntitySet="Accounts" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__MaPhi__48CFD27E" Association="Self.FK__ChiTietPh__MaPhi__48CFD27E">
-            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
-            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
+          <AssociationSet Name="FK__ChiTietPh__MaPhi__5070F446" Association="Self.FK__ChiTietPh__MaPhi__5070F446">
+            <End Role="PhieuMuon" EntitySet="PhieuMuons" />
+            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
           </AssociationSet>
-          <AssociationSet Name="FK__ChiTietPh__Masac__534D60F1" Association="Self.FK__ChiTietPh__Masac__534D60F1">
-            <End Role="Sach" EntitySet="Sach" />
-            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuon" />
+          <AssociationSet Name="FK__ChiTietPh__Masac__48CFD27E" Association="Self.FK__ChiTietPh__Masac__48CFD27E">
+            <End Role="Sach" EntitySet="Saches" />
+            <End Role="ChiTietPhieuMuon" EntitySet="ChiTietPhieuMuons" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaDG__46E78A0C" Association="Self.FK__PhieuMuon__MaDG__46E78A0C">
-            <End Role="DocGia" EntitySet="DocGia" />
-            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
+          <AssociationSet Name="FK__PhieuMuon__MaDG__4D94879B" Association="Self.FK__PhieuMuon__MaDG__4D94879B">
+            <End Role="DocGia" EntitySet="DocGias" />
+            <End Role="PhieuMuon" EntitySet="PhieuMuons" />
           </AssociationSet>
-          <AssociationSet Name="FK__PhieuMuon__MaNV__47DBAE45" Association="Self.FK__PhieuMuon__MaNV__47DBAE45">
-            <End Role="NhanVien" EntitySet="NhanVien" />
-            <End Role="PhieuMuon" EntitySet="PhieuMuon" />
+          <AssociationSet Name="FK__PhieuMuon__MaNV__4F7CD00D" Association="Self.FK__PhieuMuon__MaNV__4F7CD00D">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="PhieuMuon" EntitySet="PhieuMuons" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sach__MaNXB__5441852A" Association="Self.FK__Sach__MaNXB__5441852A">
-            <End Role="NXB" EntitySet="NXB" />
-            <End Role="Sach" EntitySet="Sach" />
+          <AssociationSet Name="FK__Sach__MaNXB__49C3F6B7" Association="Self.FK__Sach__MaNXB__49C3F6B7">
+            <End Role="NXB" EntitySet="NXBs" />
+            <End Role="Sach" EntitySet="Saches" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sach__MaTG__5535A963" Association="Self.FK__Sach__MaTG__5535A963">
-            <End Role="TacGia" EntitySet="TacGia" />
-            <End Role="Sach" EntitySet="Sach" />
+          <AssociationSet Name="FK__Sach__MaTG__4AB81AF0" Association="Self.FK__Sach__MaTG__4AB81AF0">
+            <End Role="TacGia" EntitySet="TacGias" />
+            <End Role="Sach" EntitySet="Saches" />
           </AssociationSet>
-          <AssociationSet Name="FK__Sach__MaTL__5629CD9C" Association="Self.FK__Sach__MaTL__5629CD9C">
-            <End Role="TheLoai" EntitySet="TheLoai" />
-            <End Role="Sach" EntitySet="Sach" />
+          <AssociationSet Name="FK__Sach__MaTL__4BAC3F29" Association="Self.FK__Sach__MaTL__4BAC3F29">
+            <End Role="TheLoai" EntitySet="TheLoais" />
+            <End Role="Sach" EntitySet="Saches" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -504,9 +490,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLTVModelStoreContainer" CdmEntityContainer="QLTVEntities">
-          <EntitySetMapping Name="Account">
-            <EntityTypeMapping TypeName="QLTVModel.Account">
+        <EntityContainerMapping StorageEntityContainer="QuanLyThuVienModelStoreContainer" CdmEntityContainer="QuanLyThuVienEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="TenTK" ColumnName="TenTK" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
@@ -514,27 +500,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChiTietPhieuMuon">
-            <EntityTypeMapping TypeName="QLTVModel.ChiTietPhieuMuon">
+          <EntitySetMapping Name="ChiTietPhieuMuons">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.ChiTietPhieuMuon">
               <MappingFragment StoreEntitySet="ChiTietPhieuMuon">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
                 <ScalarProperty Name="Masach" ColumnName="Masach" />
                 <ScalarProperty Name="NgayTra" ColumnName="NgayTra" />
+                <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="DocGia">
-            <EntityTypeMapping TypeName="QLTVModel.DocGia">
+          <EntitySetMapping Name="DocGias">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.DocGia">
               <MappingFragment StoreEntitySet="DocGia">
-                <ScalarProperty Name="HinhDG" ColumnName="HinhDG" />
                 <ScalarProperty Name="MaDG" ColumnName="MaDG" />
                 <ScalarProperty Name="TenDG" ColumnName="TenDG" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="HinhDG" ColumnName="HinhDG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NhanVien">
-            <EntityTypeMapping TypeName="QLTVModel.NhanVien">
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="TenNV" ColumnName="TenNV" />
@@ -543,8 +531,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NXB">
-            <EntityTypeMapping TypeName="QLTVModel.NXB">
+          <EntitySetMapping Name="NXBs">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.NXB">
               <MappingFragment StoreEntitySet="NXB">
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
@@ -552,20 +540,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PhieuMuon">
-            <EntityTypeMapping TypeName="QLTVModel.PhieuMuon">
+          <EntitySetMapping Name="PhieuMuons">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.PhieuMuon">
               <MappingFragment StoreEntitySet="PhieuMuon">
                 <ScalarProperty Name="MaPhieuMuon" ColumnName="MaPhieuMuon" />
                 <ScalarProperty Name="MaDG" ColumnName="MaDG" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
-                <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sach">
-            <EntityTypeMapping TypeName="QLTVModel.Sach">
+          <EntitySetMapping Name="Saches">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.Sach">
               <MappingFragment StoreEntitySet="Sach">
-                <ScalarProperty Name="HinhAnhSach" ColumnName="HinhAnhSach" />
                 <ScalarProperty Name="Masach" ColumnName="Masach" />
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
                 <ScalarProperty Name="MaTL" ColumnName="MaTL" />
@@ -573,11 +559,12 @@
                 <ScalarProperty Name="Tensach" ColumnName="Tensach" />
                 <ScalarProperty Name="Gia" ColumnName="Gia" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="HinhAnhSach" ColumnName="HinhAnhSach" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QLTVModel.sysdiagrams">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -587,16 +574,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TacGia">
-            <EntityTypeMapping TypeName="QLTVModel.TacGia">
+          <EntitySetMapping Name="TacGias">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.TacGia">
               <MappingFragment StoreEntitySet="TacGia">
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
                 <ScalarProperty Name="TenTG" ColumnName="TenTG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TheLoai">
-            <EntityTypeMapping TypeName="QLTVModel.TheLoai">
+          <EntitySetMapping Name="TheLoais">
+            <EntityTypeMapping TypeName="QuanLyThuVienModel.TheLoai">
               <MappingFragment StoreEntitySet="TheLoai">
                 <ScalarProperty Name="MaTL" ColumnName="MaTL" />
                 <ScalarProperty Name="TenTL" ColumnName="TenTL" />
@@ -617,7 +604,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

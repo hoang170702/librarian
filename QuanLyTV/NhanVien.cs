@@ -17,7 +17,7 @@ namespace QuanLyTV
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NhanVien()
         {
-            this.PhieuMuon = new HashSet<PhieuMuon>();
+            this.PhieuMuons = new HashSet<PhieuMuon>();
         }
     
         public long MaNV { get; set; }
@@ -26,6 +26,6 @@ namespace QuanLyTV
         public string ChucVu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuMuon> PhieuMuon { get; set; }
+        public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
     }
 }

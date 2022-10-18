@@ -40,9 +40,9 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.paChucNangAdmin = new System.Windows.Forms.Panel();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
+            this.btnDaTra = new System.Windows.Forms.Button();
+            this.btnDangMuon = new System.Windows.Forms.Button();
+            this.btnPhat = new System.Windows.Forms.Button();
             this.btnXuatPhieu = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -130,10 +130,10 @@
             this.rdbMaPhieu.AutoSize = true;
             this.rdbMaPhieu.Location = new System.Drawing.Point(15, 62);
             this.rdbMaPhieu.Name = "rdbMaPhieu";
-            this.rdbMaPhieu.Size = new System.Drawing.Size(171, 27);
+            this.rdbMaPhieu.Size = new System.Drawing.Size(150, 27);
             this.rdbMaPhieu.TabIndex = 8;
             this.rdbMaPhieu.TabStop = true;
-            this.rdbMaPhieu.Text = "Mã Phiếu Mượn";
+            this.rdbMaPhieu.Text = "Mã Phiếu Trả";
             this.rdbMaPhieu.UseVisualStyleBackColor = true;
             // 
             // grbTimPhieu
@@ -147,7 +147,7 @@
             this.grbTimPhieu.Size = new System.Drawing.Size(197, 246);
             this.grbTimPhieu.TabIndex = 3;
             this.grbTimPhieu.TabStop = false;
-            this.grbTimPhieu.Text = "Tìm Phiếu Trả";
+            this.grbTimPhieu.Text = "Tìm Phiếu ";
             // 
             // btnTim
             // 
@@ -180,46 +180,46 @@
             // 
             // paChucNangAdmin
             // 
-            this.paChucNangAdmin.Controls.Add(this.btnThem);
-            this.paChucNangAdmin.Controls.Add(this.btnXoa);
-            this.paChucNangAdmin.Controls.Add(this.btnSua);
+            this.paChucNangAdmin.Controls.Add(this.btnDaTra);
+            this.paChucNangAdmin.Controls.Add(this.btnDangMuon);
+            this.paChucNangAdmin.Controls.Add(this.btnPhat);
             this.paChucNangAdmin.Location = new System.Drawing.Point(26, 106);
             this.paChucNangAdmin.Name = "paChucNangAdmin";
             this.paChucNangAdmin.Size = new System.Drawing.Size(200, 253);
             this.paChucNangAdmin.TabIndex = 2;
             // 
-            // btnThem
+            // btnDaTra
             // 
-            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Location = new System.Drawing.Point(59, 3);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(89, 41);
-            this.btnThem.TabIndex = 3;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.btnDaTra.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDaTra.Location = new System.Drawing.Point(3, 3);
+            this.btnDaTra.Name = "btnDaTra";
+            this.btnDaTra.Size = new System.Drawing.Size(194, 41);
+            this.btnDaTra.TabIndex = 3;
+            this.btnDaTra.Text = "Đã Trả";
+            this.btnDaTra.UseVisualStyleBackColor = true;
+            this.btnDaTra.Click += new System.EventHandler(this.btnDaTra_Click);
             // 
-            // btnXoa
+            // btnDangMuon
             // 
-            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(59, 90);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(89, 41);
-            this.btnXoa.TabIndex = 4;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnDangMuon.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangMuon.Location = new System.Drawing.Point(3, 90);
+            this.btnDangMuon.Name = "btnDangMuon";
+            this.btnDangMuon.Size = new System.Drawing.Size(194, 41);
+            this.btnDangMuon.TabIndex = 4;
+            this.btnDangMuon.Text = "Đang mượn";
+            this.btnDangMuon.UseVisualStyleBackColor = true;
+            this.btnDangMuon.Click += new System.EventHandler(this.btnDangMuon_Click);
             // 
-            // btnSua
+            // btnPhat
             // 
-            this.btnSua.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSua.Location = new System.Drawing.Point(59, 176);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(89, 41);
-            this.btnSua.TabIndex = 5;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            this.btnPhat.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhat.Location = new System.Drawing.Point(3, 176);
+            this.btnPhat.Name = "btnPhat";
+            this.btnPhat.Size = new System.Drawing.Size(194, 41);
+            this.btnPhat.TabIndex = 5;
+            this.btnPhat.Text = "Phạt";
+            this.btnPhat.UseVisualStyleBackColor = true;
+            this.btnPhat.Click += new System.EventHandler(this.btnPhat_Click);
             // 
             // btnXuatPhieu
             // 
@@ -235,7 +235,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(79, 431);
+            this.btnHuy.Location = new System.Drawing.Point(85, 392);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(89, 41);
             this.btnHuy.TabIndex = 6;
@@ -267,7 +267,7 @@
             this.groupBox2.Size = new System.Drawing.Size(529, 212);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thông Tin Phiếu Trả";
+            this.groupBox2.Text = "Phiếu Trả";
             // 
             // label3
             // 
@@ -302,25 +302,25 @@
             // dtbNgaytra
             // 
             this.dtbNgaytra.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtbNgaytra.Location = new System.Drawing.Point(128, 138);
+            this.dtbNgaytra.Location = new System.Drawing.Point(142, 143);
             this.dtbNgaytra.Name = "dtbNgaytra";
-            this.dtbNgaytra.Size = new System.Drawing.Size(342, 26);
+            this.dtbNgaytra.Size = new System.Drawing.Size(322, 26);
             this.dtbNgaytra.TabIndex = 2;
             // 
             // txtMaSach
             // 
             this.txtMaSach.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSach.Location = new System.Drawing.Point(128, 90);
+            this.txtMaSach.Location = new System.Drawing.Point(142, 88);
             this.txtMaSach.Name = "txtMaSach";
-            this.txtMaSach.Size = new System.Drawing.Size(188, 28);
+            this.txtMaSach.Size = new System.Drawing.Size(322, 28);
             this.txtMaSach.TabIndex = 1;
             // 
             // txtMaPhieu
             // 
             this.txtMaPhieu.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaPhieu.Location = new System.Drawing.Point(128, 44);
+            this.txtMaPhieu.Location = new System.Drawing.Point(142, 43);
             this.txtMaPhieu.Name = "txtMaPhieu";
-            this.txtMaPhieu.Size = new System.Drawing.Size(188, 28);
+            this.txtMaPhieu.Size = new System.Drawing.Size(322, 28);
             this.txtMaPhieu.TabIndex = 0;
             // 
             // panel4
@@ -399,15 +399,15 @@
         private System.Windows.Forms.TextBox txtMaPhieu;
         private System.Windows.Forms.DataGridView dgv;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
-        private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnHuy;
-        private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXuatPhieu;
-        private System.Windows.Forms.Panel paChucNangAdmin;
         private System.Windows.Forms.RadioButton rdbMaDG;
+        private System.Windows.Forms.Panel paChucNangAdmin;
+        private System.Windows.Forms.Button btnDaTra;
+        private System.Windows.Forms.Button btnDangMuon;
+        private System.Windows.Forms.Button btnPhat;
     }
 }

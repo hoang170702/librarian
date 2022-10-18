@@ -17,7 +17,7 @@ namespace QuanLyTV
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NXB()
         {
-            this.Sach = new HashSet<Sach>();
+            this.Saches = new HashSet<Sach>();
         }
     
         public long MaNXB { get; set; }
@@ -25,6 +25,6 @@ namespace QuanLyTV
         public string SDT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sach> Sach { get; set; }
+        public virtual ICollection<Sach> Saches { get; set; }
     }
 }

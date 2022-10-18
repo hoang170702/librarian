@@ -17,7 +17,7 @@ namespace QuanLyTV
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DocGia()
         {
-            this.PhieuMuon = new HashSet<PhieuMuon>();
+            this.PhieuMuons = new HashSet<PhieuMuon>();
         }
     
         public long MaDG { get; set; }
@@ -27,6 +27,6 @@ namespace QuanLyTV
     
         public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhieuMuon> PhieuMuon { get; set; }
+        public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
     }
 }

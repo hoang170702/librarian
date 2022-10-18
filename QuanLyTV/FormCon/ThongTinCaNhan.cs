@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,8 @@ namespace QuanLyTV.FormCon
 {
     public partial class ThongTinCaNhan : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         public ThongTinCaNhan()
         {
             InitializeComponent();
@@ -44,12 +46,12 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                var tkmk = QLTV.Account.SingleOrDefault(p => p.TenTK == txtten.Text && p.MatKhau == txtMatKhau.Text);
+                var tkmk = QLTV.Accounts.SingleOrDefault(p => p.TenTK == txtten.Text && p.MatKhau == txtMatKhau.Text);
                 var parseMA = long.Parse(txtma.Text);
                 if (tenDN == txtten.Text && MK == txtMatKhau.Text && tkmk.MaDG == parseMA)
                 {
                     long findID = long.Parse(txtma.Text);
-                    var CapNhat = QLTV.Account.Find(findID);
+                    var CapNhat = QLTV.Accounts.Find(findID);
                     if (CapNhat != null)
                     {
                         if (txtMKMoi.Text == txtNhapLai.Text && txtMKMoi.Text != "")

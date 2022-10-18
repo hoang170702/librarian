@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,7 +16,8 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmSach : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         public frmSach()
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace QuanLyTV.FormCon
 
         private void load()
         {
-            var listSach = from Lsach in QLTV.Sach
+            var listSach = from Lsach in QLTV.Saches
                            select new
                            {
                                MaSach = Lsach.Masach,
@@ -82,7 +84,7 @@ namespace QuanLyTV.FormCon
                     txtMaTG.Text = dgv.Rows[e.RowIndex].Cells["MaTacGia"].FormattedValue.ToString();
                     txtMaNXB.Text = dgv.Rows[e.RowIndex].Cells["MaNXB"].FormattedValue.ToString();
                     var ParseMa = long.Parse(txtma.Text);
-                    var findImage = QLTV.Sach.FirstOrDefault(p => p.Masach == ParseMa);
+                    var findImage = QLTV.Saches.FirstOrDefault(p => p.Masach == ParseMa);
                     byte[] HinhSach = findImage.HinhAnhSach;
                     if (findImage.HinhAnhSach == null)
                     {
@@ -135,7 +137,7 @@ namespace QuanLyTV.FormCon
                         MaTG = parseMaTG,
                         HinhAnhSach = imagetobyarray(pictureBox1.Image)
                     };
-                    QLTV.Sach.Add(addSach);
+                    QLTV.Saches.Add(addSach);
                     QLTV.SaveChanges();
                     MessageBox.Show("Thêm Sách Thành Công");
                     load();
@@ -161,10 +163,10 @@ namespace QuanLyTV.FormCon
                     if (Notification == DialogResult.Yes)
                     {
                         var parseMaSach = long.Parse(txtma.Text);
-                        var findMaSach = QLTV.Sach.SingleOrDefault(p => p.Masach == parseMaSach);
+                        var findMaSach = QLTV.Saches.SingleOrDefault(p => p.Masach == parseMaSach);
                         if (findMaSach != null)
                         {
-                            QLTV.Sach.Remove(findMaSach);
+                            QLTV.Saches.Remove(findMaSach);
                             QLTV.SaveChanges();
                             MessageBox.Show("Xóa thành công");
                             load();
@@ -228,7 +230,7 @@ namespace QuanLyTV.FormCon
                         var parseMaNXB = long.Parse(txtMaNXB.Text);
                         var parseMaTG = long.Parse(txtMaTG.Text);
                         var parseMaSach = long.Parse(txtma.Text);
-                        var findMaSach = QLTV.Sach.SingleOrDefault(p => p.Masach == parseMaSach);
+                        var findMaSach = QLTV.Saches.SingleOrDefault(p => p.Masach == parseMaSach);
 
                         if (findMaSach != null)
                         {
@@ -273,7 +275,7 @@ namespace QuanLyTV.FormCon
                     if (rdbMa.Checked == true)
                     {
                         var parseMa = long.Parse(txtTimKiem.Text);
-                        var findMaSach = from fMaSach in QLTV.Sach
+                        var findMaSach = from fMaSach in QLTV.Saches
                                          where fMaSach.Masach == parseMa
                                          select new
                                          {
@@ -291,7 +293,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbGia.Checked == true)
                     {
                         var parseGia = float.Parse(txtTimKiem.Text);
-                        var findGiaSach = from fGiaSach in QLTV.Sach
+                        var findGiaSach = from fGiaSach in QLTV.Saches
                                           where fGiaSach.Gia <= parseGia
                                           select new
                                           {
@@ -308,7 +310,7 @@ namespace QuanLyTV.FormCon
                     // Tim Ten Sach
                     else if (rdbTen.Checked == true)
                     {
-                        var findTenSach = from fTenSach in QLTV.Sach
+                        var findTenSach = from fTenSach in QLTV.Saches
                                           where fTenSach.Tensach.Contains(txtTimKiem.Text)
                                           select new
                                           {
@@ -326,7 +328,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbTheLoai.Checked == true)
                     {
                         var parseMaTheLoai = long.Parse(txtTimKiem.Text);
-                        var findMaTheLoai = from fMaTheLoai in QLTV.Sach
+                        var findMaTheLoai = from fMaTheLoai in QLTV.Saches
                                             where fMaTheLoai.MaTL == parseMaTheLoai
                                             select new
                                             {
@@ -344,7 +346,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbTacGia.Checked == true)
                     {
                         var parseMaTacGia = long.Parse(txtTimKiem.Text);
-                        var findMaTacGia = from fMaTG in QLTV.Sach
+                        var findMaTacGia = from fMaTG in QLTV.Saches
                                            where fMaTG.MaTG == parseMaTacGia
                                            select new
                                            {
@@ -362,7 +364,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbNXB.Checked == true)
                     {
                         var parseMaNXB = long.Parse(txtTimKiem.Text);
-                        var findMaNXB = from fMaNXB in QLTV.Sach
+                        var findMaNXB = from fMaNXB in QLTV.Saches
                                         where fMaNXB.MaNXB == parseMaNXB
                                         select new
                                         {

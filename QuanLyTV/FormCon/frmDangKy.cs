@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,8 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmDangKy : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         public frmDangKy()
         {
             InitializeComponent();
@@ -24,8 +26,8 @@ namespace QuanLyTV.FormCon
             try
             {
                 int ma = int.Parse(txtma.Text);
-                var checkMaDG = QLTV.DocGia.SingleOrDefault(p => p.MaDG == ma);
-                var checkTK = QLTV.Account.SingleOrDefault(p => p.TenTK == txtTen.Text);
+                var checkMaDG = QLTV.DocGias.SingleOrDefault(p => p.MaDG == ma);
+                var checkTK = QLTV.Accounts.SingleOrDefault(p => p.TenTK == txtTen.Text);
                 if (checkTK == null)
                 {
                     if (checkMaDG != null)
@@ -36,7 +38,7 @@ namespace QuanLyTV.FormCon
                             MatKhau = txtMK.Text,
                             MaDG = ma,
                         };
-                        QLTV.Account.Add(Account);
+                        QLTV.Accounts.Add(Account);
                         QLTV.SaveChanges();
                         MessageBox.Show("Đăng Ký Thành Công!!!");
 

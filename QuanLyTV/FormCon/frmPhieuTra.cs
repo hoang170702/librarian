@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OfficeOpenXml;
+
 using excel = Microsoft.Office.Interop.Excel;
 
 namespace QuanLyTV.FormCon
 {
     public partial class frmPhieuTra : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         string tenDN;
         public frmPhieuTra()
         {
@@ -28,47 +31,63 @@ namespace QuanLyTV.FormCon
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        private void loadTrangThaiPhat()
+        {
+            var dtnow = DateTime.Today.Date;
+            var TrangthaiPhat = QLTV.ChiTietPhieuMuons.Select(p => p).ToList();
+            if (TrangthaiPhat != null)
+            {
+                for (int i = 0; i < TrangthaiPhat.Count; i++)
+                {
+                    var dsPhat = TrangthaiPhat.FirstOrDefault(p => p.NgayMuon < dtnow);
+                    if (dsPhat != null)
+                    {
+                        dsPhat.TrangThai = "Phat";
+                        QLTV.SaveChanges();
+                    }
+                }
+
+            }
+        }
         private void loadAdmin()
         {
-            var ListPhieuTra = from phieutra in QLTV.ChiTietPhieuMuon
-                               select new
-                               {
-                                   MaPhieu = phieutra.MaPhieuMuon,
-                                   MaSach = phieutra.Masach,
-                                   MaDocGia = phieutra.PhieuMuon.MaDG,
-                                   NgayTra = phieutra.NgayTra,
-                               };
-            dgv.DataSource = ListPhieuTra.ToList();
+            var DsCTPM = from ctpm in QLTV.ChiTietPhieuMuons
+                         select new
+                         {
+                             MaPhieuMuon = ctpm.MaPhieuMuon,
+                             MaSach = ctpm.Masach,
+                             MaDocGia = ctpm.PhieuMuon.MaDG,
+                             NgayTra = ctpm.NgayTra,
+                             TrangThai = ctpm.TrangThai,
+                         };
+            dgv.DataSource = DsCTPM.ToList();
+            //  loadTrangThaiPhat();
         }
 
         private void loadUser()
         {
-            var ListPhieuTra = from phieutra in QLTV.ChiTietPhieuMuon
-                               from acc in QLTV.Account
-                               where acc.MaDG == phieutra.PhieuMuon.MaDG && acc.TenTK == tenDN
-                               select new
-                               {
-                                   MaPhieu = phieutra.MaPhieuMuon,
-                                   MaSach = phieutra.Masach,
-                                   MaDocGia = phieutra.PhieuMuon.MaDG,
-                                   NgayTra = phieutra.NgayTra,
-                               };
-            dgv.DataSource = ListPhieuTra.ToList();
+            var DsCTPM = from ctpm in QLTV.ChiTietPhieuMuons
+                         from acc in QLTV.Accounts
+                         where acc.TenTK == tenDN && ctpm.PhieuMuon.MaDG == acc.MaDG
+                         select new
+                         {
+                             MaPhieuMuon = ctpm.MaPhieuMuon,
+                             MaSach = ctpm.Masach,
+                             MaDocGia = ctpm.PhieuMuon.MaDG,
+                             NgayTra = ctpm.NgayTra,
+                             TrangThai = ctpm.TrangThai,
+                         };
+            dgv.DataSource = DsCTPM.ToList();
         }
 
-        private void getsizeColumns()
-        {
-            dgv.Columns["MaPhieu"].Width = 60;
-            dgv.Columns["MaSach"].Width = 60;
-            dgv.Columns["MaDocGia"].Width = 60;
-            dgv.Columns["NgayTra"].Width = 120;
-        }
+
 
         private void AddBindDing()
         {
-            txtMaPhieu.DataBindings.Add("Text", dgv.DataSource, "MaPhieu");
+            txtMaPhieu.DataBindings.Add("Text", dgv.DataSource, "MaPhieuMuon");
             txtMaSach.DataBindings.Add("Text", dgv.DataSource, "MaSach");
             dtbNgaytra.DataBindings.Add("Text", dgv.DataSource, "NgayTra");
+
         }
 
         private void clearBinding()
@@ -76,6 +95,7 @@ namespace QuanLyTV.FormCon
             txtMaPhieu.DataBindings.Clear();
             txtMaSach.DataBindings.Clear();
             dtbNgaytra.DataBindings.Clear();
+
         }
 
         private void frmPhieuTra_Load(object sender, EventArgs e)
@@ -85,14 +105,12 @@ namespace QuanLyTV.FormCon
                 if (tenDN != "admin")
                 {
                     loadUser();
-                    getsizeColumns();
                     paChucNangAdmin.Visible = false;
                     rdbMaDG.Visible = false;
                 }
                 else
                 {
                     loadAdmin();
-                    getsizeColumns();
                 }
 
             }
@@ -115,85 +133,7 @@ namespace QuanLyTV.FormCon
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var parseMaPhieu = long.Parse(txtMaPhieu.Text);
-                var parseMaSach = long.Parse(txtMaSach.Text);
-                var checkMaPhieuMuon = QLTV.ChiTietPhieuMuon.SingleOrDefault(p => p.MaPhieuMuon == parseMaPhieu);
-                var checkMaSach = QLTV.ChiTietPhieuMuon.SingleOrDefault(p => p.Masach == parseMaSach);
-                if (txtMaPhieu.Text == "" || txtMaSach.Text == "" || dtbNgaytra.Text == "")
-                {
-                    throw new Exception("Vui lòng nhập đầy đủ thông tin");
-                }
-                else if (checkMaPhieuMuon != null && checkMaSach != null)
-                {
-                    throw new Exception("Phiếu này đã được trả!!!");
-                }
-                else
-                {
-                    var AddPhieuTra = new ChiTietPhieuMuon()
-                    {
-                        MaPhieuMuon = parseMaPhieu,
-                        Masach = parseMaSach,
-                        NgayTra = dtbNgaytra.Value.Date
-                    };
-                    QLTV.ChiTietPhieuMuon.Add(AddPhieuTra);
-                    QLTV.SaveChanges();
-                    MessageBox.Show("Thêm Phiếu Trả Thành Công!!!");
-                    loadAdmin();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var parseMaPhieu = long.Parse(txtMaPhieu.Text);
-                var parseMaSach = long.Parse(txtMaSach.Text);
-                var checkMaPhieuMuon = QLTV.ChiTietPhieuMuon.SingleOrDefault(p => p.MaPhieuMuon == parseMaPhieu);
-                if (checkMaPhieuMuon != null)
-                {
-                    QLTV.ChiTietPhieuMuon.Remove(checkMaPhieuMuon);
-                    QLTV.SaveChanges();
-                    MessageBox.Show("Xóa thành công!!!");
-                    loadAdmin();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var parseMaPhieu = long.Parse(txtMaPhieu.Text);
-                var parseMaSach = long.Parse(txtMaSach.Text);
-                var checkMaPhieuMuon = QLTV.ChiTietPhieuMuon.SingleOrDefault(p => p.MaPhieuMuon == parseMaPhieu);
-                if (checkMaPhieuMuon != null)
-                {
-                    checkMaPhieuMuon.Masach = parseMaSach;
-                    checkMaPhieuMuon.NgayTra = dtbNgaytra.Value.Date;
-                    QLTV.SaveChanges();
-                    MessageBox.Show("Cập nhật phiếu trả thành công");
-                    loadAdmin();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void Huy()
         {
@@ -238,7 +178,7 @@ namespace QuanLyTV.FormCon
                     if (rdbMaPhieu.Checked == true)
                     {
                         var parseMaPhieu = long.Parse(txtTimKiem.Text);
-                        var findMaPhieuAdmin = from fAdmin in QLTV.ChiTietPhieuMuon
+                        var findMaPhieuAdmin = from fAdmin in QLTV.ChiTietPhieuMuons
                                                where fAdmin.MaPhieuMuon == parseMaPhieu
                                                select new
                                                {
@@ -246,9 +186,10 @@ namespace QuanLyTV.FormCon
                                                    MaSach = fAdmin.Masach,
                                                    MaDocGia = fAdmin.PhieuMuon.MaDG,
                                                    NgayTra = fAdmin.NgayTra,
+                                                   TrangThai = fAdmin.TrangThai,
                                                };
-                        var findMaPhieuUser = from fUser in QLTV.ChiTietPhieuMuon
-                                              from acc in QLTV.Account
+                        var findMaPhieuUser = from fUser in QLTV.ChiTietPhieuMuons
+                                              from acc in QLTV.Accounts
                                               where acc.MaDG == fUser.PhieuMuon.MaDG && acc.TenTK == tenDN && fUser.MaPhieuMuon == parseMaPhieu
                                               select new
                                               {
@@ -256,6 +197,7 @@ namespace QuanLyTV.FormCon
                                                   MaSach = fUser.Masach,
                                                   MaDocGia = fUser.PhieuMuon.MaDG,
                                                   NgayTra = fUser.NgayTra,
+                                                  TrangThai = fUser.TrangThai,
                                               };
                         if (tenDN != "admin")
                         {
@@ -272,7 +214,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbMaDG.Checked == true)
                     {
                         var parseMaDG = long.Parse(txtTimKiem.Text);
-                        var findDGAdmin = from AdminDG in QLTV.ChiTietPhieuMuon
+                        var findDGAdmin = from AdminDG in QLTV.ChiTietPhieuMuons
                                           where AdminDG.PhieuMuon.MaDG == parseMaDG
                                           select new
                                           {
@@ -288,7 +230,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbMaSach.Checked == true)
                     {
                         var parseMaSach = long.Parse(txtTimKiem.Text);
-                        var findMaSachAdmin = from AdminSach in QLTV.ChiTietPhieuMuon
+                        var findMaSachAdmin = from AdminSach in QLTV.ChiTietPhieuMuons
                                               where AdminSach.Masach == parseMaSach
                                               select new
                                               {
@@ -297,8 +239,8 @@ namespace QuanLyTV.FormCon
                                                   MaDocGia = AdminSach.PhieuMuon.MaDG,
                                                   NgayTra = AdminSach.NgayTra,
                                               };
-                        var findMaSachUser = from UserSach in QLTV.ChiTietPhieuMuon
-                                             from acc in QLTV.Account
+                        var findMaSachUser = from UserSach in QLTV.ChiTietPhieuMuons
+                                             from acc in QLTV.Accounts
                                              where acc.MaDG == UserSach.PhieuMuon.MaDG && acc.TenTK == tenDN && UserSach.Masach == parseMaSach
                                              select new
                                              {
@@ -322,7 +264,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbNgayTra.Checked == true)
                     {
                         var parseNgayTra = DateTime.Parse(txtTimKiem.Text);
-                        var findNgayTraAdmin = from adminNgayTra in QLTV.ChiTietPhieuMuon
+                        var findNgayTraAdmin = from adminNgayTra in QLTV.ChiTietPhieuMuons
                                                where adminNgayTra.NgayTra == parseNgayTra
                                                select new
                                                {
@@ -331,8 +273,8 @@ namespace QuanLyTV.FormCon
                                                    MaDocGia = adminNgayTra.PhieuMuon.MaDG,
                                                    NgayTra = adminNgayTra.NgayTra,
                                                };
-                        var findNgayTraUser = from userNgayTra in QLTV.ChiTietPhieuMuon
-                                              from acc in QLTV.Account
+                        var findNgayTraUser = from userNgayTra in QLTV.ChiTietPhieuMuons
+                                              from acc in QLTV.Accounts
                                               where acc.MaDG == userNgayTra.PhieuMuon.MaDG && acc.TenTK == tenDN && userNgayTra.NgayTra == parseNgayTra
                                               select new
                                               {
@@ -399,6 +341,75 @@ namespace QuanLyTV.FormCon
                     {
                         MessageBox.Show(ex.Message);
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDaTra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var parseMaPhieuMuon = long.Parse(txtMaPhieu.Text);
+                var ParseMaSach = long.Parse(txtMaSach.Text);
+                var Trasach = QLTV.ChiTietPhieuMuons.SingleOrDefault(p =>
+                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == ParseMaSach);
+
+                if (Trasach != null)
+                {
+                    Trasach.TrangThai = "Đã Trả";
+                    QLTV.SaveChanges();
+                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon.MaDG + " đã trả sách " + Trasach.Masach);
+                    loadAdmin();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDangMuon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var parseMaPhieuMuon = long.Parse(txtMaPhieu.Text);
+                var ParseMaSach = long.Parse(txtMaSach.Text);
+                var Trasach = QLTV.ChiTietPhieuMuons.SingleOrDefault(p =>
+                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == ParseMaSach);
+
+                if (Trasach != null)
+                {
+                    Trasach.TrangThai = "Đang Mượn";
+                    QLTV.SaveChanges();
+                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon.MaDG + " đang muợn sách " + Trasach.Masach);
+                    loadAdmin();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnPhat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var parseMaPhieuMuon = long.Parse(txtMaPhieu.Text);
+                var ParseMaSach = long.Parse(txtMaSach.Text);
+                var Trasach = QLTV.ChiTietPhieuMuons.SingleOrDefault(p =>
+                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == ParseMaSach);
+
+                if (Trasach != null)
+                {
+                    Trasach.TrangThai = "Phạt";
+                    QLTV.SaveChanges();
+                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon.MaDG + " đang muợn sách " + Trasach.Masach + " đã bị phạt");
+                    loadAdmin();
                 }
             }
             catch (Exception ex)

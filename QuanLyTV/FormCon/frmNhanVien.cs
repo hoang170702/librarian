@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,9 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmNhanVien : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         public frmNhanVien()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace QuanLyTV.FormCon
 
         private void load()
         {
-            var ListNV = from nhanvien in QLTV.NhanVien
+            var ListNV = from nhanvien in QLTV.NhanViens
                          select new
                          {
                              MaNV = nhanvien.MaNV,
@@ -102,7 +105,7 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                var checkSDT = QLTV.NhanVien.SingleOrDefault(p => p.SDTNV == txtsdt.Text);
+                var checkSDT = QLTV.NhanViens.SingleOrDefault(p => p.SDTNV == txtsdt.Text);
                 var AddNV = new NhanVien()
                 {
                     TenNV = txtten.Text,
@@ -123,7 +126,7 @@ namespace QuanLyTV.FormCon
                 }
                 else
                 {
-                    QLTV.NhanVien.Add(AddNV);
+                    QLTV.NhanViens.Add(AddNV);
                     QLTV.SaveChanges();
                     MessageBox.Show("Thêm Thành Công");
                     load();
@@ -149,10 +152,10 @@ namespace QuanLyTV.FormCon
                     if (Notification == DialogResult.Yes)
                     {
                         var Ma = long.Parse(txtma.Text);
-                        var findID = QLTV.NhanVien.SingleOrDefault(p => p.MaNV == Ma);
+                        var findID = QLTV.NhanViens.SingleOrDefault(p => p.MaNV == Ma);
                         if (findID != null)
                         {
-                            QLTV.NhanVien.Remove(findID);
+                            QLTV.NhanViens.Remove(findID);
                             QLTV.SaveChanges();
                             MessageBox.Show("Xóa thành công nhân viên [" + findID.MaNV + "] !!!");
                             load();
@@ -185,7 +188,7 @@ namespace QuanLyTV.FormCon
                     if (Notification == DialogResult.Yes)
                     {
                         var Ma = long.Parse(txtma.Text);
-                        var findID = QLTV.NhanVien.SingleOrDefault(p => p.MaNV == Ma);
+                        var findID = QLTV.NhanViens.SingleOrDefault(p => p.MaNV == Ma);
                         if (findID != null)
                         {
                             findID.TenNV = txtten.Text;
@@ -226,7 +229,7 @@ namespace QuanLyTV.FormCon
                     if (rdbMa.Checked == true)
                     {
                         var ID = long.Parse(txtTimKiem.Text);
-                        var findID = from id in QLTV.NhanVien
+                        var findID = from id in QLTV.NhanViens
                                      where id.MaNV == ID
                                      select new
                                      {
@@ -245,7 +248,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbTen.Checked == true)
                     {
                         var name = txtTimKiem.Text;
-                        var findName = from NAME in QLTV.NhanVien
+                        var findName = from NAME in QLTV.NhanViens
                                        where NAME.TenNV.Contains(name)
                                        select new
                                        {
@@ -264,7 +267,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbSDT.Checked == true)
                     {
                         var sdt = txtTimKiem.Text;
-                        var findPhoneNumber = from phoneNumber in QLTV.NhanVien
+                        var findPhoneNumber = from phoneNumber in QLTV.NhanViens
                                               where phoneNumber.SDTNV.Contains(sdt)
                                               select new
                                               {
@@ -283,7 +286,7 @@ namespace QuanLyTV.FormCon
                     else if (rdbChucVu.Checked == true)
                     {
                         var chucvu = txtTimKiem.Text;
-                        var findPosition = from position in QLTV.NhanVien
+                        var findPosition = from position in QLTV.NhanViens
                                            where position.ChucVu.Contains(chucvu)
                                            select new
                                            {

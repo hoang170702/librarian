@@ -13,7 +13,7 @@ namespace QuanLyTV.FormCha
 {
     public partial class FormMain : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
         public FormMain()
         {
             InitializeComponent();
@@ -28,10 +28,6 @@ namespace QuanLyTV.FormCha
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
         private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new ThongTinCaNhan(TenDN, MK).ShowDialog();

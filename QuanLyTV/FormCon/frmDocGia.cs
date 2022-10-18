@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,8 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmDocGia : Form
     {
-        QLTVEntities QLTV = new QLTVEntities();
+        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
         public frmDocGia()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace QuanLyTV.FormCon
 
         public void load()
         {
-            var ListDG = from dg in QLTV.DocGia
+            var ListDG = from dg in QLTV.DocGias
                          select new
                          {
                              MaDG = dg.MaDG,
@@ -59,7 +61,7 @@ namespace QuanLyTV.FormCon
                     txtGioiTinh.Text = dgv.Rows[e.RowIndex].Cells["GioiTinh"].FormattedValue.ToString();
 
                     var ParseMa = long.Parse(txtma.Text);
-                    var findImage = QLTV.DocGia.FirstOrDefault(p => p.MaDG == ParseMa);
+                    var findImage = QLTV.DocGias.FirstOrDefault(p => p.MaDG == ParseMa);
                     byte[] HinhSach = findImage.HinhDG;
                     if (findImage.HinhDG == null)
                     {
@@ -139,7 +141,7 @@ namespace QuanLyTV.FormCon
                         GioiTinh = txtGioiTinh.Text,
                         HinhDG = imagetobyarray(pictureDG.Image)
                     };
-                    QLTV.DocGia.Add(AddDG);
+                    QLTV.DocGias.Add(AddDG);
                     QLTV.SaveChanges();
                     MessageBox.Show("Thêm Thành Công!!!");
                     load();
@@ -166,7 +168,7 @@ namespace QuanLyTV.FormCon
                     if (Notification == DialogResult.Yes)
                     {
                         var parseMaDG = long.Parse(txtma.Text);
-                        var findID = QLTV.DocGia.SingleOrDefault(p => p.MaDG == parseMaDG);
+                        var findID = QLTV.DocGias.SingleOrDefault(p => p.MaDG == parseMaDG);
                         if (findID != null)
                         {
                             findID.TenDG = txtten.Text;
@@ -199,10 +201,10 @@ namespace QuanLyTV.FormCon
                     if (Notification == DialogResult.Yes)
                     {
                         var parseMaDG = long.Parse(txtma.Text);
-                        var findID = QLTV.DocGia.SingleOrDefault(p => p.MaDG == parseMaDG);
+                        var findID = QLTV.DocGias.SingleOrDefault(p => p.MaDG == parseMaDG);
                         if (findID != null)
                         {
-                            QLTV.DocGia.Remove(findID);
+                            QLTV.DocGias.Remove(findID);
                             QLTV.SaveChanges();
                             MessageBox.Show("Đã Xóa độc giả có mã độc giả [" + findID.MaDG + "] thành công!!!");
                             load();
@@ -234,7 +236,7 @@ namespace QuanLyTV.FormCon
                     if (rdbMa.Checked == true)
                     {
                         var parseMaDG = long.Parse(txtTimKiem.Text);
-                        var findDG = from dg in QLTV.DocGia
+                        var findDG = from dg in QLTV.DocGias
                                      where dg.MaDG == parseMaDG
                                      select new
                                      {
@@ -247,7 +249,7 @@ namespace QuanLyTV.FormCon
                     // tim ten doc gia
                     else if (rdbTen.Checked == true)
                     {
-                        var findTen = from Tendg in QLTV.DocGia
+                        var findTen = from Tendg in QLTV.DocGias
                                       where Tendg.TenDG.Contains(txtTimKiem.Text)
                                       select new
                                       {

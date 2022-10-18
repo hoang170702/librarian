@@ -17,7 +17,7 @@ namespace QuanLyTV
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sach()
         {
-            this.ChiTietPhieuMuon = new HashSet<ChiTietPhieuMuon>();
+            this.ChiTietPhieuMuons = new HashSet<ChiTietPhieuMuon>();
         }
     
         public long Masach { get; set; }
@@ -30,7 +30,7 @@ namespace QuanLyTV
         public byte[] HinhAnhSach { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuon { get; set; }
+        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
         public virtual NXB NXB { get; set; }
         public virtual TacGia TacGia { get; set; }
         public virtual TheLoai TheLoai { get; set; }
