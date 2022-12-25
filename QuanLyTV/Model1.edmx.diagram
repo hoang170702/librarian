@@ -4,25 +4,35 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="65a46c69eabf4695b5567535870b2c6c" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyThuVienModel.Account" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.ChiTietPhieuMuon" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.DocGia" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.NhanVien" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.NXB" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.PhieuMuon" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.Sach" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TacGia" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="QuanLyThuVienModel.TheLoai" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__Account__MaDG__4CA06362" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__ChiTietPh__MaPhi__5070F446" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__ChiTietPh__Masac__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__PhieuMuon__MaDG__4D94879B" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__PhieuMuon__MaNV__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__Sach__MaNXB__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__Sach__MaTG__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="QuanLyThuVienModel.FK__Sach__MaTL__4BAC3F29" ManuallyRouted="false" />
+      <Diagram DiagramId="467069acffe9402db4fe796b07eb5651" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.Account" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.ChiTietPhieuMuon" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.ChucVu" Width="1.5" PointX="1.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.DocGia" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.LoaiDocGia" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.NhanVien" Width="1.5" PointX="0.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.NXB" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.PhieuMuon" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.Sach" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.TacGia" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.TheLoai" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__Account__MaDG__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__ChiTietPh__MaPhi__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__ChiTietPh__MaPhi__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__ChiTietPh__Masac__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__NhanVien__MaChuc__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__DocGia__MaLoaiDo__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__PhieuMuon__MaDG__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__PhieuMuon__MaNV__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__Sach__MaNXB__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__Sach__MaTG__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__Sach__MaTL__59FA5E80" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.Phat" Width="1.5" PointX="3" PointY="17.875" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.PhieuPhat" Width="1.5" PointX="5.25" PointY="11.625" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__PhieuPhat__MaPha__72C60C4A" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__PhieuPhat__MaPhi__71D1E811" />
+        <EntityTypeShape EntityType="QuanLyCHCTSModel.sysdiagram" Width="1.5" PointX="5.375" PointY="5.75" />
+        <AssociationConnector Association="QuanLyCHCTSModel.FK__PhieuPhat__02FC7413" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

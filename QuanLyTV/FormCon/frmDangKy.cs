@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmDangKy : Form
     {
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
 
         public frmDangKy()
         {
@@ -25,23 +26,33 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                int ma = int.Parse(txtma.Text);
-                var checkMaDG = QLTV.DocGias.SingleOrDefault(p => p.MaDG == ma);
+                var checkMaDG = QLTV.DocGias.SingleOrDefault(p => p.MaDG == txtma.Text);
                 var checkTK = QLTV.Accounts.SingleOrDefault(p => p.TenTK == txtTen.Text);
+                var expectedPasswordPattern = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
                 if (checkTK == null)
                 {
                     if (checkMaDG != null)
                     {
-                        var Account = new Account()
+                        if (txtMK.Text.Length < 6 || txtMK.Text.Length > 18)
                         {
-                            TenTK = txtTen.Text,
-                            MatKhau = txtMK.Text,
-                            MaDG = ma,
-                        };
-                        QLTV.Accounts.Add(Account);
-                        QLTV.SaveChanges();
-                        MessageBox.Show("Đăng Ký Thành Công!!!");
-
+                            MessageBox.Show("Mật khẩu phải từ 6 - 18 kí tự!!!");
+                        }
+                        else if (expectedPasswordPattern.IsMatch(txtMK.Text) == false)
+                        {
+                            MessageBox.Show("Mật khẩu phải có chữ thường,chữ hoa, kí tự đặc biệt, số!!!");
+                        }
+                        else
+                        {
+                            var Account = new Account()
+                            {
+                                TenTK = txtTen.Text,
+                                MatKhau = txtMK.Text,
+                                MaDG = txtma.Text,
+                            };
+                            QLTV.Accounts.Add(Account);
+                            QLTV.SaveChanges();
+                            MessageBox.Show("Đăng Ký Thành Công!!!");
+                        }
                     }
                     else
                     {

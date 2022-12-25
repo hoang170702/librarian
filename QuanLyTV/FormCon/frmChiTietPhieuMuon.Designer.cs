@@ -38,6 +38,7 @@
             this.txtMaPhieuMuon = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
@@ -48,7 +49,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtTongTien = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -149,6 +151,16 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Ngày Mượn";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(6, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mã Sách";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -193,6 +205,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.txtTongTien);
             this.panel2.Controls.Add(this.btnHuy);
             this.panel2.Controls.Add(this.paChucnang);
             this.panel2.Location = new System.Drawing.Point(704, 1);
@@ -202,7 +216,7 @@
             // 
             // btnHuy
             // 
-            this.btnHuy.Location = new System.Drawing.Point(99, 283);
+            this.btnHuy.Location = new System.Drawing.Point(99, 302);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(107, 36);
             this.btnHuy.TabIndex = 1;
@@ -215,14 +229,14 @@
             this.paChucnang.Controls.Add(this.btnXoa);
             this.paChucnang.Controls.Add(this.btnSua);
             this.paChucnang.Controls.Add(this.btnThem);
-            this.paChucnang.Location = new System.Drawing.Point(57, 28);
+            this.paChucnang.Location = new System.Drawing.Point(55, 82);
             this.paChucnang.Name = "paChucnang";
-            this.paChucnang.Size = new System.Drawing.Size(200, 228);
+            this.paChucnang.Size = new System.Drawing.Size(200, 214);
             this.paChucnang.TabIndex = 0;
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(42, 175);
+            this.btnXoa.Location = new System.Drawing.Point(42, 160);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(107, 36);
             this.btnXoa.TabIndex = 2;
@@ -232,7 +246,7 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(42, 100);
+            this.btnSua.Location = new System.Drawing.Point(42, 91);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(107, 36);
             this.btnSua.TabIndex = 1;
@@ -242,7 +256,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(42, 24);
+            this.btnThem.Location = new System.Drawing.Point(44, 23);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(107, 36);
             this.btnThem.TabIndex = 0;
@@ -250,15 +264,22 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // label2
+            // txtTongTien
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mã Sách";
+            this.txtTongTien.Location = new System.Drawing.Point(55, 36);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Size = new System.Drawing.Size(200, 26);
+            this.txtTongTien.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(108, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Tổng tiền";
             // 
             // frmChiTietPhieuMuon
             // 
@@ -278,6 +299,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.paChucnang.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -305,5 +327,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTongTien;
     }
 }

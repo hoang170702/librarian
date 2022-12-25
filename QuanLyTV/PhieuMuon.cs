@@ -18,15 +18,21 @@ namespace QuanLyTV
         public PhieuMuon()
         {
             this.ChiTietPhieuMuons = new HashSet<ChiTietPhieuMuon>();
+            this.ChiTietPhieuMuons1 = new HashSet<ChiTietPhieuMuon>();
+            this.PhieuPhats = new HashSet<PhieuPhat>();
         }
     
         public long MaPhieuMuon { get; set; }
-        public Nullable<long> MaDG { get; set; }
-        public Nullable<long> MaNV { get; set; }
+        public string MaDG { get; set; }
+        public string MaNV { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons1 { get; set; }
         public virtual DocGia DocGia { get; set; }
         public virtual NhanVien NhanVien { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuPhat> PhieuPhats { get; set; }
     }
 }

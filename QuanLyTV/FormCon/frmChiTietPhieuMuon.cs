@@ -13,25 +13,53 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmChiTietPhieuMuon : Form
     {
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
         public frmChiTietPhieuMuon()
         {
             InitializeComponent();
         }
-        string tenDN; long MaPhieuMuon;
-        public frmChiTietPhieuMuon(string tenDN, long MaPhieuMuon)
+        string ten; long MaPhieuMuon; string loaiDocGia;
+        public frmChiTietPhieuMuon(string ten, long MaPhieuMuon, string loaiDocGia)
         {
             InitializeComponent();
-            this.tenDN = tenDN;
+            this.ten = ten;
             this.MaPhieuMuon = MaPhieuMuon;
+            this.loaiDocGia = loaiDocGia;
             txtMaPhieuMuon.Text = MaPhieuMuon.ToString();
             txtMaPhieuMuon.ReadOnly = true;
+            dtpNgayMuon.Enabled = false;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            txtTongTien.ReadOnly = true;
+        }
+
+        private void loadTongTien()
+        {
+            int sc = dgv.Rows.Count;
+            double? tongtien = 0;
+
+            for (int i = 0; i < sc; i++)
+            {
+                var ngayMuon = dgv.Rows[i].Cells["NgayMuon"].Value.ToString();
+                var NgayTra = dgv.Rows[i].Cells["NgayTra"].Value.ToString();
+
+
+                DateTime ngaymuon = Convert.ToDateTime(ngayMuon);
+                DateTime ngaytra = Convert.ToDateTime(NgayTra);
+                TimeSpan Time = ngaytra - ngaymuon;
+                int TongSoNgay = Time.Days;
+
+
+                tongtien += double.Parse(dgv.Rows[i].Cells["GiaChoThue"].Value.ToString()) * double.Parse(TongSoNgay.ToString());
+            }
+            txtTongTien.Text = tongtien.ToString();
         }
         private void loadAdmin()
         {
+
+
             var DsCTPM = from ctpm in QLTV.ChiTietPhieuMuons
                          where ctpm.MaPhieuMuon == MaPhieuMuon
 
@@ -42,8 +70,13 @@ namespace QuanLyTV.FormCon
                              NgayMuon = ctpm.NgayMuon,
                              NgayTra = ctpm.NgayTra,
                              TrangThai = ctpm.TrangThai,
+                             GiaChoThue = ctpm.Sach.GiaChoThue,
                          };
+
             dgv.DataSource = DsCTPM.ToList();
+            loadTongTien();
+
+
         }
         private void loadUser()
         {
@@ -58,13 +91,14 @@ namespace QuanLyTV.FormCon
                              TrangThai = ctpm.TrangThai,
                          };
             dgv.DataSource = DsCTPM.ToList();
+            loadTongTien();
             paChucnang.Hide();
         }
         private void frmChiTietPhieuMuon_Load(object sender, EventArgs e)
         {
             try
             {
-                if (tenDN != "admin")
+                if (loaiDocGia == "2")
                 {
                     loadUser();
                 }
@@ -111,25 +145,36 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                var parseMaSach = long.Parse(txtMaSach.Text);
+
+                var sach = txtMaSach.Text;
+                var TrangThai = QLTV.Saches.SingleOrDefault(p => p.Masach == sach);
                 if (dtpNgayMuon.Value.Date >= dtpNgayTra.Value.Date)
                 {
                     MessageBox.Show("Ngày mượn không thể nhỏ hơn ngày trả");
                 }
                 else
                 {
-                    var AddCTPM = new ChiTietPhieuMuon()
+                    if (TrangThai.TrangThaiSach == "Còn")
                     {
-                        MaPhieuMuon = MaPhieuMuon,
-                        Masach = parseMaSach,
-                        NgayMuon = dtpNgayMuon.Value.Date,
-                        NgayTra = dtpNgayTra.Value.Date,
-                        TrangThai = "Đang Mượn"
-                    };
-                    QLTV.ChiTietPhieuMuons.Add(AddCTPM);
-                    QLTV.SaveChanges();
-                    MessageBox.Show("Thêm Sách vào phiếu mượn " + MaPhieuMuon.ToString() + " thành công");
-                    loadAdmin();
+                        var AddCTPM = new ChiTietPhieuMuon()
+                        {
+                            MaPhieuMuon = MaPhieuMuon,
+                            Masach = txtMaSach.Text,
+                            NgayMuon = dtpNgayMuon.Value.Date,
+                            NgayTra = dtpNgayTra.Value.Date,
+                            TrangThai = "Đang Mượn"
+                        };
+                        QLTV.ChiTietPhieuMuons.Add(AddCTPM);
+                        TrangThai.TrangThaiSach = "Không còn";
+                        QLTV.SaveChanges();
+                        MessageBox.Show("Thêm Sách vào phiếu mượn " + MaPhieuMuon.ToString() + " thành công");
+                        loadAdmin();
+                    }
+                    else if (TrangThai.TrangThaiSach == "Không còn")
+                    {
+                        MessageBox.Show("Sách đã được khách hàng khác thuê!!!");
+                    }
+
                 }
 
             }
@@ -146,16 +191,21 @@ namespace QuanLyTV.FormCon
                 var thongbao = MessageBox.Show("Bạn có muốn Sửa", "Thong Bao", MessageBoxButtons.YesNo);
                 if (thongbao == DialogResult.Yes)
                 {
-                    var parseMaSach = long.Parse(txtMaSach.Text);
-                    var findID = QLTV.ChiTietPhieuMuons.SingleOrDefault(p => p.MaPhieuMuon == MaPhieuMuon && p.Masach == parseMaSach);
-                    if (findID != null)
+                    if (txtMaSach.Text == "" || txtMaPhieuMuon.Text == "")
                     {
-                        findID.NgayMuon = dtpNgayMuon.Value.Date;
-                        findID.NgayTra = dtpNgayTra.Value.Date;
+                        MessageBox.Show("Vui lòng click vào phiếu mượn cần sửa");
                     }
-                    QLTV.SaveChanges();
-                    MessageBox.Show("Sửa thành công");
-                    loadAdmin();
+                    else
+                    {
+                        var findID = QLTV.ChiTietPhieuMuons.SingleOrDefault(p => p.MaPhieuMuon == MaPhieuMuon && p.Masach == txtMaSach.Text);
+                        if (findID != null)
+                        {
+                            findID.NgayTra = dtpNgayTra.Value.Date;
+                        }
+                        QLTV.SaveChanges();
+                        MessageBox.Show("Sửa thành công");
+                        loadAdmin();
+                    }
                 }
 
             }
@@ -172,8 +222,7 @@ namespace QuanLyTV.FormCon
                 var thongbao = MessageBox.Show("Bạn có muốn xóa", "Thong Bao", MessageBoxButtons.YesNo);
                 if (thongbao == DialogResult.Yes)
                 {
-                    var parseMaSach = long.Parse(txtMaSach.Text);
-                    var findID = QLTV.ChiTietPhieuMuons.SingleOrDefault(p => p.MaPhieuMuon == MaPhieuMuon && p.Masach == parseMaSach);
+                    var findID = QLTV.ChiTietPhieuMuons.SingleOrDefault(p => p.MaPhieuMuon == MaPhieuMuon && p.Masach == txtMaSach.Text);
                     if (findID != null)
                     {
                         QLTV.ChiTietPhieuMuons.Remove(findID);
@@ -193,6 +242,8 @@ namespace QuanLyTV.FormCon
         {
             txtMaSach.Text = "";
             txtTimKiem.Text = "";
+            dtpNgayTra.Text = DateTime.Today.Date.ToString();
+            dtpNgayMuon.Text = DateTime.Today.Date.ToString();
             loadAdmin();
         }
 
@@ -206,9 +257,8 @@ namespace QuanLyTV.FormCon
                 }
                 else
                 {
-                    var parseMaSach = long.Parse(txtTimKiem.Text);
                     var DsCTPM = from ctpm in QLTV.ChiTietPhieuMuons
-                                 where ctpm.MaPhieuMuon == MaPhieuMuon && ctpm.Masach == parseMaSach
+                                 where ctpm.MaPhieuMuon == MaPhieuMuon && ctpm.Masach.Contains(txtTimKiem.Text)
                                  select new
                                  {
                                      MaPhieuMuon = ctpm.MaPhieuMuon,
@@ -216,6 +266,7 @@ namespace QuanLyTV.FormCon
                                      NgayMuon = ctpm.NgayMuon,
                                      NgayTra = ctpm.NgayTra,
                                      TrangThai = ctpm.TrangThai,
+                                     GiaChoThue = ctpm.Sach.GiaChoThue,
                                  };
                     dgv.DataSource = DsCTPM.ToList();
                 }
@@ -230,10 +281,8 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-
-                var parseMaSach = long.Parse(txtTimKiem.Text);
                 var DsCTPM = from ctpm in QLTV.ChiTietPhieuMuons
-                             where ctpm.MaPhieuMuon == MaPhieuMuon && ctpm.Masach == parseMaSach
+                             where ctpm.MaPhieuMuon == MaPhieuMuon && ctpm.Masach.Contains(txtTimKiem.Text)
                              select new
                              {
                                  MaPhieuMuon = ctpm.MaPhieuMuon,
@@ -241,6 +290,7 @@ namespace QuanLyTV.FormCon
                                  NgayMuon = ctpm.NgayMuon,
                                  NgayTra = ctpm.NgayTra,
                                  TrangThai = ctpm.TrangThai,
+                                 GiaChoThue = ctpm.Sach.GiaChoThue,
                              };
                 dgv.DataSource = DsCTPM.ToList();
 

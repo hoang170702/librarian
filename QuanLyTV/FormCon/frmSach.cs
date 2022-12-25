@@ -16,7 +16,8 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmSach : Form
     {
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
+
 
         public frmSach()
         {
@@ -31,20 +32,50 @@ namespace QuanLyTV.FormCon
                            {
                                MaSach = Lsach.Masach,
                                TenSach = Lsach.Tensach,
-                               GiaSach = Lsach.Gia,
-                               SoLuong = Lsach.Soluong,
-                               MaTheLoai = Lsach.TheLoai.MaTL,
-                               MaTacGia = Lsach.MaTG,
-                               MaNXB = Lsach.MaNXB,
+                               GiaSach = Lsach.GiaSach,
+                               GiaChoThue = Lsach.GiaChoThue,
+                               TheLoai = Lsach.TheLoai.TenTL,
+                               TacGia = Lsach.TacGia.TenTG,
+                               NXB = Lsach.NXB.TenNXB,
+                               TrangThaiSach = Lsach.TrangThaiSach,
+
                            };
             dgv.DataSource = listSach.ToList();
-            txtma.ReadOnly = true;
+        }
+
+        private void loadCbbTheLoai()
+        {
+            var ListCBB = QLTV.TheLoais.ToList();
+            cbbTheLoai.DisplayMember = "TenTL";
+            cbbTheLoai.ValueMember = "MaTL";
+            cbbTheLoai.DataSource = ListCBB;
+        }
+
+        private void loadCbbTacGia()
+        {
+            var ListCBB = QLTV.TacGias.ToList();
+            cbbTacGia.DisplayMember = "TenTG";
+            cbbTacGia.ValueMember = "MaTG";
+            cbbTacGia.DataSource = ListCBB;
+        }
+
+
+        private void loadCbbNXB()
+        {
+
+            var ListCBB = QLTV.NXBs.ToList();
+            cbbNXB.DisplayMember = "TenNXB";
+            cbbNXB.ValueMember = "MaNXB";
+            cbbNXB.DataSource = ListCBB;
         }
         private void frmSach_Load(object sender, EventArgs e)
         {
             try
             {
                 load();
+                loadCbbTheLoai();
+                loadCbbTacGia();
+                loadCbbNXB();
             }
             catch (Exception ex)
             {
@@ -79,12 +110,12 @@ namespace QuanLyTV.FormCon
                     txtma.Text = dgv.Rows[e.RowIndex].Cells["MaSach"].FormattedValue.ToString();
                     txtTen.Text = dgv.Rows[e.RowIndex].Cells["TenSach"].FormattedValue.ToString();
                     txtGia.Text = dgv.Rows[e.RowIndex].Cells["GiaSach"].FormattedValue.ToString();
-                    txtSoLuong.Text = dgv.Rows[e.RowIndex].Cells["SoLuong"].FormattedValue.ToString();
-                    txtTheLoai.Text = dgv.Rows[e.RowIndex].Cells["MaTheLoai"].FormattedValue.ToString();
-                    txtMaTG.Text = dgv.Rows[e.RowIndex].Cells["MaTacGia"].FormattedValue.ToString();
-                    txtMaNXB.Text = dgv.Rows[e.RowIndex].Cells["MaNXB"].FormattedValue.ToString();
-                    var ParseMa = long.Parse(txtma.Text);
-                    var findImage = QLTV.Saches.FirstOrDefault(p => p.Masach == ParseMa);
+                    txtGiaChoThue.Text = dgv.Rows[e.RowIndex].Cells["GiaChoThue"].FormattedValue.ToString();
+                    cbbTheLoai.Text = dgv.Rows[e.RowIndex].Cells["TheLoai"].FormattedValue.ToString();
+                    cbbTacGia.Text = dgv.Rows[e.RowIndex].Cells["TacGia"].FormattedValue.ToString();
+                    cbbNXB.Text = dgv.Rows[e.RowIndex].Cells["NXB"].FormattedValue.ToString();
+
+                    var findImage = QLTV.Saches.FirstOrDefault(p => p.Masach == txtma.Text);
                     byte[] HinhSach = findImage.HinhAnhSach;
                     if (findImage.HinhAnhSach == null)
                     {
@@ -115,27 +146,30 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                if (txtTen.Text == "" || txtGia.Text == "" || txtSoLuong.Text == "" || txtTheLoai.Text == "" || txtMaNXB.Text == "" || txtMaTG.Text == "")
+
+                if (txtTen.Text == "" || txtGia.Text == "" || txtGiaChoThue.Text == "" || cbbTheLoai.Text == "" || cbbNXB.Text == "" || cbbTacGia.Text == "" || txtGiaChoThue.Text == "")
                 {
                     throw new Exception("Vui lòng điền đầy đủ thông tin sách");
                 }
                 else
                 {
                     var parseGia = float.Parse(txtGia.Text);
-                    var parseSoLuong = int.Parse(txtSoLuong.Text);
-                    var parseMaTheLoai = long.Parse(txtTheLoai.Text);
-                    var parseMaNXB = long.Parse(txtMaNXB.Text);
-                    var parseMaTG = long.Parse(txtMaTG.Text);
+                    var parseGiaChoThue = int.Parse(txtGiaChoThue.Text);
+                    var AddMaTheLoai = cbbTheLoai.SelectedItem as TheLoai;
+                    var AddMaNXB = cbbNXB.SelectedItem as NXB;
+                    var AddMaTG = cbbTacGia.SelectedItem as TacGia;
 
                     var addSach = new Sach()
                     {
+                        Masach = "S" + txtma.Text,
                         Tensach = txtTen.Text,
-                        Gia = parseGia,
-                        Soluong = parseSoLuong,
-                        MaTL = parseMaTheLoai,
-                        MaNXB = parseMaNXB,
-                        MaTG = parseMaTG,
-                        HinhAnhSach = imagetobyarray(pictureBox1.Image)
+                        GiaSach = parseGia,
+                        GiaChoThue = parseGiaChoThue,
+                        MaTL = AddMaTheLoai.MaTL,
+                        MaNXB = AddMaNXB.MaNXB,
+                        MaTG = AddMaTG.MaTG,
+                        HinhAnhSach = imagetobyarray(pictureBox1.Image),
+                        TrangThaiSach = "Còn",
                     };
                     QLTV.Saches.Add(addSach);
                     QLTV.SaveChanges();
@@ -148,6 +182,7 @@ namespace QuanLyTV.FormCon
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
@@ -162,8 +197,8 @@ namespace QuanLyTV.FormCon
                     var Notification = MessageBox.Show("Bạn có chắc muốn xóa ?", "Thông báo", MessageBoxButtons.YesNo);
                     if (Notification == DialogResult.Yes)
                     {
-                        var parseMaSach = long.Parse(txtma.Text);
-                        var findMaSach = QLTV.Saches.SingleOrDefault(p => p.Masach == parseMaSach);
+
+                        var findMaSach = QLTV.Saches.SingleOrDefault(p => p.Masach == txtma.Text);
                         if (findMaSach != null)
                         {
                             QLTV.Saches.Remove(findMaSach);
@@ -182,13 +217,14 @@ namespace QuanLyTV.FormCon
 
         private void reset()
         {
+
             txtma.Text = "";
             txtTen.Text = "";
             txtGia.Text = "";
-            txtSoLuong.Text = "";
-            txtTheLoai.Text = "";
-            txtMaNXB.Text = "";
-            txtMaTG.Text = "";
+            txtGiaChoThue.Text = "";
+            cbbTheLoai.Text = "";
+            cbbNXB.Text = "";
+            cbbTacGia.Text = "";
             txtTimKiem.Text = "";
             pictureBox1.Image = new Bitmap(Application.StartupPath + @"\\image\\NoImage.png");
             rdbGia.Checked = false;
@@ -217,7 +253,7 @@ namespace QuanLyTV.FormCon
             {
                 if (txtma.Text == "")
                 {
-                    MessageBox.Show("Vui lòng Click vào sách muốn xóa!!!");
+                    MessageBox.Show("Vui lòng Click vào sách muốn sửa!!!");
                 }
                 else
                 {
@@ -225,21 +261,20 @@ namespace QuanLyTV.FormCon
                     if (Notification == DialogResult.Yes)
                     {
                         var parseGia = float.Parse(txtGia.Text);
-                        var parseSoLuong = int.Parse(txtSoLuong.Text);
-                        var parseMaTheLoai = long.Parse(txtTheLoai.Text);
-                        var parseMaNXB = long.Parse(txtMaNXB.Text);
-                        var parseMaTG = long.Parse(txtMaTG.Text);
-                        var parseMaSach = long.Parse(txtma.Text);
-                        var findMaSach = QLTV.Saches.SingleOrDefault(p => p.Masach == parseMaSach);
+                        var parseGiaChoThue = int.Parse(txtGiaChoThue.Text);
+                        var AddMaTheLoai = cbbTheLoai.SelectedItem as TheLoai;
+                        var AddMaNXB = cbbNXB.SelectedItem as NXB;
+                        var AddMaTG = cbbTacGia.SelectedItem as TacGia;
+                        var findMaSach = QLTV.Saches.SingleOrDefault(p => p.Masach == txtma.Text);
 
                         if (findMaSach != null)
                         {
                             findMaSach.Tensach = txtTen.Text;
-                            findMaSach.Gia = parseGia;
-                            findMaSach.Soluong = parseSoLuong;
-                            findMaSach.MaTL = parseMaTheLoai;
-                            findMaSach.MaTG = parseMaTG;
-                            findMaSach.MaNXB = parseMaNXB;
+                            findMaSach.GiaSach = parseGia;
+                            findMaSach.GiaChoThue = parseGiaChoThue;
+                            findMaSach.MaTL = AddMaTheLoai.MaTL;
+                            findMaSach.MaTG = AddMaTG.MaTG;
+                            findMaSach.MaNXB = AddMaNXB.MaNXB;
                             findMaSach.HinhAnhSach = imagetobyarray(pictureBox1.Image);
                             QLTV.SaveChanges();
                             MessageBox.Show("Cập nhật thành công");
@@ -247,7 +282,6 @@ namespace QuanLyTV.FormCon
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -274,18 +308,18 @@ namespace QuanLyTV.FormCon
                     // Tim Ma Sach
                     if (rdbMa.Checked == true)
                     {
-                        var parseMa = long.Parse(txtTimKiem.Text);
+                        var MaSach = txtTimKiem.Text;
                         var findMaSach = from fMaSach in QLTV.Saches
-                                         where fMaSach.Masach == parseMa
+                                         where fMaSach.Masach.Contains(MaSach)
                                          select new
                                          {
                                              MaSach = fMaSach.Masach,
                                              TenSach = fMaSach.Tensach,
-                                             GiaSach = fMaSach.Gia,
-                                             SoLuong = fMaSach.Soluong,
-                                             MaTheLoai = fMaSach.TheLoai.MaTL,
-                                             MaTacGia = fMaSach.MaTG,
-                                             MaNXB = fMaSach.MaNXB,
+                                             GiaSach = fMaSach.GiaSach,
+                                             GiaChoThue = fMaSach.GiaChoThue,
+                                             TheLoai = fMaSach.TheLoai.TenTL,
+                                             TacGia = fMaSach.TacGia.TenTG,
+                                             NXB = fMaSach.NXB.TenNXB,
                                          };
                         dgv.DataSource = findMaSach.ToList();
                     }
@@ -294,16 +328,16 @@ namespace QuanLyTV.FormCon
                     {
                         var parseGia = float.Parse(txtTimKiem.Text);
                         var findGiaSach = from fGiaSach in QLTV.Saches
-                                          where fGiaSach.Gia <= parseGia
+                                          where fGiaSach.GiaSach <= parseGia
                                           select new
                                           {
                                               MaSach = fGiaSach.Masach,
                                               TenSach = fGiaSach.Tensach,
-                                              GiaSach = fGiaSach.Gia,
-                                              SoLuong = fGiaSach.Soluong,
-                                              MaTheLoai = fGiaSach.TheLoai.MaTL,
-                                              MaTacGia = fGiaSach.MaTG,
-                                              MaNXB = fGiaSach.MaNXB,
+                                              GiaSach = fGiaSach.GiaSach,
+                                              GiaChoThue = fGiaSach.GiaChoThue,
+                                              TheLoai = fGiaSach.TheLoai.TenTL,
+                                              TacGia = fGiaSach.TacGia.TenTG,
+                                              NXB = fGiaSach.NXB.TenNXB,
                                           };
                         dgv.DataSource = findGiaSach.ToList();
                     }
@@ -316,65 +350,65 @@ namespace QuanLyTV.FormCon
                                           {
                                               MaSach = fTenSach.Masach,
                                               TenSach = fTenSach.Tensach,
-                                              GiaSach = fTenSach.Gia,
-                                              SoLuong = fTenSach.Soluong,
-                                              MaTheLoai = fTenSach.TheLoai.MaTL,
-                                              MaTacGia = fTenSach.MaTG,
-                                              MaNXB = fTenSach.MaNXB,
+                                              GiaSach = fTenSach.GiaSach,
+                                              GiaChoThue = fTenSach.GiaChoThue,
+                                              TheLoai = fTenSach.TheLoai.TenTL,
+                                              TacGia = fTenSach.TacGia.TenTG,
+                                              NXB = fTenSach.NXB.TenNXB,
                                           };
                         dgv.DataSource = findTenSach.ToList();
                     }
-                    // Tim Ma The Loai
+                    // Tim  The Loai
                     else if (rdbTheLoai.Checked == true)
                     {
-                        var parseMaTheLoai = long.Parse(txtTimKiem.Text);
+
                         var findMaTheLoai = from fMaTheLoai in QLTV.Saches
-                                            where fMaTheLoai.MaTL == parseMaTheLoai
+                                            where fMaTheLoai.TheLoai.TenTL.Contains(txtTimKiem.Text)
                                             select new
                                             {
                                                 MaSach = fMaTheLoai.Masach,
                                                 TenSach = fMaTheLoai.Tensach,
-                                                GiaSach = fMaTheLoai.Gia,
-                                                SoLuong = fMaTheLoai.Soluong,
-                                                MaTheLoai = fMaTheLoai.TheLoai.MaTL,
-                                                MaTacGia = fMaTheLoai.MaTG,
-                                                MaNXB = fMaTheLoai.MaNXB,
+                                                GiaSach = fMaTheLoai.GiaSach,
+                                                GiaChoThue = fMaTheLoai.GiaChoThue,
+                                                TheLoai = fMaTheLoai.TheLoai.TenTL,
+                                                TacGia = fMaTheLoai.TacGia.TenTG,
+                                                NXB = fMaTheLoai.NXB.TenNXB,
                                             };
                         dgv.DataSource = findMaTheLoai.ToList();
                     }
-                    //Tim Ma Tac Gia
+                    //Tim  Tac Gia
                     else if (rdbTacGia.Checked == true)
                     {
-                        var parseMaTacGia = long.Parse(txtTimKiem.Text);
+
                         var findMaTacGia = from fMaTG in QLTV.Saches
-                                           where fMaTG.MaTG == parseMaTacGia
+                                           where fMaTG.TacGia.TenTG.Contains(txtTimKiem.Text)
                                            select new
                                            {
                                                MaSach = fMaTG.Masach,
                                                TenSach = fMaTG.Tensach,
-                                               GiaSach = fMaTG.Gia,
-                                               SoLuong = fMaTG.Soluong,
-                                               MaTheLoai = fMaTG.TheLoai.MaTL,
-                                               MaTacGia = fMaTG.MaTG,
-                                               MaNXB = fMaTG.MaNXB,
+                                               GiaSach = fMaTG.GiaSach,
+                                               GiaChoThue = fMaTG.GiaChoThue,
+                                               TheLoai = fMaTG.TheLoai.TenTL,
+                                               TacGia = fMaTG.TacGia.TenTG,
+                                               NXB = fMaTG.NXB.TenNXB,
                                            };
                         dgv.DataSource = findMaTacGia.ToList();
                     }
-                    //Tim Ma NXB
+                    //Tim  NXB
                     else if (rdbNXB.Checked == true)
                     {
-                        var parseMaNXB = long.Parse(txtTimKiem.Text);
+
                         var findMaNXB = from fMaNXB in QLTV.Saches
-                                        where fMaNXB.MaNXB == parseMaNXB
+                                        where fMaNXB.NXB.TenNXB.Contains(txtTimKiem.Text)
                                         select new
                                         {
                                             MaSach = fMaNXB.Masach,
                                             TenSach = fMaNXB.Tensach,
-                                            GiaSach = fMaNXB.Gia,
-                                            SoLuong = fMaNXB.Soluong,
-                                            MaTheLoai = fMaNXB.TheLoai.MaTL,
-                                            MaTacGia = fMaNXB.MaTG,
-                                            MaNXB = fMaNXB.MaNXB,
+                                            GiaSach = fMaNXB.GiaSach,
+                                            GiaChoThue = fMaNXB.GiaChoThue,
+                                            TheLoai = fMaNXB.TheLoai.TenTL,
+                                            TacGia = fMaNXB.TacGia.TenTG,
+                                            NXB = fMaNXB.NXB.TenNXB,
                                         };
                         dgv.DataSource = findMaNXB.ToList();
                     }
@@ -386,5 +420,7 @@ namespace QuanLyTV.FormCon
                 MessageBox.Show(ex.Message);
             }
         }
+
+
     }
 }

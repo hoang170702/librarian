@@ -33,7 +33,6 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.txtChucVu = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtsdt = new System.Windows.Forms.TextBox();
@@ -58,6 +57,10 @@
             this.rdbTen = new System.Windows.Forms.RadioButton();
             this.rdbMa = new System.Windows.Forms.RadioButton();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.cbbChucVu = new System.Windows.Forms.ComboBox();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtLuong = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -69,6 +72,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.grbTimKiem.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -106,6 +110,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.panel11);
             this.panel4.Controls.Add(this.panel8);
             this.panel4.Controls.Add(this.panel9);
             this.panel4.Controls.Add(this.panel7);
@@ -118,19 +123,12 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel8.Controls.Add(this.txtChucVu);
+            this.panel8.Controls.Add(this.cbbChucVu);
             this.panel8.Controls.Add(this.label3);
-            this.panel8.Location = new System.Drawing.Point(324, 78);
+            this.panel8.Location = new System.Drawing.Point(228, 78);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(292, 56);
+            this.panel8.Size = new System.Drawing.Size(248, 56);
             this.panel8.TabIndex = 3;
-            // 
-            // txtChucVu
-            // 
-            this.txtChucVu.Location = new System.Drawing.Point(112, 18);
-            this.txtChucVu.Name = "txtChucVu";
-            this.txtChucVu.Size = new System.Drawing.Size(177, 26);
-            this.txtChucVu.TabIndex = 5;
             // 
             // label3
             // 
@@ -147,16 +145,16 @@
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel9.Controls.Add(this.txtsdt);
             this.panel9.Controls.Add(this.label4);
-            this.panel9.Location = new System.Drawing.Point(324, 9);
+            this.panel9.Location = new System.Drawing.Point(228, 9);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(292, 56);
+            this.panel9.Size = new System.Drawing.Size(248, 56);
             this.panel9.TabIndex = 2;
             // 
             // txtsdt
             // 
             this.txtsdt.Location = new System.Drawing.Point(112, 18);
             this.txtsdt.Name = "txtsdt";
-            this.txtsdt.Size = new System.Drawing.Size(177, 26);
+            this.txtsdt.Size = new System.Drawing.Size(121, 26);
             this.txtsdt.TabIndex = 5;
             // 
             // label4
@@ -174,16 +172,16 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel7.Controls.Add(this.txtten);
             this.panel7.Controls.Add(this.label2);
-            this.panel7.Location = new System.Drawing.Point(49, 78);
+            this.panel7.Location = new System.Drawing.Point(21, 78);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(247, 56);
+            this.panel7.Size = new System.Drawing.Size(181, 56);
             this.panel7.TabIndex = 1;
             // 
             // txtten
             // 
             this.txtten.Location = new System.Drawing.Point(63, 18);
             this.txtten.Name = "txtten";
-            this.txtten.Size = new System.Drawing.Size(148, 26);
+            this.txtten.Size = new System.Drawing.Size(90, 26);
             this.txtten.TabIndex = 5;
             // 
             // label2
@@ -201,16 +199,16 @@
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel6.Controls.Add(this.txtma);
             this.panel6.Controls.Add(this.label1);
-            this.panel6.Location = new System.Drawing.Point(49, 9);
+            this.panel6.Location = new System.Drawing.Point(24, 9);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(247, 56);
+            this.panel6.Size = new System.Drawing.Size(178, 56);
             this.panel6.TabIndex = 0;
             // 
             // txtma
             // 
             this.txtma.Location = new System.Drawing.Point(63, 18);
             this.txtma.Name = "txtma";
-            this.txtma.Size = new System.Drawing.Size(148, 26);
+            this.txtma.Size = new System.Drawing.Size(87, 26);
             this.txtma.TabIndex = 5;
             // 
             // label1
@@ -374,6 +372,41 @@
             this.panel10.Size = new System.Drawing.Size(1008, 118);
             this.panel10.TabIndex = 2;
             // 
+            // cbbChucVu
+            // 
+            this.cbbChucVu.FormattingEnabled = true;
+            this.cbbChucVu.Location = new System.Drawing.Point(112, 14);
+            this.cbbChucVu.Name = "cbbChucVu";
+            this.cbbChucVu.Size = new System.Drawing.Size(121, 28);
+            this.cbbChucVu.TabIndex = 1;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel11.Controls.Add(this.txtLuong);
+            this.panel11.Controls.Add(this.label5);
+            this.panel11.Location = new System.Drawing.Point(492, 20);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(129, 114);
+            this.panel11.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(28, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 26);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Lương";
+            // 
+            // txtLuong
+            // 
+            this.txtLuong.Location = new System.Drawing.Point(20, 72);
+            this.txtLuong.Name = "txtLuong";
+            this.txtLuong.Size = new System.Drawing.Size(97, 26);
+            this.txtLuong.TabIndex = 1;
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -401,6 +434,8 @@
             this.panel3.ResumeLayout(false);
             this.grbTimKiem.ResumeLayout(false);
             this.grbTimKiem.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -420,7 +455,6 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txtChucVu;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.TextBox txtsdt;
@@ -437,5 +471,9 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.ComboBox cbbChucVu;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TextBox txtLuong;
+        private System.Windows.Forms.Label label5;
     }
 }

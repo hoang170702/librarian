@@ -20,12 +20,14 @@ namespace QuanLyTV
             this.PhieuMuons = new HashSet<PhieuMuon>();
         }
     
-        public long MaDG { get; set; }
+        public string MaDG { get; set; }
         public string TenDG { get; set; }
         public string GioiTinh { get; set; }
         public byte[] HinhDG { get; set; }
+        public string MaLoaiDocGia { get; set; }
     
         public virtual Account Account { get; set; }
+        public virtual LoaiDocGia LoaiDocGia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuMuon> PhieuMuons { get; set; }
     }

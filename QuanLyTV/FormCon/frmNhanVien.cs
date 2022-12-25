@@ -14,12 +14,11 @@ namespace QuanLyTV.FormCon
     public partial class frmNhanVien : Form
     {
 
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
 
         public frmNhanVien()
         {
             InitializeComponent();
-            txtma.ReadOnly = true;
             this.dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
@@ -32,10 +31,19 @@ namespace QuanLyTV.FormCon
                              MaNV = nhanvien.MaNV,
                              TenNV = nhanvien.TenNV,
                              SDT = nhanvien.SDTNV,
-                             ChucVu = nhanvien.ChucVu,
+                             Luong = nhanvien.Luong,
+                             ChucVu = nhanvien.ChucVu.TenChucVu,
                          };
             dgv.DataSource = ListNV.ToList();
 
+        }
+
+        private void loadComboboxChucVu()
+        {
+            var listChucVu = QLTV.ChucVus.ToList();
+            cbbChucVu.DisplayMember = "TenChucVu";
+            cbbChucVu.ValueMember = "MaChucVu";
+            cbbChucVu.DataSource = listChucVu;
         }
 
         private void AddBinding()
@@ -43,15 +51,17 @@ namespace QuanLyTV.FormCon
             txtma.DataBindings.Add("Text", dgv.DataSource, "MaNV");
             txtten.DataBindings.Add("Text", dgv.DataSource, "TenNV");
             txtsdt.DataBindings.Add("Text", dgv.DataSource, "SDT");
-            txtChucVu.DataBindings.Add("Text", dgv.DataSource, "ChucVu");
+            txtLuong.DataBindings.Add("Text", dgv.DataSource, "Luong");
+            cbbChucVu.DataBindings.Add("Text", dgv.DataSource, "ChucVu");
         }
 
         private void ClearBinhding()
         {
             txtma.DataBindings.Clear();
             txtten.DataBindings.Clear();
-            txtChucVu.DataBindings.Clear();
+            cbbChucVu.DataBindings.Clear();
             txtsdt.DataBindings.Clear();
+            txtLuong.DataBindings.Clear();
         }
 
         private void frmNhanVien_Load(object sender, EventArgs e)
@@ -59,6 +69,7 @@ namespace QuanLyTV.FormCon
             try
             {
                 load();
+                loadComboboxChucVu();
             }
             catch (Exception ex)
             {
@@ -87,8 +98,9 @@ namespace QuanLyTV.FormCon
                 txtma.Text = "";
                 txtten.Text = "";
                 txtsdt.Text = "";
-                txtChucVu.Text = "";
+                cbbChucVu.Text = "";
                 txtTimKiem.Text = "";
+                txtLuong.Text = "";
                 rdbMa.Checked = false;
                 rdbTen.Checked = false;
                 rdbSDT.Checked = false;
@@ -106,13 +118,18 @@ namespace QuanLyTV.FormCon
             try
             {
                 var checkSDT = QLTV.NhanViens.SingleOrDefault(p => p.SDTNV == txtsdt.Text);
+                var AddMaChucVu = cbbChucVu.SelectedItem as ChucVu;
+                var parseLuong = float.Parse(txtLuong.Text);
                 var AddNV = new NhanVien()
                 {
+                    MaNV = "NV" + txtma.Text,
                     TenNV = txtten.Text,
+                    Luong = parseLuong,
                     SDTNV = txtsdt.Text,
-                    ChucVu = txtChucVu.Text,
+                    MaChucVu = AddMaChucVu.MaChucVu,
+
                 };
-                if (txtten.Text == "" || txtsdt.Text == "" || txtChucVu.Text == "")
+                if (txtma.Text == "" || txtten.Text == "" || txtsdt.Text == "" || txtLuong.Text == "" || cbbChucVu.Text == "")
                 {
                     throw new Exception("Không đươc để trống thông tin!!!");
                 }
@@ -144,15 +161,15 @@ namespace QuanLyTV.FormCon
             {
                 if (txtma.Text == "")
                 {
-                    throw new Exception("Không có nhân viên này!!!");
+                    throw new Exception("Vui lòng click vào nhân viên muốn xóa!!!");
                 }
                 else
                 {
                     var Notification = MessageBox.Show("Bạn có chắc muốn xóa ?", "Thông báo", MessageBoxButtons.YesNo);
                     if (Notification == DialogResult.Yes)
                     {
-                        var Ma = long.Parse(txtma.Text);
-                        var findID = QLTV.NhanViens.SingleOrDefault(p => p.MaNV == Ma);
+
+                        var findID = QLTV.NhanViens.SingleOrDefault(p => p.MaNV == txtma.Text);
                         if (findID != null)
                         {
                             QLTV.NhanViens.Remove(findID);
@@ -187,13 +204,15 @@ namespace QuanLyTV.FormCon
                     var Notification = MessageBox.Show("Bạn có chắc muốn sửa ?", "Thông báo", MessageBoxButtons.YesNo);
                     if (Notification == DialogResult.Yes)
                     {
-                        var Ma = long.Parse(txtma.Text);
-                        var findID = QLTV.NhanViens.SingleOrDefault(p => p.MaNV == Ma);
+                        var AddMaChucVu = cbbChucVu.SelectedItem as ChucVu;
+                        var parseLuong = float.Parse(txtLuong.Text);
+                        var findID = QLTV.NhanViens.SingleOrDefault(p => p.MaNV == txtma.Text);
                         if (findID != null)
                         {
                             findID.TenNV = txtten.Text;
                             findID.SDTNV = txtsdt.Text;
-                            findID.ChucVu = txtChucVu.Text;
+                            findID.Luong = parseLuong;
+                            findID.MaChucVu = AddMaChucVu.MaChucVu;
                             QLTV.SaveChanges();
                             MessageBox.Show("Cập nhật thông tin nhân viên [" + findID.MaNV + "] thành công");
                             load();
@@ -228,15 +247,16 @@ namespace QuanLyTV.FormCon
                     // find ID 
                     if (rdbMa.Checked == true)
                     {
-                        var ID = long.Parse(txtTimKiem.Text);
+                        var ID = (txtTimKiem.Text);
                         var findID = from id in QLTV.NhanViens
-                                     where id.MaNV == ID
+                                     where id.MaNV.Contains(ID)
                                      select new
                                      {
                                          MaNV = id.MaNV,
                                          TenNV = id.TenNV,
                                          SDT = id.SDTNV,
-                                         ChucVu = id.ChucVu,
+                                         Luong = id.Luong,
+                                         ChucVu = id.ChucVu.TenChucVu,
                                      };
                         if (findID != null)
                         {
@@ -255,7 +275,8 @@ namespace QuanLyTV.FormCon
                                            MaNV = NAME.MaNV,
                                            TenNV = NAME.TenNV,
                                            SDT = NAME.SDTNV,
-                                           ChucVu = NAME.ChucVu,
+                                           Luong = NAME.Luong,
+                                           ChucVu = NAME.ChucVu.TenChucVu,
                                        };
                         if (findName != null)
                         {
@@ -274,7 +295,8 @@ namespace QuanLyTV.FormCon
                                                   MaNV = phoneNumber.MaNV,
                                                   TenNV = phoneNumber.TenNV,
                                                   SDT = phoneNumber.SDTNV,
-                                                  ChucVu = phoneNumber.ChucVu,
+                                                  Luong = phoneNumber.Luong,
+                                                  ChucVu = phoneNumber.ChucVu.TenChucVu,
                                               };
                         if (findPhoneNumber != null)
                         {
@@ -282,26 +304,26 @@ namespace QuanLyTV.FormCon
                             ClearBinhding();
                         }
                     }
-                    // find position
+                    //Find positive
                     else if (rdbChucVu.Checked == true)
                     {
-                        var chucvu = txtTimKiem.Text;
-                        var findPosition = from position in QLTV.NhanViens
-                                           where position.ChucVu.Contains(chucvu)
-                                           select new
-                                           {
-                                               MaNV = position.MaNV,
-                                               TenNV = position.TenNV,
-                                               SDT = position.SDTNV,
-                                               ChucVu = position.ChucVu,
-                                           };
-                        if (findPosition != null)
+                        var ChucVu = txtTimKiem.Text;
+                        var findChucVu = from ChucVuNV in QLTV.NhanViens
+                                         where ChucVuNV.ChucVu.TenChucVu.Contains(ChucVu)
+                                         select new
+                                         {
+                                             MaNV = ChucVuNV.MaNV,
+                                             TenNV = ChucVuNV.TenNV,
+                                             SDT = ChucVuNV.SDTNV,
+                                             Luong = ChucVuNV.Luong,
+                                             ChucVu = ChucVuNV.ChucVu.TenChucVu,
+                                         };
+                        if (findChucVu != null)
                         {
-                            dgv.DataSource = findPosition.ToList();
+                            dgv.DataSource = findChucVu.ToList();
                             ClearBinhding();
                         }
                     }
-
                 }
 
             }

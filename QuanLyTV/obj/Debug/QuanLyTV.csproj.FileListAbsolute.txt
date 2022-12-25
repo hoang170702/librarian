@@ -3,7 +3,6 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\QuanLyTV.e
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\QuanLyTV.pdb
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.csproj.AssemblyReference.cache
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.csproj.SuggestedBindingRedirects.cache
-C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.Form1.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.Properties.Resources.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.csproj.GenerateResource.cache
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.csproj.CoreCompileInputs.cache
@@ -15,7 +14,6 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EntityFram
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmDangKy.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.csproj.CopyComplete
-C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCha.FormMain.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.ThongTinCaNhan.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmNhanVien.resources
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmDocGia.resources
@@ -29,3 +27,14 @@ C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\Microsoft.
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\EPPlus.xml
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
 C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmChiTietPhieuMuon.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCha.frmDangNhap.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCha.frmMain.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmPhieuPhat.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.FrmThongKeDoanhThu.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.FrmThongKeLuong.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmThongTinCaNhan.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.FormCon.frmQuyDinhPhat.resources
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\QuanLyTV.exe.manifest
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\bin\Debug\QuanLyTV.application
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.exe.manifest
+C:\Users\huyho\Pc\Desktop\Code\C#_project\QuanLyTV\QuanLyTV\obj\Debug\QuanLyTV.application

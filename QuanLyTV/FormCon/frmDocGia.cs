@@ -14,15 +14,17 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmDocGia : Form
     {
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
 
         public frmDocGia()
         {
             InitializeComponent();
             this.dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            txtma.ReadOnly = true;
             this.AcceptButton = btnTim;
+            cbbGioiTinh.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbLoaiKhachHang.DropDownStyle = ComboBoxStyle.DropDownList;
+
 
         }
 
@@ -34,20 +36,38 @@ namespace QuanLyTV.FormCon
                              MaDG = dg.MaDG,
                              TenDG = dg.TenDG,
                              GioiTinh = dg.GioiTinh,
+                             LoaiDocGia = dg.LoaiDocGia.TenLoai,
                          };
             dgv.DataSource = ListDG.ToList();
+
+
         }
+
+        private void loadComboBox()
+        {
+            var ListLoaiDocGia = QLTV.LoaiDocGias.ToList();
+            cbbLoaiKhachHang.DataSource = ListLoaiDocGia;
+            cbbLoaiKhachHang.DisplayMember = "TenLoai";
+            cbbLoaiKhachHang.ValueMember = "MaLoaiDocGia";
+            cbbGioiTinh.Items.Add("Nam");
+            cbbGioiTinh.Items.Add("Nữ");
+        }
+
         private void frmDocGia_Load(object sender, EventArgs e)
         {
             try
             {
                 load();
+                loadComboBox();
+                cbbGioiTinh.SelectedIndex = 0;
+                cbbLoaiKhachHang.SelectedIndex = 2;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -58,10 +78,10 @@ namespace QuanLyTV.FormCon
                     dgv.CurrentCell.Selected = true;
                     txtma.Text = dgv.Rows[e.RowIndex].Cells["MaDG"].FormattedValue.ToString();
                     txtten.Text = dgv.Rows[e.RowIndex].Cells["TenDG"].FormattedValue.ToString();
-                    txtGioiTinh.Text = dgv.Rows[e.RowIndex].Cells["GioiTinh"].FormattedValue.ToString();
+                    cbbGioiTinh.Text = dgv.Rows[e.RowIndex].Cells["GioiTinh"].FormattedValue.ToString();
+                    cbbLoaiKhachHang.Text = dgv.Rows[e.RowIndex].Cells["LoaiDocGia"].FormattedValue.ToString();
 
-                    var ParseMa = long.Parse(txtma.Text);
-                    var findImage = QLTV.DocGias.FirstOrDefault(p => p.MaDG == ParseMa);
+                    var findImage = QLTV.DocGias.FirstOrDefault(p => p.MaDG == txtma.Text);
                     byte[] HinhSach = findImage.HinhDG;
                     if (findImage.HinhDG == null)
                     {
@@ -112,7 +132,8 @@ namespace QuanLyTV.FormCon
             {
                 txtma.Text = "";
                 txtten.Text = "";
-                txtGioiTinh.Text = "";
+                cbbGioiTinh.Text = "";
+                cbbLoaiKhachHang.Text = "";
                 txtTimKiem.Text = "";
                 rdbMa.Checked = false;
                 rdbTen.Checked = false;
@@ -129,7 +150,9 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                if (txtGioiTinh.Text != "Nam" && txtGioiTinh.Text != "Nữ")
+                var CheckLoaiDocGia = QLTV.LoaiDocGias.Select(p => p.TenLoai).ToList();
+                var AddMaloaiDocGia = cbbLoaiKhachHang.SelectedItem as LoaiDocGia;
+                if (cbbGioiTinh.Text != "Nam" && cbbGioiTinh.Text != "Nữ")
                 {
                     MessageBox.Show("Giới tính chỉ có thể là Nam Hoặc Nữ");
                 }
@@ -137,8 +160,10 @@ namespace QuanLyTV.FormCon
                 {
                     var AddDG = new DocGia()
                     {
+                        MaDG = "DG" + txtma.Text,
                         TenDG = txtten.Text,
-                        GioiTinh = txtGioiTinh.Text,
+                        GioiTinh = cbbGioiTinh.Text,
+                        MaLoaiDocGia = AddMaloaiDocGia.MaLoaiDocGia,
                         HinhDG = imagetobyarray(pictureDG.Image)
                     };
                     QLTV.DocGias.Add(AddDG);
@@ -165,17 +190,18 @@ namespace QuanLyTV.FormCon
                 else
                 {
                     var Notification = MessageBox.Show("Bạn Có chắc muốn sửa", "Thông báo", MessageBoxButtons.YesNo);
+                    var AddMaloaiDocGia = cbbLoaiKhachHang.SelectedItem as LoaiDocGia;
                     if (Notification == DialogResult.Yes)
                     {
-                        var parseMaDG = long.Parse(txtma.Text);
-                        var findID = QLTV.DocGias.SingleOrDefault(p => p.MaDG == parseMaDG);
+                        var findID = QLTV.DocGias.SingleOrDefault(p => p.MaDG == txtma.Text);
                         if (findID != null)
                         {
                             findID.TenDG = txtten.Text;
-                            findID.GioiTinh = txtGioiTinh.Text;
+                            findID.GioiTinh = cbbGioiTinh.Text;
+                            findID.MaLoaiDocGia = AddMaloaiDocGia.MaLoaiDocGia;
                             findID.HinhDG = imagetobyarray(pictureDG.Image);
                             QLTV.SaveChanges();
-                            MessageBox.Show("Cập nhật độc giả có mã độc giả [" + findID.MaDG + "] thành công!!!");
+                            MessageBox.Show("Cập nhật khách hàng có mã khách hàng [" + findID.MaDG + "] thành công!!!");
                             load();
                         }
                     }
@@ -189,6 +215,7 @@ namespace QuanLyTV.FormCon
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (txtma.Text == "")
@@ -200,13 +227,12 @@ namespace QuanLyTV.FormCon
                     var Notification = MessageBox.Show("Bạn Có chắc muốn Xóa", "Thông báo", MessageBoxButtons.YesNo);
                     if (Notification == DialogResult.Yes)
                     {
-                        var parseMaDG = long.Parse(txtma.Text);
-                        var findID = QLTV.DocGias.SingleOrDefault(p => p.MaDG == parseMaDG);
+                        var findID = QLTV.DocGias.SingleOrDefault(p => p.MaDG == txtma.Text);
                         if (findID != null)
                         {
                             QLTV.DocGias.Remove(findID);
                             QLTV.SaveChanges();
-                            MessageBox.Show("Đã Xóa độc giả có mã độc giả [" + findID.MaDG + "] thành công!!!");
+                            MessageBox.Show("Đã Xóa khách hàng có mã khách hàng [" + findID.MaDG + "] thành công!!!");
                             load();
                         }
                     }
@@ -237,12 +263,13 @@ namespace QuanLyTV.FormCon
                     {
                         var parseMaDG = long.Parse(txtTimKiem.Text);
                         var findDG = from dg in QLTV.DocGias
-                                     where dg.MaDG == parseMaDG
+                                     where dg.MaDG.Contains(txtTimKiem.Text)
                                      select new
                                      {
                                          MaDG = dg.MaDG,
                                          TenDG = dg.TenDG,
                                          GioiTinh = dg.GioiTinh,
+                                         LoaiDocGia = dg.LoaiDocGia.TenLoai,
                                      };
                         dgv.DataSource = findDG.ToList();
                     }
@@ -256,6 +283,7 @@ namespace QuanLyTV.FormCon
                                           MaDG = Tendg.MaDG,
                                           TenDG = Tendg.TenDG,
                                           GioiTinh = Tendg.GioiTinh,
+                                          LoaiDocGia = Tendg.LoaiDocGia.TenLoai,
                                       };
                         dgv.DataSource = findTen.ToList();
                     }
@@ -266,5 +294,7 @@ namespace QuanLyTV.FormCon
                 MessageBox.Show(ex.Message);
             }
         }
+
+
     }
 }

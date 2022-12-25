@@ -14,13 +14,22 @@ namespace QuanLyTV
     
     public partial class ChiTietPhieuMuon
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ChiTietPhieuMuon()
+        {
+            this.PhieuPhats = new HashSet<PhieuPhat>();
+        }
+    
         public long MaPhieuMuon { get; set; }
-        public long Masach { get; set; }
+        public string Masach { get; set; }
         public Nullable<System.DateTime> NgayTra { get; set; }
         public Nullable<System.DateTime> NgayMuon { get; set; }
         public string TrangThai { get; set; }
     
         public virtual PhieuMuon PhieuMuon { get; set; }
+        public virtual PhieuMuon PhieuMuon1 { get; set; }
         public virtual Sach Sach { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhieuPhat> PhieuPhats { get; set; }
     }
 }

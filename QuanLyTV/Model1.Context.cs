@@ -13,10 +13,10 @@ namespace QuanLyTV
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class QuanLyThuVienEntities : DbContext
+    public partial class QuanLyCHCTSEntities : DbContext
     {
-        public QuanLyThuVienEntities()
-            : base("name=QuanLyThuVienEntities")
+        public QuanLyCHCTSEntities()
+            : base("name=QuanLyCHCTSEntities")
         {
         }
     
@@ -27,13 +27,17 @@ namespace QuanLyTV
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
+        public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<DocGia> DocGias { get; set; }
+        public virtual DbSet<LoaiDocGia> LoaiDocGias { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<NXB> NXBs { get; set; }
         public virtual DbSet<PhieuMuon> PhieuMuons { get; set; }
         public virtual DbSet<Sach> Saches { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TacGia> TacGias { get; set; }
         public virtual DbSet<TheLoai> TheLoais { get; set; }
+        public virtual DbSet<Phat> Phats { get; set; }
+        public virtual DbSet<PhieuPhat> PhieuPhats { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

@@ -16,38 +16,40 @@ namespace QuanLyTV.FormCon
 {
     public partial class frmPhieuTra : Form
     {
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
 
-        string tenDN;
         public frmPhieuTra()
         {
             InitializeComponent();
         }
 
-        public frmPhieuTra(string tenDN)
+        string ten;
+        string matKhau;
+        string loaiDocGia;
+        public frmPhieuTra(string ten, string matKhau, string loaiDocGia)
         {
             InitializeComponent();
-            this.tenDN = tenDN;
+            this.ten = ten;
+            this.matKhau = matKhau;
+            this.loaiDocGia = loaiDocGia;
+
+            if (loaiDocGia == "2")
+            {
+                paChucNangAdmin.Hide();
+            }
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void loadTrangThaiPhat()
+        private async void loadTrangThaiPhat()
         {
             var dtnow = DateTime.Today.Date;
-            var TrangthaiPhat = QLTV.ChiTietPhieuMuons.Select(p => p).ToList();
-            if (TrangthaiPhat != null)
-            {
-                for (int i = 0; i < TrangthaiPhat.Count; i++)
+            var updateStatus = await QLTV.ChiTietPhieuMuons.Where(p => p.NgayTra < dtnow && p.TrangThai != "Đã Trả").ToArrayAsync();
+            if (updateStatus != null)
+                foreach (var item in updateStatus)
                 {
-                    var dsPhat = TrangthaiPhat.FirstOrDefault(p => p.NgayMuon < dtnow);
-                    if (dsPhat != null)
-                    {
-                        dsPhat.TrangThai = "Phat";
-                        QLTV.SaveChanges();
-                    }
+                    item.TrangThai = "Phạt";
                 }
-
-            }
+            QLTV.SaveChanges();
         }
         private void loadAdmin()
         {
@@ -56,24 +58,24 @@ namespace QuanLyTV.FormCon
                          {
                              MaPhieuMuon = ctpm.MaPhieuMuon,
                              MaSach = ctpm.Masach,
-                             MaDocGia = ctpm.PhieuMuon.MaDG,
+                             NgayMuon = ctpm.NgayMuon,
                              NgayTra = ctpm.NgayTra,
                              TrangThai = ctpm.TrangThai,
                          };
             dgv.DataSource = DsCTPM.ToList();
-            //  loadTrangThaiPhat();
+            loadTrangThaiPhat();
         }
 
         private void loadUser()
         {
             var DsCTPM = from ctpm in QLTV.ChiTietPhieuMuons
                          from acc in QLTV.Accounts
-                         where acc.TenTK == tenDN && ctpm.PhieuMuon.MaDG == acc.MaDG
+                         where acc.TenTK == ten && ctpm.PhieuMuon1.MaDG == acc.MaDG
                          select new
                          {
                              MaPhieuMuon = ctpm.MaPhieuMuon,
                              MaSach = ctpm.Masach,
-                             MaDocGia = ctpm.PhieuMuon.MaDG,
+                             NgayMuon = ctpm.NgayMuon,
                              NgayTra = ctpm.NgayTra,
                              TrangThai = ctpm.TrangThai,
                          };
@@ -102,7 +104,7 @@ namespace QuanLyTV.FormCon
         {
             try
             {
-                if (tenDN != "admin")
+                if (loaiDocGia == "2")
                 {
                     loadUser();
                     paChucNangAdmin.Visible = false;
@@ -148,7 +150,7 @@ namespace QuanLyTV.FormCon
         }
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            if (tenDN != "admin")
+            if (loaiDocGia == "2")
             {
                 Huy();
                 loadUser();
@@ -184,22 +186,22 @@ namespace QuanLyTV.FormCon
                                                {
                                                    MaPhieu = fAdmin.MaPhieuMuon,
                                                    MaSach = fAdmin.Masach,
-                                                   MaDocGia = fAdmin.PhieuMuon.MaDG,
+                                                   MaDocGia = fAdmin.PhieuMuon1.MaDG,
                                                    NgayTra = fAdmin.NgayTra,
                                                    TrangThai = fAdmin.TrangThai,
                                                };
                         var findMaPhieuUser = from fUser in QLTV.ChiTietPhieuMuons
                                               from acc in QLTV.Accounts
-                                              where acc.MaDG == fUser.PhieuMuon.MaDG && acc.TenTK == tenDN && fUser.MaPhieuMuon == parseMaPhieu
+                                              where acc.MaDG == fUser.PhieuMuon1.MaDG && acc.TenTK == ten && fUser.MaPhieuMuon == parseMaPhieu
                                               select new
                                               {
                                                   MaPhieu = fUser.MaPhieuMuon,
                                                   MaSach = fUser.Masach,
-                                                  MaDocGia = fUser.PhieuMuon.MaDG,
+                                                  MaDocGia = fUser.PhieuMuon1.MaDG,
                                                   NgayTra = fUser.NgayTra,
                                                   TrangThai = fUser.TrangThai,
                                               };
-                        if (tenDN != "admin")
+                        if (loaiDocGia == "2")
                         {
                             dgv.DataSource = findMaPhieuUser.ToList();
                             clearBinding();
@@ -213,15 +215,15 @@ namespace QuanLyTV.FormCon
                     // Tim Ma Doc Gia
                     else if (rdbMaDG.Checked == true)
                     {
-                        var parseMaDG = long.Parse(txtTimKiem.Text);
                         var findDGAdmin = from AdminDG in QLTV.ChiTietPhieuMuons
-                                          where AdminDG.PhieuMuon.MaDG == parseMaDG
+                                          where AdminDG.PhieuMuon1.MaDG == txtTimKiem.Text
                                           select new
                                           {
                                               MaPhieu = AdminDG.MaPhieuMuon,
                                               MaSach = AdminDG.Masach,
-                                              MaDocGia = AdminDG.PhieuMuon.MaDG,
+                                              MaDocGia = AdminDG.PhieuMuon1.MaDG,
                                               NgayTra = AdminDG.NgayTra,
+                                              TrangThai = AdminDG.TrangThai,
                                           };
                         dgv.DataSource = findDGAdmin.ToList();
                         clearBinding();
@@ -229,27 +231,29 @@ namespace QuanLyTV.FormCon
                     // Tim Ma Sach 
                     else if (rdbMaSach.Checked == true)
                     {
-                        var parseMaSach = long.Parse(txtTimKiem.Text);
+
                         var findMaSachAdmin = from AdminSach in QLTV.ChiTietPhieuMuons
-                                              where AdminSach.Masach == parseMaSach
+                                              where AdminSach.Masach == txtTimKiem.Text
                                               select new
                                               {
                                                   MaPhieu = AdminSach.MaPhieuMuon,
                                                   MaSach = AdminSach.Masach,
-                                                  MaDocGia = AdminSach.PhieuMuon.MaDG,
+                                                  MaDocGia = AdminSach.PhieuMuon1.MaDG,
                                                   NgayTra = AdminSach.NgayTra,
+                                                  TrangThai = AdminSach.TrangThai,
                                               };
                         var findMaSachUser = from UserSach in QLTV.ChiTietPhieuMuons
                                              from acc in QLTV.Accounts
-                                             where acc.MaDG == UserSach.PhieuMuon.MaDG && acc.TenTK == tenDN && UserSach.Masach == parseMaSach
+                                             where acc.MaDG == UserSach.PhieuMuon1.MaDG && acc.TenTK == ten && UserSach.Masach == txtTimKiem.Text
                                              select new
                                              {
                                                  MaPhieu = UserSach.MaPhieuMuon,
                                                  MaSach = UserSach.Masach,
-                                                 MaDocGia = UserSach.PhieuMuon.MaDG,
+                                                 MaDocGia = UserSach.PhieuMuon1.MaDG,
                                                  NgayTra = UserSach.NgayTra,
+                                                 TrangThai = UserSach.TrangThai,
                                              };
-                        if (tenDN != "admin")
+                        if (loaiDocGia == "2")
                         {
                             dgv.DataSource = findMaSachUser.ToList();
                             clearBinding();
@@ -270,20 +274,22 @@ namespace QuanLyTV.FormCon
                                                {
                                                    MaPhieu = adminNgayTra.MaPhieuMuon,
                                                    MaSach = adminNgayTra.Masach,
-                                                   MaDocGia = adminNgayTra.PhieuMuon.MaDG,
+                                                   MaDocGia = adminNgayTra.PhieuMuon1.MaDG,
                                                    NgayTra = adminNgayTra.NgayTra,
+                                                   TrangThai = adminNgayTra.TrangThai,
                                                };
                         var findNgayTraUser = from userNgayTra in QLTV.ChiTietPhieuMuons
                                               from acc in QLTV.Accounts
-                                              where acc.MaDG == userNgayTra.PhieuMuon.MaDG && acc.TenTK == tenDN && userNgayTra.NgayTra == parseNgayTra
+                                              where acc.MaDG == userNgayTra.PhieuMuon1.MaDG && acc.TenTK == ten && userNgayTra.NgayTra == parseNgayTra
                                               select new
                                               {
                                                   MaPhieu = userNgayTra.MaPhieuMuon,
                                                   MaSach = userNgayTra.Masach,
-                                                  MaDocGia = userNgayTra.PhieuMuon.MaDG,
+                                                  MaDocGia = userNgayTra.PhieuMuon1.MaDG,
                                                   NgayTra = userNgayTra.NgayTra,
+                                                  TrangThai = userNgayTra.TrangThai,
                                               };
-                        if (tenDN != "admin")
+                        if (loaiDocGia == "2")
                         {
                             dgv.DataSource = findNgayTraUser.ToList();
                             clearBinding();
@@ -354,15 +360,15 @@ namespace QuanLyTV.FormCon
             try
             {
                 var parseMaPhieuMuon = long.Parse(txtMaPhieu.Text);
-                var ParseMaSach = long.Parse(txtMaSach.Text);
                 var Trasach = QLTV.ChiTietPhieuMuons.SingleOrDefault(p =>
-                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == ParseMaSach);
+                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == txtMaSach.Text);
 
                 if (Trasach != null)
                 {
                     Trasach.TrangThai = "Đã Trả";
+                    Trasach.Sach.TrangThaiSach = "Còn";
                     QLTV.SaveChanges();
-                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon.MaDG + " đã trả sách " + Trasach.Masach);
+                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon1.MaDG + " đã trả sách " + Trasach.Masach);
                     loadAdmin();
                 }
             }
@@ -377,15 +383,15 @@ namespace QuanLyTV.FormCon
             try
             {
                 var parseMaPhieuMuon = long.Parse(txtMaPhieu.Text);
-                var ParseMaSach = long.Parse(txtMaSach.Text);
                 var Trasach = QLTV.ChiTietPhieuMuons.SingleOrDefault(p =>
-                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == ParseMaSach);
+                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == txtMaSach.Text);
 
                 if (Trasach != null)
                 {
                     Trasach.TrangThai = "Đang Mượn";
+                    Trasach.Sach.TrangThaiSach = "Không còn";
                     QLTV.SaveChanges();
-                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon.MaDG + " đang muợn sách " + Trasach.Masach);
+                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon1.MaDG + " đang muợn sách " + Trasach.Masach);
                     loadAdmin();
                 }
             }
@@ -395,20 +401,21 @@ namespace QuanLyTV.FormCon
             }
         }
 
+        //private void load()
         private void btnPhat_Click(object sender, EventArgs e)
         {
             try
             {
                 var parseMaPhieuMuon = long.Parse(txtMaPhieu.Text);
-                var ParseMaSach = long.Parse(txtMaSach.Text);
+
                 var Trasach = QLTV.ChiTietPhieuMuons.SingleOrDefault(p =>
-                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == ParseMaSach);
+                p.MaPhieuMuon == parseMaPhieuMuon && p.Masach == txtMaSach.Text);
 
                 if (Trasach != null)
                 {
                     Trasach.TrangThai = "Phạt";
                     QLTV.SaveChanges();
-                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon.MaDG + " đang muợn sách " + Trasach.Masach + " đã bị phạt");
+                    MessageBox.Show("Độc giả " + Trasach.PhieuMuon1.MaDG + " đang muợn sách " + Trasach.Masach + " đã bị phạt");
                     loadAdmin();
                 }
             }
@@ -416,6 +423,11 @@ namespace QuanLyTV.FormCon
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnphieuPhat_Click(object sender, EventArgs e)
+        {
+            new frmPhieuPhat().ShowDialog();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace QuanLyTV
     {
         public string TenTK { get; set; }
         public string MatKhau { get; set; }
-        public long MaDG { get; set; }
+        public string MaDG { get; set; }
     
         public virtual DocGia DocGia { get; set; }
     }

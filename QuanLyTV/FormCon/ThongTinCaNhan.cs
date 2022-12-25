@@ -13,7 +13,7 @@ namespace QuanLyTV.FormCon
 {
     public partial class ThongTinCaNhan : Form
     {
-        QuanLyThuVienEntities QLTV = new QuanLyThuVienEntities();
+        QuanLyCHCTSEntities QLTV = new QuanLyCHCTSEntities();
 
         public ThongTinCaNhan()
         {
@@ -47,11 +47,9 @@ namespace QuanLyTV.FormCon
             try
             {
                 var tkmk = QLTV.Accounts.SingleOrDefault(p => p.TenTK == txtten.Text && p.MatKhau == txtMatKhau.Text);
-                var parseMA = long.Parse(txtma.Text);
-                if (tenDN == txtten.Text && MK == txtMatKhau.Text && tkmk.MaDG == parseMA)
+                if (tenDN == txtten.Text && MK == txtMatKhau.Text && tkmk.MaDG == txtma.Text)
                 {
-                    long findID = long.Parse(txtma.Text);
-                    var CapNhat = QLTV.Accounts.Find(findID);
+                    var CapNhat = QLTV.Accounts.Find(txtma.Text);
                     if (CapNhat != null)
                     {
                         if (txtMKMoi.Text == txtNhapLai.Text && txtMKMoi.Text != "")

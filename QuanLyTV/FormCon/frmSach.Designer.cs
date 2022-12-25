@@ -47,11 +47,8 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
-            this.txtMaNXB = new System.Windows.Forms.TextBox();
-            this.txtMaTG = new System.Windows.Forms.TextBox();
-            this.txtTheLoai = new System.Windows.Forms.TextBox();
             this.txtGia = new System.Windows.Forms.TextBox();
-            this.txtSoLuong = new System.Windows.Forms.TextBox();
+            this.txtGiaChoThue = new System.Windows.Forms.TextBox();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.txtma = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,6 +61,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cbbTheLoai = new System.Windows.Forms.ComboBox();
+            this.cbbTacGia = new System.Windows.Forms.ComboBox();
+            this.cbbNXB = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -216,13 +216,13 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.groupBox3.Controls.Add(this.cbbNXB);
+            this.groupBox3.Controls.Add(this.cbbTacGia);
+            this.groupBox3.Controls.Add(this.cbbTheLoai);
             this.groupBox3.Controls.Add(this.paChucNang);
             this.groupBox3.Controls.Add(this.btnHuy);
-            this.groupBox3.Controls.Add(this.txtMaNXB);
-            this.groupBox3.Controls.Add(this.txtMaTG);
-            this.groupBox3.Controls.Add(this.txtTheLoai);
             this.groupBox3.Controls.Add(this.txtGia);
-            this.groupBox3.Controls.Add(this.txtSoLuong);
+            this.groupBox3.Controls.Add(this.txtGiaChoThue);
             this.groupBox3.Controls.Add(this.txtTen);
             this.groupBox3.Controls.Add(this.txtma);
             this.groupBox3.Controls.Add(this.label7);
@@ -294,30 +294,6 @@
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // txtMaNXB
-            // 
-            this.txtMaNXB.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNXB.Location = new System.Drawing.Point(786, 102);
-            this.txtMaNXB.Name = "txtMaNXB";
-            this.txtMaNXB.Size = new System.Drawing.Size(171, 26);
-            this.txtMaNXB.TabIndex = 13;
-            // 
-            // txtMaTG
-            // 
-            this.txtMaTG.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaTG.Location = new System.Drawing.Point(786, 61);
-            this.txtMaTG.Name = "txtMaTG";
-            this.txtMaTG.Size = new System.Drawing.Size(171, 26);
-            this.txtMaTG.TabIndex = 12;
-            // 
-            // txtTheLoai
-            // 
-            this.txtTheLoai.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTheLoai.Location = new System.Drawing.Point(786, 27);
-            this.txtTheLoai.Name = "txtTheLoai";
-            this.txtTheLoai.Size = new System.Drawing.Size(171, 26);
-            this.txtTheLoai.TabIndex = 11;
-            // 
             // txtGia
             // 
             this.txtGia.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -326,13 +302,13 @@
             this.txtGia.Size = new System.Drawing.Size(171, 26);
             this.txtGia.TabIndex = 10;
             // 
-            // txtSoLuong
+            // txtGiaChoThue
             // 
-            this.txtSoLuong.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuong.Location = new System.Drawing.Point(786, 138);
-            this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(171, 26);
-            this.txtSoLuong.TabIndex = 9;
+            this.txtGiaChoThue.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGiaChoThue.Location = new System.Drawing.Point(795, 138);
+            this.txtGiaChoThue.Name = "txtGiaChoThue";
+            this.txtGiaChoThue.Size = new System.Drawing.Size(162, 26);
+            this.txtGiaChoThue.TabIndex = 9;
             // 
             // txtTen
             // 
@@ -376,9 +352,9 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(669, 143);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 21);
+            this.label5.Size = new System.Drawing.Size(117, 21);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Số Lượng ";
+            this.label5.Text = "Giá Cho Thuê";
             // 
             // label4
             // 
@@ -453,6 +429,33 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // cbbTheLoai
+            // 
+            this.cbbTheLoai.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTheLoai.FormattingEnabled = true;
+            this.cbbTheLoai.Location = new System.Drawing.Point(794, 22);
+            this.cbbTheLoai.Name = "cbbTheLoai";
+            this.cbbTheLoai.Size = new System.Drawing.Size(162, 27);
+            this.cbbTheLoai.TabIndex = 19;
+            // 
+            // cbbTacGia
+            // 
+            this.cbbTacGia.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbTacGia.FormattingEnabled = true;
+            this.cbbTacGia.Location = new System.Drawing.Point(795, 63);
+            this.cbbTacGia.Name = "cbbTacGia";
+            this.cbbTacGia.Size = new System.Drawing.Size(162, 27);
+            this.cbbTacGia.TabIndex = 20;
+            // 
+            // cbbNXB
+            // 
+            this.cbbNXB.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbNXB.FormattingEnabled = true;
+            this.cbbNXB.Location = new System.Drawing.Point(795, 100);
+            this.cbbNXB.Name = "cbbNXB";
+            this.cbbNXB.Size = new System.Drawing.Size(162, 27);
+            this.cbbNXB.TabIndex = 21;
+            // 
             // frmSach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -498,11 +501,8 @@
         private System.Windows.Forms.RadioButton rdbGia;
         private System.Windows.Forms.RadioButton rdbMa;
         private System.Windows.Forms.Button btnTim;
-        private System.Windows.Forms.TextBox txtMaNXB;
-        private System.Windows.Forms.TextBox txtMaTG;
-        private System.Windows.Forms.TextBox txtTheLoai;
         private System.Windows.Forms.TextBox txtGia;
-        private System.Windows.Forms.TextBox txtSoLuong;
+        private System.Windows.Forms.TextBox txtGiaChoThue;
         private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.TextBox txtma;
         private System.Windows.Forms.Label label7;
@@ -518,5 +518,8 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Panel paChucNang;
+        private System.Windows.Forms.ComboBox cbbNXB;
+        private System.Windows.Forms.ComboBox cbbTacGia;
+        private System.Windows.Forms.ComboBox cbbTheLoai;
     }
 }

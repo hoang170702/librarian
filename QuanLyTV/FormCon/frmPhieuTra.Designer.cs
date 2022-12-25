@@ -40,6 +40,7 @@
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.paChucNangAdmin = new System.Windows.Forms.Panel();
+            this.btnphieuPhat = new System.Windows.Forms.Button();
             this.btnDaTra = new System.Windows.Forms.Button();
             this.btnDangMuon = new System.Windows.Forms.Button();
             this.btnPhat = new System.Windows.Forms.Button();
@@ -162,7 +163,7 @@
             // 
             // txtTimKiem
             // 
-            this.txtTimKiem.Location = new System.Drawing.Point(22, 76);
+            this.txtTimKiem.Location = new System.Drawing.Point(27, 75);
             this.txtTimKiem.Name = "txtTimKiem";
             this.txtTimKiem.Size = new System.Drawing.Size(148, 30);
             this.txtTimKiem.TabIndex = 7;
@@ -180,18 +181,30 @@
             // 
             // paChucNangAdmin
             // 
+            this.paChucNangAdmin.Controls.Add(this.btnphieuPhat);
             this.paChucNangAdmin.Controls.Add(this.btnDaTra);
             this.paChucNangAdmin.Controls.Add(this.btnDangMuon);
             this.paChucNangAdmin.Controls.Add(this.btnPhat);
-            this.paChucNangAdmin.Location = new System.Drawing.Point(26, 106);
+            this.paChucNangAdmin.Location = new System.Drawing.Point(3, 114);
             this.paChucNangAdmin.Name = "paChucNangAdmin";
-            this.paChucNangAdmin.Size = new System.Drawing.Size(200, 253);
+            this.paChucNangAdmin.Size = new System.Drawing.Size(244, 319);
             this.paChucNangAdmin.TabIndex = 2;
+            // 
+            // btnphieuPhat
+            // 
+            this.btnphieuPhat.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnphieuPhat.Location = new System.Drawing.Point(13, 17);
+            this.btnphieuPhat.Name = "btnphieuPhat";
+            this.btnphieuPhat.Size = new System.Drawing.Size(224, 41);
+            this.btnphieuPhat.TabIndex = 15;
+            this.btnphieuPhat.Text = "Lập phiếu phạt";
+            this.btnphieuPhat.UseVisualStyleBackColor = true;
+            this.btnphieuPhat.Click += new System.EventHandler(this.btnphieuPhat_Click);
             // 
             // btnDaTra
             // 
             this.btnDaTra.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDaTra.Location = new System.Drawing.Point(3, 3);
+            this.btnDaTra.Location = new System.Drawing.Point(27, 91);
             this.btnDaTra.Name = "btnDaTra";
             this.btnDaTra.Size = new System.Drawing.Size(194, 41);
             this.btnDaTra.TabIndex = 3;
@@ -202,7 +215,7 @@
             // btnDangMuon
             // 
             this.btnDangMuon.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangMuon.Location = new System.Drawing.Point(3, 90);
+            this.btnDangMuon.Location = new System.Drawing.Point(27, 167);
             this.btnDangMuon.Name = "btnDangMuon";
             this.btnDangMuon.Size = new System.Drawing.Size(194, 41);
             this.btnDangMuon.TabIndex = 4;
@@ -213,7 +226,7 @@
             // btnPhat
             // 
             this.btnPhat.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPhat.Location = new System.Drawing.Point(3, 176);
+            this.btnPhat.Location = new System.Drawing.Point(27, 248);
             this.btnPhat.Name = "btnPhat";
             this.btnPhat.Size = new System.Drawing.Size(194, 41);
             this.btnPhat.TabIndex = 5;
@@ -224,7 +237,7 @@
             // btnXuatPhieu
             // 
             this.btnXuatPhieu.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatPhieu.Location = new System.Drawing.Point(16, 31);
+            this.btnXuatPhieu.Location = new System.Drawing.Point(16, 33);
             this.btnXuatPhieu.Name = "btnXuatPhieu";
             this.btnXuatPhieu.Size = new System.Drawing.Size(224, 41);
             this.btnXuatPhieu.TabIndex = 14;
@@ -235,7 +248,7 @@
             // btnHuy
             // 
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.Location = new System.Drawing.Point(85, 392);
+            this.btnHuy.Location = new System.Drawing.Point(79, 460);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(89, 41);
             this.btnHuy.TabIndex = 6;
@@ -362,6 +375,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmPhieuTra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPhieuTra";
             this.Load += new System.EventHandler(this.frmPhieuTra_Load);
             this.panel1.ResumeLayout(false);
@@ -409,5 +423,6 @@
         private System.Windows.Forms.Button btnDaTra;
         private System.Windows.Forms.Button btnDangMuon;
         private System.Windows.Forms.Button btnPhat;
+        private System.Windows.Forms.Button btnphieuPhat;
     }
 }
